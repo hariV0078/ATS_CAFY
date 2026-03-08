@@ -43,11 +43,13 @@ export async function updateSession(request: NextRequest) {
         pathname === '/forgot-password' ||
         pathname === '/reset-password'
 
+    const isApi = pathname.startsWith('/api')
+    const isDebug = pathname === '/debug-db'
     const isCallback = pathname.startsWith('/auth/callback')
 
     if (!user) {
-        // If they are not logged in and not on an auth page/callback, redirect to login
-        if (!isAuthPage && !isCallback) {
+        // If they are not logged in and not on an auth page/callback/api/debug, redirect to login
+        if (!isAuthPage && !isCallback && !isApi && !isDebug) {
             const url = request.nextUrl.clone()
             url.pathname = '/login'
             return NextResponse.redirect(url)

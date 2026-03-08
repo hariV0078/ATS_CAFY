@@ -3,6 +3,17 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
+import { headers } from 'next/headers'
+
+// Helper to get the current site URL dynamically
+async function getSiteUrl() {
+    const headersList = await headers()
+    const host = headersList.get('x-forwarded-host') || headersList.get('host')
+    const protocol = headersList.get('x-forwarded-proto') || (process.env.NODE_ENV === 'production' ? 'https' : 'http')
+    const url = `${protocol}://${host}`
+    console.log('DEBUG: Detected Site URL:', url)
+    return url
+}
 
 // Map raw Supabase error messages to generic user-facing strings
 function friendlyAuthError(message: string): string {
@@ -10,7 +21,7 @@ function friendlyAuthError(message: string): string {
         return 'Incorrect email or password.'
     }
     if (message.includes('Email not confirmed')) {
-        return 'Please verify your email address before logging in.'
+        return 'please verify email to get logged in'
     }
     if (message.includes('User already registered') || message.includes('already registered')) {
         return 'An account with this email already exists.'
@@ -51,8 +62,7 @@ export async function login(formData: FormData) {
 
 export async function loginWithGoogle() {
     const supabase = await createClient()
-    // Use env var in production; fall back to request origin in dev
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+    const siteUrl = await getSiteUrl()
 
     const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
@@ -91,14 +101,20 @@ export async function signup(formData: FormData) {
         redirect(`/signup?error=${encodeURIComponent('Passwords do not match.')}`)
     }
 
-    const { data: authData, error } = await supabase.auth.signUp(data)
+    const siteUrl = await getSiteUrl()
+    const { data: authData, error } = await supabase.auth.signUp({
+        ...data,
+        options: {
+            emailRedirectTo: `${siteUrl}/auth/callback`,
+        },
+    })
 
     if (error) {
         redirect(`/signup?error=${encodeURIComponent(friendlyAuthError(error.message))}`)
     }
 
     if (!authData.session) {
-        redirect(`/signup?message=${encodeURIComponent('Please check your email to confirm your account (or disable "Confirm Email" in Supabase settings).')}`)
+        redirect(`/signup?message=${encodeURIComponent('please verify email to get logged in')}`)
     }
 
     revalidatePath('/', 'layout')
@@ -108,7 +124,7 @@ export async function signup(formData: FormData) {
 
 export async function requestPasswordReset(formData: FormData) {
     const supabase = await createClient()
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+    const siteUrl = await getSiteUrl()
 
     // 1. Verify Turnstile
     const turnstileToken = formData.get('cf-turnstile-response') as string

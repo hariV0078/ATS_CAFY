@@ -1,8 +1,8 @@
 import Link from 'next/link';
+import { Lock } from 'lucide-react';
 import { createClient } from '../../utils/supabase/server';
 import Logo from '../../components/Logo';
 import JobFeed from '../../components/JobFeed';
-import SearchBar from '../../components/SearchBar';
 import { getJobs } from '../actions/jobActions';
 
 export const dynamic = 'force-dynamic';
@@ -22,7 +22,7 @@ function fixJobUrl(url: string): string {
 export default async function JobsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ json?: string, page?: string, q?: string, loc?: string, tier2?: string, locs?: string | string[] }>;
+  searchParams: Promise<{ json?: string, page?: string, q?: string, loc?: string, tier2?: string, locs?: string | string[], type?: string }>;
 }) {
   const params = await searchParams;
   const page = Math.max(1, parseInt(params.page || '1'));
@@ -63,7 +63,8 @@ export default async function JobsPage({
     loc: params.loc,
     tier2: params.tier2,
     locs: params.locs,
-    userPrefs: userPrefs
+    userPrefs: userPrefs,
+    type: params.type
   });
 
   const jobList = jobs || [];
@@ -74,10 +75,6 @@ export default async function JobsPage({
       {/* Main Content */}
       <main className="pt-20 sm:pt-24 pb-20 sm:pb-16 px-4 sm:px-6 lg:px-12 max-w-full mx-auto">
         <div className="flex flex-col gap-6 sm:gap-8">
-          {/* Search Section */}
-          <div className="w-full max-w-4xl mx-auto">
-            <SearchBar />
-          </div>
 
           {/* Banner */}
           <div className="bg-[#F8F5EE] border border-amber-100 text-[#6B5A40] text-sm px-4 py-3 mb-6 flex items-center rounded-sm">
@@ -87,24 +84,50 @@ export default async function JobsPage({
           </div>
 
           <div className="flex flex-col gap-4">
+            {/* Tabs */}
+            <div className="flex items-center gap-6 border-b border-[var(--border)] overflow-x-auto no-scrollbar">
+              <Link
+                href="/jobs"
+                className={`pb-3 text-sm font-bold whitespace-nowrap border-b-2 transition-colors ${!params.type || params.type !== 'graduate' ? 'border-[#0066FF] text-[#0066FF]' : 'border-transparent text-slate-500 hover:text-slate-800'}`}
+              >
+                For You
+              </Link>
+              <Link
+                href="/jobs?type=graduate"
+                className={`pb-3 text-sm font-bold whitespace-nowrap border-b-2 transition-colors flex items-center gap-1.5 ${params.type === 'graduate' ? 'border-[#0066FF] text-[#0066FF]' : 'border-transparent text-slate-500 hover:text-slate-800'}`}
+              >
+                Graduate Roles
+                <Lock className="w-3.5 h-3.5 opacity-60" />
+              </Link>
+            </div>
+
             {/* Job Feed Area */}
             <div className="flex flex-col">
-
-
-              <JobFeed
-                key={`${params.q}-${params.loc}-${params.tier2}`}
-                initialJobs={jobList as any}
-                initialTotalPages={totalPages}
-                initialAppliedJobs={initialAppliedJobs}
-                isGuest={!user}
-                searchParams={{
-                  q: params.q,
-                  loc: params.loc,
-                  tier2: params.tier2,
-                  locs: params.locs,
-                  userPrefs: userPrefs
-                }}
-              />
+              {params.type === 'graduate' ? (
+                <div className="text-center py-16 sm:py-24 bg-[var(--card)] rounded-none border border-dashed border-[var(--border)] px-6 relative z-10 w-full lg:w-[55%]">
+                  <Lock className="w-12 h-12 text-slate-300 mx-auto mb-5" />
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Coming Soon</h3>
+                  <p className="text-slate-500 max-w-sm mx-auto leading-relaxed">
+                    We're working hard to bring you the best verified UK graduate schemes with visa sponsorship. Stay tuned!
+                  </p>
+                </div>
+              ) : (
+                <JobFeed
+                  key={`${params.q}-${params.loc}-${params.tier2}-${params.type}`}
+                  initialJobs={jobList as any}
+                  initialTotalPages={totalPages}
+                  initialAppliedJobs={initialAppliedJobs}
+                  isGuest={!user}
+                  searchParams={{
+                    q: params.q,
+                    loc: params.loc,
+                    tier2: params.tier2,
+                    locs: params.locs,
+                    userPrefs: userPrefs,
+                    type: params.type
+                  }}
+                />
+              )}
             </div>
           </div>
         </div>

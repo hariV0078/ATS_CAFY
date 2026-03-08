@@ -96,7 +96,24 @@ function normalizeLocation(str: string): string {
 function isUKLocation(loc: any): boolean {
     if (!loc) return false;
     const normalized = normalizeLocation(loc);
-    if (normalized.includes("ukraine")) return false;
+
+    // Explicit blocklist for false positives (e.g., "New York" matches "York", "New Jersey" matches "Jersey")
+    const blockList = [
+        "ukraine", "new york", "new jersey", "united states", "usa", "india", "canada",
+        "australia", "germany", "france", "ireland", "dublin", "paris", "berlin",
+        "amsterdam", "massachusetts"
+    ];
+    if (blockList.some(blocked => {
+        if (blocked === 'ireland' && normalized.includes('northern ireland')) return false;
+        return normalized.includes(blocked);
+    })) {
+        return false;
+    }
+
+    // Also block standalone "us" or 2-letter state codes if they are distinct words
+    if (/\b(us|ny|nj|ca|tx|ma|il|wa|fl)\b/.test(normalized)) {
+        return false;
+    }
 
     if (normalized.includes("remote") && (normalized.includes("uk") || normalized.includes("united kingdom"))) {
         return true;

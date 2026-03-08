@@ -1,6 +1,7 @@
 'use server';
 
 import { createClient } from '../../utils/supabase/server';
+import { getSubscriptionStatus } from './subscriptionActions';
 
 export interface Job {
     id: string;
@@ -34,6 +35,7 @@ export async function getJobs(params: {
     excludedCompanyIds?: number[];
     company_id?: number;
     sort?: string;
+    type?: string;
 } = {}) {
     const PAGE_SIZE = 5;
     const page = params.page || 1;
@@ -42,15 +44,24 @@ export async function getJobs(params: {
 
     const supabaseServer = await createClient();
 
-    let query = supabaseServer
-        .from('jobs')
-        .select('*, level, company:companies!inner(*)', { count: 'exact' });
+    const { isPro } = await getSubscriptionStatus();
+
+    // Free users can only access the first page
+    if (!isPro && page > 1) {
+        return { jobs: [], totalPages: 1 };
+    }
+
+    const isGraduate = params.type === 'graduate';
+
+    let query = isGraduate
+        ? supabaseServer.from('graduate_roles').select('*', { count: 'exact' })
+        : supabaseServer.from('jobs').select('*, level, company:companies!inner(*)', { count: 'exact' });
 
     // 0. Exclusions for stability and diversity
     if (params.excludedJobIds && params.excludedJobIds.length > 0) {
         query = query.not('id', 'in', `(${params.excludedJobIds.join(',')})`);
     }
-    if (params.excludedCompanyIds && params.excludedCompanyIds.length > 0) {
+    if (!isGraduate && params.excludedCompanyIds && params.excludedCompanyIds.length > 0) {
         query = query.not('company_id', 'in', `(${params.excludedCompanyIds.join(',')})`);
     }
     if (params.company_id) {
@@ -59,24 +70,27 @@ export async function getJobs(params: {
 
     // 1. Text Search (Two-step for robustness)
     if (params.q?.trim()) {
-        // Sanitise: cap length and strip PostgREST special characters to prevent filter injection
         const searchTerm = params.q.trim().slice(0, 100).replace(/[(),]/g, '');
 
-        // Find matching companies first
-        const { data: matchedCompanies } = await supabaseServer
-            .from('companies')
-            .select('id')
-            .ilike('trading_name', `%${searchTerm}%`);
+        if (isGraduate) {
+            query = query.or(`title.ilike.%${searchTerm}%,trading_name.ilike.%${searchTerm}%`);
+        } else {
+            // Find matching companies first
+            const { data: matchedCompanies } = await supabaseServer
+                .from('companies')
+                .select('id')
+                .ilike('trading_name', `%${searchTerm}%`);
 
-        const companyIds = matchedCompanies?.map(c => c.id) || [];
+            const companyIds = matchedCompanies?.map((c: any) => c.id) || [];
 
-        // Build OR conditions
-        const orConditions = [`title.ilike.%${searchTerm}%`];
-        if (companyIds.length > 0) {
-            orConditions.push(`company_id.in.(${companyIds.join(',')})`);
+            // Build OR conditions
+            const orConditions = [`title.ilike.%${searchTerm}%`];
+            if (companyIds.length > 0) {
+                orConditions.push(`company_id.in.(${companyIds.join(',')})`);
+            }
+
+            query = query.or(orConditions.join(','));
         }
-
-        query = query.or(orConditions.join(','));
     }
 
     // 2. City Filter
@@ -105,11 +119,13 @@ export async function getJobs(params: {
         query = query.or(locFilter);
     }
 
-    // 4. Sponsor Visa check
-    if (params.tier2 === 'true') {
-        query = query.eq('company.licensed_sponsor', true);
-    } else if (!params.q && !params.loc && !params.tier2 && params.userPrefs?.sponsorship_needed) {
-        query = query.eq('company.licensed_sponsor', true);
+    // 4. Sponsor Visa check (Only for non-graduate roles which have a company relationship)
+    if (!isGraduate) {
+        if (params.tier2 === 'true') {
+            query = query.eq('company.licensed_sponsor', true);
+        } else if (!params.q && !params.loc && !params.tier2 && params.userPrefs?.sponsorship_needed) {
+            query = query.eq('company.licensed_sponsor', true);
+        }
     }
 
     // 5. Job Type matching
@@ -205,16 +221,42 @@ export async function getJobs(params: {
             return { jobs: [], totalPages: 0 };
         }
         rawJobs = result.data;
+
+        // If we are excluding seen jobs/companies (page > 1), the exact count returned 
+        // by Supabase shrinks. We need to artificially inflate the count by the number
+        // of excluded items so `totalPages` stays constant and pagination doesn't break.
         count = result.count;
+        if (count !== null && params.excludedJobIds && params.excludedJobIds.length > 0) {
+            count += params.excludedJobIds.length;
+        }
     }
 
     if (!rawJobs) return { jobs: [], totalPages: 0 };
 
     let finalJobs: Job[] = [];
 
-    if (params.company_id) {
-        // If fetching for a specific company, skip diversity logic
-        finalJobs = rawJobs;
+    if (params.company_id || isGraduate) {
+        // If fetching for a specific company or if graduate roles (which all have company_id=0),
+        // skip the company diversity logic and just map directly
+        finalJobs = rawJobs.map((job: any) => {
+            if (isGraduate && !job.company) {
+                // Synthesize a dummy company for the UI to prevent crashes
+                return {
+                    ...job,
+                    company: {
+                        trading_name: job.trading_name || 'Employer',
+                        companies_house_name: null,
+                        url: null,
+                        url_linkedin: null,
+                        url_favicon: null,
+                        description: null,
+                        licensed_sponsor: false,
+                        active_jobs_count: 0
+                    }
+                };
+            }
+            return job;
+        });
     } else {
         const seenCompaniesThisBatch = new Set();
         for (const job of rawJobs) {
@@ -227,7 +269,7 @@ export async function getJobs(params: {
     }
 
     // Fallback if we have very few companies but many jobs
-    if (finalJobs.length < PAGE_SIZE && rawJobs.length > 0) {
+    if (!isGraduate && finalJobs.length < PAGE_SIZE && rawJobs.length > 0) {
         for (const job of rawJobs) {
             if (!finalJobs.find(j => j.id === job.id)) {
                 finalJobs.push(job);
@@ -237,7 +279,11 @@ export async function getJobs(params: {
     }
 
     const total = count || 0;
-    const totalPages = Math.ceil(total / PAGE_SIZE);
+    let totalPages = Math.ceil(total / PAGE_SIZE);
+
+    if (!isPro) {
+        totalPages = 1;
+    }
 
     return { jobs: finalJobs, totalPages };
 }

@@ -2,9 +2,10 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Building, Globe, Linkedin, ChevronLeft, MapPin, Briefcase, ChevronRight, AlertTriangle, Star } from 'lucide-react';
+import { Building, Globe, Linkedin, ChevronLeft, MapPin, Briefcase, ChevronRight, AlertTriangle, Star, ShieldCheck, TrendingUp, ArrowRight } from 'lucide-react';
 import { getCompanies, Company, toggleFavoriteCompany, getFavoriteCompanyIds } from '../../app/actions/companyActions';
 import { getJobs, Job } from '../../app/actions/jobActions';
+import { getSubscriptionStatus } from '../../app/actions/subscriptionActions';
 
 interface CompanyFeedProps {
     initialCompanies: Company[];
@@ -26,6 +27,7 @@ function fixJobUrl(url: string): string {
 
 export default function CompanyFeed({ initialCompanies, initialTotalPages, searchParams }: CompanyFeedProps) {
     const [companies, setCompanies] = useState<Company[]>(initialCompanies);
+    const [isPro, setIsPro] = useState(true);
     const [page, setPage] = useState(1);
     const [isFetchingCompanies, setIsFetchingCompanies] = useState(false);
     const [q, setQ] = useState(searchParams.q || '');
@@ -52,6 +54,10 @@ export default function CompanyFeed({ initialCompanies, initialTotalPages, searc
         setViewState('details');
         setCompanyJobs([]);
     }, [selectedCompanyId]);
+
+    useEffect(() => {
+        getSubscriptionStatus().then(res => setIsPro(res.isPro));
+    }, []);
 
     useEffect(() => {
         setCompanies(initialCompanies);
@@ -194,53 +200,46 @@ export default function CompanyFeed({ initialCompanies, initialTotalPages, searc
 
                 {/* Search + filters */}
                 <div className="border-b border-[var(--border)] px-4 py-3 space-y-2 bg-[var(--background)] shrink-0 mt-2 lg:mt-0">
-                    <div className="relative">
-                        <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                        <input
-                            type="text"
-                            value={q}
-                            onChange={e => handleSearch(e.target.value)}
-                            placeholder='Search for a company or industry...'
-                            className="w-full pl-9 pr-4 py-2 text-sm border border-[var(--border)] rounded-md bg-white focus:outline-none focus:ring-1 focus:ring-brand-500 text-slate-700 placeholder-slate-400"
-                        />
-                    </div>
-                    <div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-6 text-sm text-slate-500">
-                        <div className="flex items-center gap-1">
-                            <span>Company size</span>
-                            <select className="border border-[var(--border)] bg-white text-slate-700 font-medium text-xs focus:outline-none cursor-pointer ml-1 p-1 rounded">
-                                <option>Any</option>
-                                <option>Small</option>
-                                <option>Medium</option>
-                                <option>Large</option>
-                            </select>
+                    {isPro && (
+                        <div className="relative">
+                            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                            <input
+                                type="text"
+                                value={q}
+                                onChange={e => handleSearch(e.target.value)}
+                                placeholder='Search for a company or industry...'
+                                className="w-full pl-9 pr-4 py-2 text-sm border border-[var(--border)] rounded-md bg-white focus:outline-none focus:ring-1 focus:ring-brand-500 text-slate-700 placeholder-slate-400"
+                            />
                         </div>
-                        <div className="flex items-center gap-1">
-                            <span>Ordered by</span>
-                            <select
-                                value={sort}
-                                onChange={e => handleSort(e.target.value)}
-                                className="border border-[var(--border)] bg-white text-slate-700 font-medium text-xs focus:outline-none cursor-pointer ml-1 p-1 rounded"
-                            >
-                                <option value="alphabetical">Trading name</option>
-                                <option value="jobs_desc">Most roles</option>
-                                <option value="jobs_asc">Fewest roles</option>
-                            </select>
+                    )}
+                    {isPro && (
+                        <div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-6 text-sm text-slate-500">
+                            <div className="flex items-center gap-1">
+                                <span>Company size</span>
+                                <select className="border border-[var(--border)] bg-white text-slate-700 font-medium text-xs focus:outline-none cursor-pointer ml-1 p-1 rounded">
+                                    <option>Any</option>
+                                    <option>Small</option>
+                                    <option>Medium</option>
+                                    <option>Large</option>
+                                </select>
+                            </div>
+
+                            <div className="flex items-center">
+                                <button
+                                    onClick={toggleShowFavorites}
+                                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded border text-xs font-semibold transition-colors ${showFavorites
+                                        ? 'bg-amber-50 border-amber-200 text-amber-600'
+                                        : 'bg-white border-[var(--border)] text-slate-500 hover:bg-slate-50'
+                                        }`}
+                                >
+                                    <Star className={`w-3.5 h-3.5 ${showFavorites ? 'fill-current text-amber-500' : 'text-slate-400'}`} />
+                                    Favorites only
+                                </button>
+                            </div>
                         </div>
-                        <div className="flex items-center">
-                            <button
-                                onClick={toggleShowFavorites}
-                                className={`flex items-center gap-1.5 px-2.5 py-1 rounded border text-xs font-semibold transition-colors ${showFavorites
-                                    ? 'bg-amber-50 border-amber-200 text-amber-600'
-                                    : 'bg-white border-[var(--border)] text-slate-500 hover:bg-slate-50'
-                                    }`}
-                            >
-                                <Star className={`w-3.5 h-3.5 ${showFavorites ? 'fill-current text-amber-500' : 'text-slate-400'}`} />
-                                Favorites only
-                            </button>
-                        </div>
-                    </div>
+                    )}
                 </div>
 
                 {/* List */}
@@ -327,8 +326,34 @@ export default function CompanyFeed({ initialCompanies, initialTotalPages, searc
                                 );
                             })}
 
-                            {/* Load More */}
-                            {page < totalPages && (
+                            {/* Load More or Upgrade */}
+                            {!isPro && companies.length >= 5 ? (
+                                <div className="px-4 py-8 border-t border-[var(--border)]">
+                                    <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 rounded-lg p-8 shadow-2xl relative overflow-hidden group">
+                                        <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                            <Building className="w-32 h-32 text-white rotate-12" />
+                                        </div>
+                                        <div className="relative z-10 text-center sm:text-left">
+                                            <div className="flex flex-col sm:flex-row items-center gap-4 mb-4">
+                                                <div className="p-3 bg-[#137cdb] rounded-xl shadow-lg shadow-[#137cdb]/20">
+                                                    <TrendingUp className="w-6 h-6 text-white" />
+                                                </div>
+                                                <h3 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tight">Unlock 2,500+ Companies</h3>
+                                            </div>
+                                            <p className="text-slate-300 mb-8 max-w-md leading-relaxed text-sm sm:text-base">
+                                                You've reached the limit for free users. Upgrade to Pro for just <span className="text-brand-400 font-bold">£0.99/week</span> to browse and search our entire database of tiered sponsors.
+                                            </p>
+                                            <Link
+                                                href="/account/subscription"
+                                                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#137cdb] hover:bg-blue-600 text-white font-black uppercase tracking-widest text-xs transition-all shadow-xl active:scale-95 w-full sm:w-auto rounded-none"
+                                            >
+                                                Upgrade to Pro Plan <ArrowRight className="w-4 h-4" />
+                                            </Link>
+                                            <p className="text-slate-500 text-[10px] mt-4 uppercase tracking-[0.2em] font-bold">Cancel anytime • Secure payment via Stripe</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : page < totalPages && (
                                 <div className="flex justify-center py-6">
                                     <button
                                         onClick={loadMoreCompanies}
@@ -417,18 +442,16 @@ export default function CompanyFeed({ initialCompanies, initialTotalPages, searc
                             </div>
 
                             {/* View Roles CTA */}
-                            <div className="mt-8">
-                                <button
-                                    onClick={handleViewRoles}
-                                    disabled={(selectedCompany.active_jobs_count || 0) <= 0}
-                                    className={`w-full py-3.5 sm:py-4 rounded-none text-[12px] sm:text-[13px] font-black uppercase tracking-widest transition-all shadow-xl active:scale-95 ${(selectedCompany.active_jobs_count || 0) > 0
-                                            ? 'bg-[#0066FF] hover:bg-[#0052CC] text-white shadow-[#0066FF]/20'
-                                            : 'bg-slate-100 text-slate-400 cursor-not-allowed shadow-none'
-                                        }`}
-                                >
-                                    {(selectedCompany.active_jobs_count || 0) > 0 ? `View ${selectedCompany.active_jobs_count} open roles` : 'No open roles'}
-                                </button>
-                            </div>
+                            {(selectedCompany.active_jobs_count || 0) > 0 && (
+                                <div className="mt-8">
+                                    <button
+                                        onClick={handleViewRoles}
+                                        className="w-full py-3.5 sm:py-4 rounded-none text-[12px] sm:text-[13px] font-black uppercase tracking-widest transition-all shadow-xl active:scale-95 bg-[#0066FF] hover:bg-[#0052CC] text-white shadow-[#0066FF]/20"
+                                    >
+                                        View {selectedCompany.active_jobs_count} open roles
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     ) : (
                         /* Roles view */
