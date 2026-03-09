@@ -1,6 +1,7 @@
 'use server';
 
 import { createClient } from '../../utils/supabase/server';
+import { createAdminClient } from '../../utils/supabase/admin';
 import { getSubscriptionStatus } from './subscriptionActions';
 
 export interface Job {
@@ -53,9 +54,11 @@ export async function getJobs(params: {
 
     const isGraduate = params.type === 'graduate';
 
+    const adminClient = createAdminClient();
+
     let query = isGraduate
-        ? supabaseServer.from('graduate_roles').select('*', { count: 'exact' })
-        : supabaseServer.from('jobs').select('*, level, company:companies!inner(*)', { count: 'exact' });
+        ? adminClient.from('graduate_roles').select('*', { count: 'exact' })
+        : adminClient.from('jobs').select('*, level, company:companies!inner(*)', { count: 'exact' });
 
     // 0. Exclusions for stability and diversity
     if (params.excludedJobIds && params.excludedJobIds.length > 0) {
@@ -76,7 +79,7 @@ export async function getJobs(params: {
             query = query.or(`title.ilike.%${searchTerm}%,trading_name.ilike.%${searchTerm}%`);
         } else {
             // Find matching companies first
-            const { data: matchedCompanies } = await supabaseServer
+            const { data: matchedCompanies } = await adminClient
                 .from('companies')
                 .select('id')
                 .ilike('trading_name', `%${searchTerm}%`);

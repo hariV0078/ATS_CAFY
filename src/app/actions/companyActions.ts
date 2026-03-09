@@ -1,6 +1,6 @@
 'use server';
 
-import { supabase } from '@/lib/supabase';
+import { createAdminClient } from '@/utils/supabase/admin';
 import { createClient } from '@/utils/supabase/server';
 import { getSubscriptionStatus } from './subscriptionActions';
 
@@ -45,7 +45,8 @@ export async function getCompanies(params: {
         return { companies: [], totalPages: 0 };
     }
 
-    let query = supabase
+    const adminClient = createAdminClient();
+    let query = adminClient
         .from('companies')
         .select('*', { count: 'exact' });
 

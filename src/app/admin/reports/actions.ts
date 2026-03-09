@@ -1,8 +1,17 @@
 'use server';
 
 import { createAdminClient } from '@/utils/supabase/admin';
+import { createClient } from '@/utils/supabase/server';
+import { isAdmin } from '@/utils/auth';
 
 export async function getReportedJobsAdmin() {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!isAdmin(user?.email)) {
+        return { success: false, error: 'Unauthorized' };
+    }
+
     const adminClient = createAdminClient();
 
     try {
@@ -34,6 +43,13 @@ export async function getReportedJobsAdmin() {
 }
 
 export async function deleteJobAdmin(jobId: number) {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!isAdmin(user?.email)) {
+        return { success: false, error: 'Unauthorized' };
+    }
+
     const adminClient = createAdminClient();
 
     try {
@@ -51,6 +67,13 @@ export async function deleteJobAdmin(jobId: number) {
 }
 
 export async function dismissReportAdmin(reportId: number) {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!isAdmin(user?.email)) {
+        return { success: false, error: 'Unauthorized' };
+    }
+
     const adminClient = createAdminClient();
 
     try {
