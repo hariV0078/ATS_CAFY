@@ -8,6 +8,7 @@ interface ReportedJob {
     id: number;
     created_at: string;
     job_id: number;
+    notes: string | null;
     jobs: {
         id: number;
         title: string;
@@ -85,6 +86,7 @@ export default function ReportedJobsAdmin() {
                                     <th className="p-4">Report Date</th>
                                     <th className="p-4">Company</th>
                                     <th className="p-4">Job Title</th>
+                                    <th className="p-4">Reason / Notes</th>
                                     <th className="p-4 text-right">Actions</th>
                                 </tr>
                             </thead>
@@ -108,6 +110,15 @@ export default function ReportedJobsAdmin() {
                                                 </div>
                                             ) : (
                                                 <span className="text-red-500 italic">Job not found</span>
+                                            )}
+                                        </td>
+                                        <td className="p-4">
+                                            {report.notes ? (
+                                                <span className="text-slate-600 italic bg-amber-50 px-2 py-1 rounded text-[13px] border border-amber-100/50">
+                                                    "{report.notes}"
+                                                </span>
+                                            ) : (
+                                                <span className="text-slate-300 italic">—</span>
                                             )}
                                         </td>
                                         <td className="p-4 text-right space-x-2 whitespace-nowrap">

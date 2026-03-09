@@ -159,9 +159,15 @@ export default function JobFeed({ initialJobs, initialTotalPages, initialApplied
         e.stopPropagation();
         if (reportedJobIds.has(jobId)) return;
 
+        const reason = window.prompt("Why are you reporting this job? (e.g., Expired, Wrong location, etc.)\n\nYour feedback helps us keep GetLanded accurate for everyone! 🙏");
+
+        // If user cancels or gives empty reason, we can still report or skip. 
+        // Let's require a reason or just proceed if they hit OK with empty.
+        if (reason === null) return; // User cancelled
+
         setReportedJobIds(prev => new Set(prev).add(jobId));
 
-        const res = await reportJobAction(Number(jobId));
+        const res = await reportJobAction(Number(jobId), reason.trim() || undefined);
         if (!res.success) {
             setReportedJobIds(prev => {
                 const newSet = new Set(prev);
