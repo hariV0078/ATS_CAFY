@@ -61,6 +61,7 @@ export async function POST(req: Request) {
             customer: customerId,
             mode: 'subscription',
             payment_method_types: ['card'],
+            allow_promotion_codes: true,
             customer_update: {
                 address: 'auto',
                 name: 'auto',

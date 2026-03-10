@@ -4,7 +4,7 @@
  */
 
 const ADMIN_EMAILS = [
-    'shami2911@gmail.com', // Primary Admin
+    'shamitest786@gmail.com', // Primary Admin
     // Add other admin emails here
 ];
 

@@ -1,8 +1,8 @@
 'use client';
 
-import { CheckCircle2, Loader2 } from 'lucide-react';
+import { CheckCircle2, Loader2, TestTube2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { getSubscriptionStatus } from '../../actions/subscriptionActions';
+import { getSubscriptionStatus, bypassPaymentForTesting } from '../../actions/subscriptionActions';
 
 // Replace with your actual Stripe Price ID from .env.local
 const PRO_PRICE_ID = process.env.NEXT_PUBLIC_STRIPE_PRO_PRICE_ID || 'price_1T96jGEj3rV8qCmFJNfF09yR';
@@ -11,6 +11,7 @@ export default function SubscriptionPage() {
     const [isPro, setIsPro] = useState(false);
     const [loading, setLoading] = useState(true);
     const [actionLoading, setActionLoading] = useState(false);
+    const isDev = process.env.NODE_ENV === 'development';
 
     useEffect(() => {
         const fetchStatus = async () => {
@@ -20,6 +21,18 @@ export default function SubscriptionPage() {
         };
         fetchStatus();
     }, []);
+
+    const handleBypass = async () => {
+        setActionLoading(true);
+        try {
+            await bypassPaymentForTesting();
+            window.location.reload();
+        } catch (e) {
+            console.error(e);
+            alert('Failed to bypass payment.');
+        }
+        setActionLoading(false);
+    };
 
     const handleCheckout = async () => {
         setActionLoading(true);
@@ -109,14 +122,27 @@ export default function SubscriptionPage() {
                             Manage Subscription
                         </button>
                     ) : (
-                        <button
-                            onClick={handleCheckout}
-                            disabled={actionLoading}
-                            className="bg-brand-600 hover:bg-brand-500 text-white font-medium px-4 py-2 rounded-md shadow-sm transition-colors text-sm flex items-center gap-2"
-                        >
-                            {actionLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
-                            Upgrade to Pro (£0.99/Week)
-                        </button>
+                        <div className="flex flex-wrap gap-4">
+                            <button
+                                onClick={handleCheckout}
+                                disabled={actionLoading}
+                                className="bg-brand-600 hover:bg-brand-500 text-white font-medium px-4 py-2 rounded-md shadow-sm transition-colors text-sm flex items-center gap-2"
+                            >
+                                {actionLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
+                                Upgrade to Pro (£0.99/Week)
+                            </button>
+
+                            {isDev && (
+                                <button
+                                    onClick={handleBypass}
+                                    disabled={actionLoading}
+                                    className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-4 py-2 rounded-md transition-colors text-sm flex items-center gap-2 border border-slate-200"
+                                >
+                                    {actionLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <TestTube2 className="w-4 h-4 text-slate-500" />}
+                                    Skip Payment (Testing)
+                                </button>
+                            )}
+                        </div>
                     )}
                 </div>
             </div>
