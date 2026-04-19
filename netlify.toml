@@ -5,6 +5,7 @@
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
   NPM_FLAGS = "--include=dev"
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXT_PUBLIC_SUPABASE_URL,SEARCH_MIN_INTERVAL_MS,SEARXNG_INSTANCES,NODE_ENV"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
