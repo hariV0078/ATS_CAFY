@@ -1917,12 +1917,19 @@ async function fetchJPMorgan(token: string): Promise<Job[]> {
         const url = `https://jpmc.fa.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=all&finder=findReqs;siteNumber=CX_1001,facetsList=LOCATIONS%3BWORK_LOCATIONS%3BWORKPLACE_TYPES%3BTITLES%3BCATEGORIES%3BORGANIZATIONS%3BPOSTING_DATES%3BFLEX_FIELDS,limit=25,locationId=300000000289276,offset=${offset},sortBy=POSTING_DATES_DESC`;
         try {
             const res = await fetchWithTimeout(url, { headers: { 'Accept': 'application/json', 'User-Agent': 'Mozilla/5.0' } });
-            if (!res.ok) break;
+            if (!res.ok) {
+                console.log(`[JPMC] API returned status ${res.status} at offset ${offset}`);
+                break;
+            }
             const data: any = await res.json();
-            if (!data.items || data.items.length === 0) break;
+            if (!data.items || data.items.length === 0) {
+                if (offset === 0) console.log(`[JPMC] No items returned from API`);
+                break;
+            }
             const pageData = data.items[0];
             total = pageData.TotalJobsCount;
             if (pageData.requisitionList) {
+                if (offset === 0) console.log(`[JPMC] API total: ${total}`);
                 for (const job of pageData.requisitionList) {
                     allJobs.push({
                         title: job.Title || '',
@@ -1935,7 +1942,10 @@ async function fetchJPMorgan(token: string): Promise<Job[]> {
             } else { break; }
             offset += 25;
             await sleep(500);
-        } catch { break; }
+        } catch (e: any) { 
+            console.error(`[JPMC] Fetch error at offset ${offset}:`, e.message);
+            break; 
+        }
     }
     return allJobs;
 }
@@ -2148,28 +2158,87 @@ async function fetchNHS(token: string): Promise<Job[]> {
     try {
         browser = await chromium.launch({ headless: true });
         const page = await browser.newPage();
-        await page.goto(startUrl, { waitUntil: 'networkidle', timeout: 60000 });
-
-        // Wait for results to load
-        await page.waitForSelector('.search-result', { timeout: 10000 }).catch(() => {});
-
-        const results = await page.$$('.search-result');
-        for (const res of results) {
-            const title = await res.$eval('h3', el => el.textContent?.trim() || '').catch(() => '');
-            const url = await res.$eval('a', el => (el as HTMLAnchorElement).href).catch(() => '');
-            const location = await res.$eval('.location', el => el.textContent?.trim() || 'United Kingdom').catch(() => 'United Kingdom');
-            const department = await res.$eval('.agency', el => el.textContent?.trim() || 'NHS').catch(() => 'NHS');
-
-            if (title && url) {
-                allJobs.push({ title, url, location, department });
+        console.log(`[NHS] Navigating to ${startUrl}...`);
+        await page.goto(startUrl, { waitUntil: 'networkidle', timeout: 90000 });
+        
+        // Handle cookie banner if present
+        try {
+            const cookieButton = await page.$('button#nhsuk-cookie-banner__link_accept_analytics');
+            if (cookieButton) {
+                await cookieButton.click();
+                console.log('[NHS] Cookie banner dismissed');
+                await page.waitForTimeout(2000);
             }
+        } catch { /* ignore */ }
+
+        // Scroll down to ensure jobs are loaded/visible
+        await page.evaluate(() => window.scrollTo(0, 1000));
+        await page.waitForTimeout(3000);
+
+        // Wait for at least one job link to appear
+        try {
+            await page.waitForSelector('a[href*="/candidate/jobadvert/"]', { timeout: 15000 });
+        } catch {
+            console.log('[NHS] Timeout waiting for job links');
         }
-        if (browser) {
-            await browser.close().catch(() => {});
+
+        // Extract all job links
+        const jobLinks = await page.$$eval('a[href*="/candidate/jobadvert/"]', links => {
+            return links.map(a => ({
+                title: a.innerText.trim(),
+                url: (a as HTMLAnchorElement).href,
+                // The location and agency are usually in the same container
+                containerText: a.parentElement?.parentElement?.innerText || ''
+            }));
+        });
+
+        console.log(`[NHS] Found ${jobLinks.length} job links on page 1`);
+
+        const pushJobs = (links: any[]) => {
+            for (const link of links) {
+                if (!link.title || !link.url) continue;
+                const lines = link.containerText.split('\n').map((l: string) => l.trim()).filter(Boolean);
+                const agency = lines[1] || 'NHS';
+                const location = lines[2] || 'United Kingdom';
+                allJobs.push({
+                    title: link.title,
+                    url: link.url,
+                    location: location,
+                    department: agency,
+                    verified: true
+                });
+            }
+        };
+
+        pushJobs(jobLinks);
+
+        // Pagination loop
+        let pageNum = 2;
+        while (pageNum <= 50) { // Limit to 50 pages (approx 500-1000 jobs) to prevent massive delays, or remove limit for ALL
+            const nextUrl = startUrl.includes('?') ? `${startUrl}&page=${pageNum}` : `${startUrl}?page=${pageNum}`;
+            console.log(`[NHS] Fetching page ${pageNum}...`);
+            await page.goto(nextUrl, { waitUntil: 'networkidle', timeout: 60000 });
+            await page.evaluate(() => window.scrollTo(0, 1000));
+            await page.waitForTimeout(2000);
+            
+            const pageLinks = await page.$$eval('a[href*="/candidate/jobadvert/"]', links => {
+                return links.map(a => ({
+                    title: a.innerText.trim(),
+                    url: (a as HTMLAnchorElement).href,
+                    containerText: a.parentElement?.parentElement?.innerText || ''
+                }));
+            });
+
+            if (pageLinks.length === 0) break;
+            pushJobs(pageLinks);
+            console.log(`[NHS] Page ${pageNum}: found ${pageLinks.length} jobs`);
+            pageNum++;
         }
-    } catch (e) {
-        if (browser) await browser.close().catch(() => {});
-        throw e;
+        
+        await browser.close();
+    } catch (e: any) {
+        console.error('[NHS] Fetch error:', e.message);
+        if (browser) await browser.close();
     }
     return allJobs;
 }
@@ -2254,10 +2323,21 @@ export async function syncAll() {
     const startIndex = args.indexOf('--start-from-provider');
     const startFromProvider = startIndex !== -1 ? args[startIndex + 1].toLowerCase() : null;
 
+    const startCompanyIndex = args.indexOf('--start-from-company');
+    const startFromCompany = startCompanyIndex !== -1 ? args[startCompanyIndex + 1] : null;
+
+    const startIdIndex = args.indexOf('--start-from-id');
+    const startFromId = startIdIndex !== -1 ? parseInt(args[startIdIndex + 1]) : null;
+
     const fallbackOnlyDryRun = args.includes('--dry-run-custom-fallback');
+
+    const includeLinkedin = args.includes('--include-linkedin');
 
     if (fallbackOnlyDryRun) {
         console.log('Running in custom fallback DRY RUN mode (no DB writes)');
+    }
+    if (includeLinkedin) {
+        console.log('LinkedIn companies will be INCLUDED in this run');
     }
 
     if (specificIds) {
@@ -2300,6 +2380,26 @@ export async function syncAll() {
         }
     }
 
+    if (startFromCompany) {
+        const index = companies.findIndex(c => String(c.trading_name || '').toLowerCase().includes(startFromCompany.toLowerCase()));
+        if (index !== -1) {
+            companies = companies.slice(index);
+            console.log(`Resuming from company: ${companies[0].trading_name} (${companies.length} remaining)`);
+        } else {
+            console.warn(`No company found matching name: ${startFromCompany}`);
+        }
+    }
+
+    if (startFromId) {
+        const index = companies.findIndex(c => c.id === startFromId);
+        if (index !== -1) {
+            companies = companies.slice(index);
+            console.log(`Resuming from company ID ${startFromId}: ${companies[0].trading_name} (${companies.length} remaining)`);
+        } else {
+            console.warn(`No company found with ID: ${startFromId}`);
+        }
+    }
+
     console.log(`Found ${companies.length} companies with configured ATS\n`);
 
     if (fallbackOnlyDryRun && !specificIds) {
@@ -2320,8 +2420,8 @@ export async function syncAll() {
             const { id, trading_name, ats_provider } = company;
             let logBuffer = '';
 
-        if (String(ats_provider || '').toLowerCase() === 'linkedin') {
-            console.log(`[LINKEDIN] ${trading_name} — skipped`);
+        if (String(ats_provider || '').toLowerCase() === 'linkedin' && !includeLinkedin) {
+            console.log(`[LINKEDIN] ${trading_name} — skipped (use --include-linkedin to process)`);
             continue;
         }
 
