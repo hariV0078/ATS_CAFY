@@ -162,10 +162,10 @@ const NON_UK_LOCATION_PHRASES = [
     "singapore", "hong kong", "united arab emirates", "dubai", "israel", "ireland", "eire",
     // US cities
     "new york", "new jersey", "san francisco", "los angeles", "seattle", "chicago", "boston", "austin", "dallas", "houston", "denver", "atlanta",
-    "miami", "phoenix", "las vegas", "san jose", "san diego", "whippany", "wilmington", "st louis", "new hampshire", "california", "texas",
+    "miami", "phoenix", "las vegas", "san jose", "san diego", "whippany", "wilmington", "st louis", "new hampshire", "california", "texas", "virginia", "mclean", "richmond", "plano", "georgia", "illinois", "maryland", "pennsylvania", "north carolina",
     // Other non-UK cities
     "auckland", "tokyo", "berlin", "munich", "hamburg", "paris", "amsterdam", "madrid", "barcelona", "stockholm", "oslo", "copenhagen",
-    "zurich", "geneva", "vienna", "warsaw", "prague", "bucharest", "budapest", "milan", "rome", "lisbon", "brussels", "luxembourg",
+    "zurich", "geneva", "vienna", "warsaw", "prague", "bucharest", "budapest", "milan", "rome", "lisbon", "brussels", "luxembourg", "mexico city",
     // India cities
     "pune", "mumbai", "bengaluru", "bangalore", "chennai", "hyderabad", "noida", "gurgaon", "gurugram", "delhi", "kolkata", "ahmedabad", "jaipur"
 ];
@@ -1582,22 +1582,33 @@ async function fetchWorkday(token: string): Promise<Job[]> {
                 const finalFacets = data.appliedFacets || currentFacets || {};
 
                 // Sanity check: did the UK facet actually work?
-                // If we sent facets but the first page has non-UK locations, the board ignored our facets.
                 let facetIsTrusted = Object.keys(finalFacets).length > 0;
                 if (facetIsTrusted && posts.length > 0) {
-                    const sample = posts.slice(0, 5);
-                    const anyNonUK = sample.some((p: any) => {
+                    const sample = posts.slice(0, 10);
+                    let hasExplicitUK = false;
+                    let hasExplicitNonUK = false;
+
+                    for (const p of sample) {
                         const loc = normalizeLocation(p.locationsText);
+                        // Check for explicit non-UK
                         const bad = NON_UK_LOCATION_PHRASES.find(phrase => loc.includes(phrase));
                         if (bad) {
                             // console.log(`[WORKDAY] Sanity check failed: found non-UK location "${loc}" (matched "${bad}")`);
-                            return true;
+                            hasExplicitNonUK = true;
+                            break;
                         }
-                        return false;
-                    });
-                    if (anyNonUK) {
+                        // Check for explicit UK
+                        if (isUKLocation(loc)) {
+                            hasExplicitUK = true;
+                        }
+                    }
+
+                    // If we found non-UK, or we found NO explicit UK (only ambiguous), don't trust.
+                    if (hasExplicitNonUK || !hasExplicitUK) {
                         facetIsTrusted = false;
-                        // console.log(`[WORKDAY] UK Facet seems ignored (found non-UK samples). Falling back to strict filter.`);
+                        if (!hasExplicitUK && !hasExplicitNonUK) {
+                            // console.log(`[WORKDAY] Sanity check: No explicit UK location found in sample (all ambiguous). Falling back to strict filter.`);
+                        }
                     }
                 }
 
