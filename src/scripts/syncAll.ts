@@ -66,6 +66,8 @@ interface Job {
     department?: string;
     salary?: string;
     verified?: boolean;
+    needs_review?: boolean;
+    rejection_reason?: string;
 }
 
 interface SyncResult {
@@ -74,8 +76,21 @@ interface SyncResult {
     fetched: number;
     ukJobs: number;
     saved: number;
+    rejected: number;
+    needsReview: number;
     error?: string;
 }
+
+// Rejection log array to track dropped jobs
+interface RejectionLogEntry {
+    company: string;
+    provider: string;
+    title: string;
+    location: string;
+    url: string;
+    reason: string;
+}
+const globalRejectionLog: RejectionLogEntry[] = [];
 
 interface CompanyRow {
     id: number;
@@ -114,7 +129,7 @@ async function fetchWithTimeout(url: string, options: any = {}, timeout = 15000)
     }
 }
 
-const UK_COUNTRIES = ["UK", "United Kingdom", "GB", "GBR", "GBI", "GBRE", "Great Britain", "Rest of UK"];
+const UK_COUNTRIES = ["UK", "United Kingdom", "GB", "GBR", "GBI", "GBRE", "Great Britain", "Rest of UK", "Remote", "Multi-location", "Multilocation", "UK-wide"];
 const UK_NATIONS = ["scotland", "wales", "northern ireland", "england"];
 const UK_CITIES = [
     // Major cities
@@ -143,8 +158,14 @@ const UK_CITIES = [
     // Channel Islands / Crown dependencies (genuinely UK-adjacent for jobs purposes)
     "jersey", "guernsey", "isle of man",
     // Finance hubs
-    "london ec", "london wc", "london e1", "london e14", "london se1"
+    "london ec", "london wc", "london e1", "london e14", "london se1",
+    "st. albans", "st albans", "stratford-upon-avon", "stratford upon avon"
 ];
+
+// Workday-specific UK country facet IDs (they vary by tenant)
+const WORKDAY_UK_FACETS: Record<string, string> = {
+    'default':  '29247e57dbaf46fb855b224e03170bc7'
+};
 
 // Irish cities/towns that must be blocked (not UK)
 const IRELAND_LOCATIONS = [
@@ -215,10 +236,17 @@ function isUKLocation(loc: any): boolean {
         return false;
     }
 
+    // Gap 5: Ireland Hybrid Roles
     // Hard block: Irish locations (Republic of Ireland, NOT Northern Ireland)
+    // Only block if there is NO UK signal
     for (const irish of IRELAND_LOCATIONS) {
         if (normalized.includes(irish) && !normalized.includes('northern ireland')) {
-            return false;
+            const hasUkSignal = UK_COUNTRIES.some(uk => normalized.includes(uk.toLowerCase())) ||
+                                UK_NATIONS.some(n => normalized.includes(n.toLowerCase())) ||
+                                UK_CITIES.some(c => normalized.includes(c.toLowerCase()));
+            if (!hasUkSignal) {
+                return false;
+            }
         }
     }
 
@@ -236,7 +264,7 @@ function isUKLocation(loc: any): boolean {
     }
 
     // Hard block: US state/country 2-letter codes as isolated tokens
-    if (/\b(usa?|ny|nj|ca|tx|ma|il|wa|fl|ga|nc|va|pa|oh|mi|mn|co|az|or|nv)\b/.test(normalized)) {
+    if (/\b(usa?|ny|nj|ca|tx|ma|il|wa|fl|ga|nc|va|pa|oh|mi|mn|co|az|or|nv|md|va|pa|oh|mi|mn|co|az|or|nv|vt|nh|me|ct|ri|ky|tn|nc|sc|ga|fl|al|ms|la|ar|ok|ks|ne|sd|nd|mt|wy|id|ut|nm)\b/.test(normalized)) {
         // But allow "wa" only if surrounded by full UK context (e.g., "wa1" postcodes)
         // Postcode pattern: letters+digits — if it looks like a UK postcode don't block
         if (!/\b[a-z]{1,2}\d[a-z\d]?\s*\d[a-z]{2}\b/.test(normalized)) {
@@ -282,24 +310,30 @@ function hasAnyHint(text: string, hints: string[]): boolean {
 }
 
 function isLikelyUKJob(job: Job): boolean {
-    if (job.verified) return true;
     const locationNorm = normalizeLocation(job.location || '');
     const urlNorm = String(job.url || '').toLowerCase();
     const titleNorm = String(job.title || '').toLowerCase();
+
+    // If ATS says it's UK, but location explicitly says it's not, ATS is wrong.
+    // So we run the location check FIRST.
 
     // console.log(`[DEBUG] Checking: ${job.title} | Loc: ${job.location}`);
 
     // Hard block: URL signals non-UK
     const badUrlHint = NON_UK_URL_HINTS.find((hint) => urlNorm.includes(hint));
     if (badUrlHint) {
+        job.rejection_reason = `non_uk_url: ${badUrlHint}`;
         return false;
     }
 
     // Hard block: location signals non-UK phrase
     const badLocPhrase = NON_UK_LOCATION_PHRASES.find((p) => locationNorm.includes(p));
     if (badLocPhrase && !locationNorm.includes('northern ireland')) {
+        job.rejection_reason = `non_uk_location: ${badLocPhrase}`;
         return false;
     }
+
+    if (job.verified) return true;
 
     // PRIMARY: location field is the strongest signal
     if (locationNorm) {
@@ -320,11 +354,17 @@ function isLikelyUKJob(job: Job): boolean {
         // Location is present but NOT UK — don't fall through to URL/title signals
         // (avoids "Senior Engineer - New York" matching title-based UK city checks)
         // EXCEPTION: if location is truly ambiguous (e.g. 'remote', 'flexible')
-        const isAmbiguous = /^(remote|flexible|hybrid|anywhere|worldwide|global|distributed|not specified)$/.test(locationNorm) || 
+        const isAmbiguous = /^(remote|flexible|hybrid|anywhere|worldwide|global|distributed|not specified|remote other|remot other|multiple locations)$/.test(locationNorm) || 
                           /\d+\s+locations?/.test(locationNorm);
 
         if (!isAmbiguous) {
-            // console.log(`      [REJECT] Location is not UK and not ambiguous: "${locationNorm}"`);
+            // Gap 6: EMEA / Global Roles Being Dropped
+            const EMEA_GLOBAL = ['emea', 'europe', 'global', 'worldwide', 'international', 'western europe', 'northern europe', 'british isles'];
+            if (EMEA_GLOBAL.some(w => locationNorm.includes(w))) {
+                job.needs_review = true;
+                return true; // Save it but flagged for review
+            }
+            job.rejection_reason = `failed_uk_location_check`;
             return false;
         }
     }
@@ -343,6 +383,17 @@ function isLikelyUKJob(job: Job): boolean {
     const titleRegex = new RegExp(`\\b(${ukTerms.join('|')})\\b`, 'i');
     if (titleRegex.test(titleNorm)) return true;
 
+    // FIFTH: Department/team field contains UK signal (Gap 1)
+    const deptNorm = String(job.department || '').toLowerCase();
+    if (titleRegex.test(deptNorm)) return true;
+    
+    // Gap 1 fallback: If location is genuinely blank/ambiguous and nothing matched, mark for review
+    if (!locationNorm) {
+        job.needs_review = true;
+        return true;
+    }
+
+    job.rejection_reason = `no_uk_signals`;
     return false;
 }
 
@@ -511,9 +562,12 @@ function inferAtsFromCareersUrl(url: string | null | undefined): { provider: str
             return token ? { provider: 'icims', token } : null;
         }
         if (host.includes('myworkdayjobs.com')) {
-            const site = parts[0] || '';
-            const token = site ? `${parsed.protocol}//${parsed.host}/${site}` : '';
-            return token ? { provider: 'workday', token } : null;
+            const subdomain = host.split('.')[0] || '';
+            const boardName = parts[0] || '';
+            if (subdomain && boardName && boardName !== 'en-US' && boardName !== 'en-GB') {
+                return { provider: 'workday', token: `${subdomain}/${boardName}` };
+            }
+            return { provider: 'workday', token: normalizedUrl };
         }
     } catch {
         return null;
@@ -1030,13 +1084,24 @@ async function fetchGreenhouse(token: string): Promise<Job[]> {
             const text = await r.text();
             if (!text || !text.startsWith('{')) continue; // skip HTML responses
             const d = JSON.parse(text);
-            const jobs: Job[] = (d.jobs || []).map((j: any) => ({
-                title: j.title || '',
-                location: j.location?.name || '',
-                url: j.absolute_url || j.url || '',
-                department: j.departments?.[0]?.name || '',
-                salary: undefined
-            }));
+            const jobs: Job[] = (d.jobs || []).map((j: any) => {
+                const offices = j.offices || [];
+                let location = j.location?.name || '';
+                // Gap 2: Read the full offices array
+                if (offices.length > 0) {
+                    const allOffices = offices.map((o: any) => o.name || o.location).filter(Boolean);
+                    if (allOffices.length > 0) {
+                        location = allOffices.join(' | ');
+                    }
+                }
+                return {
+                    title: j.title || '',
+                    location: location,
+                    url: j.absolute_url || j.url || '',
+                    department: j.departments?.[0]?.name || '',
+                    salary: undefined
+                };
+            });
             if (jobs.length > 0) return jobs;
         } catch { }
     }
@@ -1053,9 +1118,10 @@ async function fetchAshby(token: string): Promise<Job[]> {
             const secLocs = (j.secondaryLocations || [])
                 .map((l: any) => typeof l === 'string' ? l : (l.location || l.name || ''))
                 .join(' ');
+            // Gap 4: Ashby Remote boolean check
             return {
                 title: j.title || '',
-                location: `${locRaw} ${secLocs}`.trim(),
+                location: `${locRaw} ${secLocs} ${j.isRemote ? 'Remote' : ''}`.trim(),
                 url: j.jobUrl || '',
                 department: j.department || '',
                 salary: undefined
@@ -1079,11 +1145,15 @@ async function fetchLever(token: string): Promise<Job[]> {
                     const jobs: Job[] = [];
                     d.forEach((group: any) => {
                         (group.postings || []).forEach((p: any) => {
+                            // Gap 3: Combines location and team/department and tags
+                            const loc = p.categories?.location || p.workplaceType || '';
+                            const team = p.categories?.department || p.categories?.team || group.title || '';
+                            const tags = (p.tags || []).join(' ');
                             jobs.push({
                                 title: p.text || '',
-                                location: p.categories?.location || p.workplaceType || '',
+                                location: `${loc} ${team} ${tags}`.trim(),
                                 url: p.hostedUrl || '',
-                                department: p.categories?.department || p.categories?.team || group.title || '',
+                                department: team,
                                 salary: undefined
                             });
                         });
@@ -1097,13 +1167,18 @@ async function fetchLever(token: string): Promise<Job[]> {
             if (r2.ok) {
                 const d2 = await r2.json();
                 if (Array.isArray(d2) && d2.length > 0) {
-                    return d2.map((p: any) => ({
-                        title: p.text || '',
-                        location: p.categories?.location || p.workplaceType || '',
-                        url: p.hostedUrl || '',
-                        department: p.categories?.department || p.categories?.team || '',
-                        salary: undefined
-                    }));
+                    return d2.map((p: any) => {
+                        const loc = p.categories?.location || p.workplaceType || '';
+                        const team = p.categories?.department || p.categories?.team || '';
+                        const tags = (p.tags || []).join(' ');
+                        return {
+                            title: p.text || '',
+                            location: `${loc} ${team} ${tags}`.trim(),
+                            url: p.hostedUrl || '',
+                            department: team,
+                            salary: undefined
+                        };
+                    });
                 }
             }
         } catch { continue; }
@@ -1496,15 +1571,48 @@ async function fetchPersonio(token: string): Promise<Job[]> {
 }
 
 async function fetchWorkday(token: string): Promise<Job[]> {
-    const parts = token.split('/');
-    if (parts.length < 2) return [];
-    const slug = parts[0];
-    const board = parts.slice(1).join('/');
+    let slug = '';
+    let board = '';
+    let detectedWd = '';
 
-    // Wells Fargo uses myworkdaysite.com. Willis Re uses standard myworkdayjobs.com.
+    if (token.startsWith('http')) {
+        try {
+            const parsed = new URL(token);
+            const pathParts = parsed.pathname.split('/').filter(Boolean);
+            const hostParts = parsed.hostname.split('.');
+            
+            // Extract wd subdomain if present (e.g., company.wd3.myworkdayjobs.com)
+            const wdPart = hostParts.find(p => /^wd\d+$/.test(p));
+            if (wdPart) detectedWd = wdPart;
+
+            if (hostParts[0] && !hostParts[0].startsWith('wd')) {
+                slug = hostParts[0];
+                board = pathParts[0] || '';
+            } else if (pathParts.length >= 2) {
+                slug = pathParts[0];
+                board = pathParts[1];
+            }
+        } catch { /* ignore */ }
+    } else {
+        const parts = token.split('/');
+        slug = parts[0];
+        board = parts.slice(1).join('/');
+    }
+
+    if (!slug || !board) return [];
+
+    // Wells Fargo uses myworkdaysite.com.
     const isWorkdaySite = slug === 'wf' || slug.includes('hcahealthcare');
+    
+    // Subdomains to try. If we detected one from the URL, put it first.
+    const wds = ['wd3', 'wd1', 'wd5', 'wd103', 'wd107', 'wd108', 'wd12', 'wd2'];
+    if (detectedWd && wds.includes(detectedWd)) {
+        wds.splice(wds.indexOf(detectedWd), 1);
+        wds.unshift(detectedWd);
+    }
 
-    for (const wd of ['wd3', 'wd1', 'wd5', 'wd103', 'wd107', 'wd108', 'wd12', 'wd2']) {
+    for (const wd of wds) {
+        const ukFacetId = WORKDAY_UK_FACETS[slug] || WORKDAY_UK_FACETS['default'];
         // Try both slug.wd.domain and wd.domain
         const domains = isWorkdaySite
             ? [`${slug}.${wd}.myworkdaysite.com`, `${wd}.myworkdaysite.com`]
@@ -1515,8 +1623,7 @@ async function fetchWorkday(token: string): Promise<Job[]> {
             const publicBase = `https://${domain}/en-US/${board}`;
 
             try {
-                // console.log(`[WORKDAY] Trying: ${apiUrl}`);
-                let currentFacets: any = { locationCountry: ['29247e57dbaf46fb855b224e03170bc7'] };
+                let currentFacets: any = { locationCountry: [ukFacetId] };
                 let res = await fetchWithTimeout(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'User-Agent': 'Mozilla/5.0', 'Referer': publicBase },
@@ -1525,11 +1632,10 @@ async function fetchWorkday(token: string): Promise<Job[]> {
                         limit: 20, offset: 0, searchText: ''
                     })
                 });
-                // console.log(`[WORKDAY] Status: ${res.status}`);
 
                 if (!res.ok) {
                     // Try alternate location facet
-                    currentFacets = { Location_Country: ['29247e57dbaf46fb855b224e03170bc7'] };
+                    currentFacets = { Location_Country: [ukFacetId] };
                     res = await fetchWithTimeout(apiUrl, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'User-Agent': 'Mozilla/5.0', 'Referer': publicBase },
@@ -1557,6 +1663,8 @@ async function fetchWorkday(token: string): Promise<Job[]> {
                 const data = await res.json();
                 let posts = data?.jobPostings || [];
 
+                let total = data.total || 0;
+
                 // If UK facet returned 0, but the company is expected to have jobs, try without facet
                 if (posts.length === 0) {
                     currentFacets = {};
@@ -1568,6 +1676,7 @@ async function fetchWorkday(token: string): Promise<Job[]> {
                     if (noFacetRes.ok) {
                         const noFacetData = await noFacetRes.json();
                         posts = noFacetData.jobPostings || [];
+                        total = noFacetData.total || 0;
                     }
                 }
 
@@ -1578,37 +1687,30 @@ async function fetchWorkday(token: string): Promise<Job[]> {
 
                 const allJobs: Job[] = [];
                 let offset = 0;
-                const total = data.total || 0;
                 const finalFacets = data.appliedFacets || currentFacets || {};
 
                 // Sanity check: did the UK facet actually work?
                 let facetIsTrusted = Object.keys(finalFacets).length > 0;
                 if (facetIsTrusted && posts.length > 0) {
-                    const sample = posts.slice(0, 10);
+                    const sample = posts.slice(0, 20);
                     let hasExplicitUK = false;
                     let hasExplicitNonUK = false;
 
                     for (const p of sample) {
                         const loc = normalizeLocation(p.locationsText);
-                        // Check for explicit non-UK
-                        const bad = NON_UK_LOCATION_PHRASES.find(phrase => loc.includes(phrase));
-                        if (bad) {
-                            // console.log(`[WORKDAY] Sanity check failed: found non-UK location "${loc}" (matched "${bad}")`);
+                        const isUK = isUKLocation(loc);
+                        const isNonUK = !isUK && !/^(remote|flexible|hybrid|anywhere|worldwide|global|distributed|not specified)$/.test(loc) && !/\d+\s+locations?/.test(loc);
+                        
+                        if (isUK) hasExplicitUK = true;
+                        if (isNonUK) {
                             hasExplicitNonUK = true;
                             break;
                         }
-                        // Check for explicit UK
-                        if (isUKLocation(loc)) {
-                            hasExplicitUK = true;
-                        }
                     }
 
-                    // If we found non-UK, or we found NO explicit UK (only ambiguous), don't trust.
+                    // If we found ANY explicit non-UK, or we found NO explicit UK (only ambiguous), don't trust.
                     if (hasExplicitNonUK || !hasExplicitUK) {
                         facetIsTrusted = false;
-                        if (!hasExplicitUK && !hasExplicitNonUK) {
-                            // console.log(`[WORKDAY] Sanity check: No explicit UK location found in sample (all ambiguous). Falling back to strict filter.`);
-                        }
                     }
                 }
 
@@ -1643,7 +1745,11 @@ async function fetchWorkday(token: string): Promise<Job[]> {
                     await sleep(300);
                 }
                 return allJobs;
-            } catch {
+            } catch (err: any) {
+                // Silently ignore "fetch failed" as it's expected when brute-forcing subdomains
+                if (!err.message?.includes('fetch failed')) {
+                    console.log(`[WORKDAY] Error fetching ${domain}: ${err.message}`);
+                }
                 continue;
             }
         }
@@ -2157,7 +2263,16 @@ async function fetchNHS(token: string): Promise<Job[]> {
     let browser;
     try {
         browser = await chromium.launch({ headless: true });
-        const page = await browser.newPage();
+        const context = await browser.newContext({
+            userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+            viewport: { width: 1280, height: 800 },
+            extraHTTPHeaders: {
+                'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+                'Upgrade-Insecure-Requests': '1',
+            }
+        });
+        const page = await context.newPage();
         console.log(`[NHS] Navigating to ${startUrl}...`);
         await page.goto(startUrl, { waitUntil: 'networkidle', timeout: 90000 });
         
@@ -2185,7 +2300,7 @@ async function fetchNHS(token: string): Promise<Job[]> {
         // Extract all job links
         const jobLinks = await page.$$eval('a[href*="/candidate/jobadvert/"]', links => {
             return links.map(a => ({
-                title: a.innerText.trim(),
+                title: a.textContent?.trim() || '',
                 url: (a as HTMLAnchorElement).href,
                 // The location and agency are usually in the same container
                 containerText: a.parentElement?.parentElement?.innerText || ''
@@ -2214,8 +2329,9 @@ async function fetchNHS(token: string): Promise<Job[]> {
 
         // Pagination loop
         let pageNum = 2;
-        while (pageNum <= 50) { // Limit to 50 pages (approx 500-1000 jobs) to prevent massive delays, or remove limit for ALL
-            const nextUrl = startUrl.includes('?') ? `${startUrl}&page=${pageNum}` : `${startUrl}?page=${pageNum}`;
+        const baseSearchUrl = startUrl.replace(/#.*$/, ''); // Strip fragment so &page= works
+        while (true) {
+            const nextUrl = baseSearchUrl.includes('?') ? `${baseSearchUrl}&page=${pageNum}` : `${baseSearchUrl}?page=${pageNum}`;
             console.log(`[NHS] Fetching page ${pageNum}...`);
             await page.goto(nextUrl, { waitUntil: 'networkidle', timeout: 60000 });
             await page.evaluate(() => window.scrollTo(0, 1000));
@@ -2223,16 +2339,27 @@ async function fetchNHS(token: string): Promise<Job[]> {
             
             const pageLinks = await page.$$eval('a[href*="/candidate/jobadvert/"]', links => {
                 return links.map(a => ({
-                    title: a.innerText.trim(),
+                    title: a.textContent?.trim() || '',
                     url: (a as HTMLAnchorElement).href,
                     containerText: a.parentElement?.parentElement?.innerText || ''
                 }));
             });
 
             if (pageLinks.length === 0) break;
+            
+            // Check if we are seeing the same jobs again (end of pagination)
+            const firstNewJobUrl = pageLinks[0].url;
+            if (allJobs.some(j => j.url === firstNewJobUrl)) {
+                console.log(`[NHS] Reached end of unique jobs at page ${pageNum}`);
+                break;
+            }
+
             pushJobs(pageLinks);
-            console.log(`[NHS] Page ${pageNum}: found ${pageLinks.length} jobs`);
+            console.log(`[NHS] Page ${pageNum}: found ${pageLinks.length} new jobs`);
             pageNum++;
+            
+            // Optional: safety break at 500 pages (5000 jobs)
+            if (pageNum > 500) break;
         }
         
         await browser.close();
@@ -2331,13 +2458,15 @@ export async function syncAll() {
 
     const fallbackOnlyDryRun = args.includes('--dry-run-custom-fallback');
 
-    const includeLinkedin = args.includes('--include-linkedin');
+    const includeLinkedin = !args.includes('--exclude-linkedin');
 
     if (fallbackOnlyDryRun) {
         console.log('Running in custom fallback DRY RUN mode (no DB writes)');
     }
     if (includeLinkedin) {
-        console.log('LinkedIn companies will be INCLUDED in this run');
+        console.log('LinkedIn companies are INCLUDED in this run (use --exclude-linkedin to skip)');
+    } else {
+        console.log('LinkedIn companies will be SKIPPED');
     }
 
     if (specificIds) {
@@ -2421,7 +2550,7 @@ export async function syncAll() {
             let logBuffer = '';
 
         if (String(ats_provider || '').toLowerCase() === 'linkedin' && !includeLinkedin) {
-            console.log(`[LINKEDIN] ${trading_name} — skipped (use --include-linkedin to process)`);
+            console.log(`[LINKEDIN] ${trading_name} — skipped`);
             continue;
         }
 
@@ -2436,7 +2565,7 @@ export async function syncAll() {
             const result: SyncResult = {
                 company: trading_name,
                 provider: displayProvider.toLowerCase(),
-                fetched: 0, ukJobs: 0, saved: 0
+                fetched: 0, ukJobs: 0, saved: 0, rejected: 0, needsReview: 0
             };
 
             try {
@@ -2450,14 +2579,47 @@ export async function syncAll() {
                     continue;
                 }
 
-                const ukJobs = isNHS ? allJobs : allJobs.filter(j => isLikelyUKJob(j));
-                result.ukJobs = ukJobs.length;
+                const ukJobs: Job[] = [];
+                let rejectedCount = 0;
+                let needsReviewCount = 0;
+
+                for (const j of allJobs) {
+                    if (isNHS || isLikelyUKJob(j)) {
+                        ukJobs.push(j);
+                        if (j.needs_review) needsReviewCount++;
+                    } else {
+                        rejectedCount++;
+                        globalRejectionLog.push({
+                            company: trading_name,
+                            provider: displayProvider,
+                            title: j.title,
+                            location: j.location,
+                            url: j.url,
+                            reason: j.rejection_reason || 'unknown'
+                        });
+                    }
+                }
                 
-                logBuffer = `[${displayProvider}] ${trading_name} ... ${allJobs.length} fetched → ${ukJobs.length} UK${isNHS ? ' (NHS bypass)' : ''}`;
+                result.ukJobs = ukJobs.length;
+                result.rejected = rejectedCount;
+                result.needsReview = needsReviewCount;
+                
+                logBuffer = `[${displayProvider}] ${trading_name} ... ${allJobs.length} fetched → ${ukJobs.length} UK${isNHS ? ' (NHS bypass)' : ''} | ${rejectedCount} Rejected | ${needsReviewCount} Needs Review`;
 
                 if (ukJobs.length > 0) {
-                    const uniqueJobs = Array.from(new Map(ukJobs.map(j => [j.url, j])).values());
-                    const rows = uniqueJobs.filter(j => j.url && j.title).map(j => ({
+                    // Gap 8: In-memory Deduplication (already partly done by URL, adding strict title+location+company dedup)
+                    const dedupedJobs = new Map<string, Job>();
+                    for (const j of ukJobs) {
+                        if (!j.url || !j.title) continue;
+                        const dedupKey = `${id}_${j.title.toLowerCase().trim()}_${(j.location || '').toLowerCase().trim()}`;
+                        // We map by URL first to keep the existing behavior, but also ensure no duplicates
+                        if (!dedupedJobs.has(dedupKey) && !Array.from(dedupedJobs.values()).some(existing => existing.url === j.url)) {
+                            dedupedJobs.set(dedupKey, j);
+                        }
+                    }
+                    
+                    const uniqueJobs = Array.from(dedupedJobs.values());
+                    const rows = uniqueJobs.map(j => ({
                         company_id: id,
                         company_name: trading_name,
                         title: safeStr(j.title, 255),
@@ -2546,6 +2708,30 @@ export async function syncAll() {
     if (errored.length > 0) {
         console.log(`  ❌ Errors:        ${errored.length}`);
         errored.forEach(r => console.log(`     - ${r.company}: ${r.error}`));
+    }
+    
+    // Gap 9: Print Rejection Summary
+    if (globalRejectionLog.length > 0) {
+        const fs = await import('fs');
+        const path = await import('path');
+        const logPath = path.resolve(process.cwd(), 'rejection_log.json');
+        fs.writeFileSync(logPath, JSON.stringify(globalRejectionLog, null, 2));
+        
+        console.log(`\n  📝 Rejection Log saved to ${logPath}`);
+        console.log(`  Total rejected: ${globalRejectionLog.length}`);
+        
+        // Count top rejection reasons
+        const reasons: Record<string, number> = {};
+        for (const log of globalRejectionLog) {
+            reasons[log.reason] = (reasons[log.reason] || 0) + 1;
+        }
+        console.log('  Top rejection reasons:');
+        Object.entries(reasons)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 5)
+            .forEach(([reason, count]) => {
+                console.log(`     - ${reason}: ${count}`);
+            });
     }
     console.log('');
 
