@@ -405,6 +405,28 @@ function safeStr(s: any, maxLen = 500): string {
     return String(s || '').slice(0, maxLen);
 }
 
+function isValidJobTitle(title: string): boolean {
+    if (!title || title.length < 3) return false;
+    const lower = title.toLowerCase().trim();
+    const junk = [
+        'see all jobs', 'view all jobs', 'all jobs', 'all openings', 'join our team',
+        'back to search', 'back to job list', 'search for jobs', 'explore opportunities',
+        'show more', 'filter by', 'sort by', 'cookie policy', 'privacy policy',
+        'terms of use', 'contact us', 'about us', 'careers home', 'learn more',
+        'get started', 'apply now', 'view details', 'view job', 'read more',
+        'open positions', 'current openings', 'our roles', 'work with us',
+        'explore careers', 'early careers', 'experienced hires', 'alumni',
+        'jobs and careers', 'careers', 'our vacancies', 'view vacancies'
+    ];
+    // Check if it's an exact match or if it's one of the junk phrases
+    if (junk.includes(lower)) return false;
+    // Check if it starts with a junk phrase followed by a space (e.g., "See all jobs in...")
+    // but only if the title is relatively short (less than 40 chars) to avoid false positives
+    if (lower.length < 40 && junk.some(j => lower.startsWith(j))) return false;
+    
+    return true;
+}
+
 // ─── Provider Alias Map ──────────────────────────────────────────────────────
 // Maps raw provider names (from DB/Excel) to canonical FETCHERS keys
 const PROVIDER_ALIAS: Record<string, string> = {
@@ -429,6 +451,8 @@ const CUSTOM_TOKEN_ROUTES: Array<{ pattern: RegExp; fetcher: string }> = [
     { pattern: /jobs\.apple\.com/i, fetcher: 'apple' },
     { pattern: /metacareers\.com/i, fetcher: 'meta' },
     { pattern: /jobs\.nhs\.uk|nhs/i, fetcher: 'nhs' },
+    { pattern: /publicisgroupe\.com/i, fetcher: 'publicis' },
+    { pattern: /linkedin\.com/i, fetcher: 'linkedin' },
 ];
 
 function normalizeProviderName(value: string | null | undefined): string | null {
@@ -531,7 +555,7 @@ function inferAtsFromCareersUrl(url: string | null | undefined): { provider: str
             return token ? { provider: 'lever', token } : null;
         }
         if (host.includes('workable.com')) {
-            const token = parts[0] || host.split('.')[0] || '';
+            const token = host.split('.')[0] || '';
             return token ? { provider: 'workable', token } : null;
         }
         if (host.includes('teamtailor.com')) {
@@ -781,7 +805,7 @@ async function fetchGenericCareersPage(url: string): Promise<Job[]> {
                 const anchor = $(el);
                 const href = String(anchor.attr('href') || '').trim();
                 const title = anchor.text().replace(/\s+/g, ' ').trim();
-                if (!href || !title || title.length < 3) return;
+                if (!href || !isValidJobTitle(title)) return;
 
                 const jobUrl = absoluteUrlFromBase(target, href);
                 if (seen.has(jobUrl)) return;
@@ -866,7 +890,8 @@ async function fetchJobsWithFallback(company: CompanyRow, options?: { fallbackOn
         if (!fetcher) continue;
 
         try {
-            const jobs = await fetcher(attempt.token);
+            let jobs = await fetcher(attempt.token);
+            jobs = jobs.filter(j => isValidJobTitle(j.title));
             if (jobs.length > 0) {
                 return {
                     jobs,
@@ -891,7 +916,8 @@ async function fetchJobsWithFallback(company: CompanyRow, options?: { fallbackOn
         if (!fetcher) continue;
 
         try {
-            const jobs = await fetcher(inferred.token);
+            let jobs = await fetcher(inferred.token);
+            jobs = jobs.filter(j => isValidJobTitle(j.title));
             if (jobs.length > 0) {
                 return {
                     jobs,
@@ -1141,7 +1167,7 @@ async function fetchAshby(token: string): Promise<Job[]> {
 }
 
 async function fetchLever(token: string): Promise<Job[]> {
-    const ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36';
+    const ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/122.0.0.0';
     // Lever boards can be in US or EU regions
     const bases = ['https://api.eu.lever.co/v0/postings', 'https://api.lever.co/v0/postings'];
 
@@ -1197,7 +1223,7 @@ async function fetchLever(token: string): Promise<Job[]> {
 }
 
 async function fetchWorkable(token: string): Promise<Job[]> {
-    const ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36';
+    const ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/122.0.0.0';
 
     // 1. Try public detail API (most reliable/fastest)
     try {
@@ -1242,7 +1268,7 @@ async function fetchWorkable(token: string): Promise<Job[]> {
 }
 
 async function fetchTeamtailor(token: string): Promise<Job[]> {
-    const ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36';
+    const ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/122.0.0.0';
     // 1. Try JSON first
     try {
         const url = token.includes('.') ? `https://${token}/jobs.json` : `https://${token}.teamtailor.com/jobs.json`;
@@ -1449,7 +1475,7 @@ async function fetchJobvite(token: string): Promise<Job[]> {
         $('a[href*="/job/"]').each((_, el) => {
             const href = $(el).attr('href') || '';
             const title = $(el).text().trim();
-            if (!href || !title) return;
+            if (!href || !isValidJobTitle(title)) return;
 
             const row = $(el).closest('li, tr, div');
             const location = row.find('[class*="location"], [data-qa*="location"]').first().text().trim();
@@ -1497,7 +1523,7 @@ async function fetchTeamtailorHtml(token: string): Promise<Job[]> {
     try {
         browser = await chromium.launch({ headless: true });
         const context = await browser.newContext({
-            userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+            userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/122.0.0.0',
             viewport: { width: 1280, height: 1080 }
         });
         const page = await context.newPage();
@@ -1542,7 +1568,7 @@ async function fetchTeamtailorHtml(token: string): Promise<Job[]> {
         await browser.close();
 
         return jobs
-            .filter((j: any) => j.title && j.url)
+            .filter((j: any) => j.title && j.url && isValidJobTitle(j.title))
             .map((j: any) => ({
                 title: j.title,
                 location: j.location || '',
@@ -1814,7 +1840,7 @@ async function fetchWipro(token: string): Promise<Job[]> {
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
-                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/122.0.0.0",
                 },
                 body: JSON.stringify({
                     locale: "en_US",
@@ -1931,7 +1957,7 @@ async function fetchEightfold(token: string): Promise<Job[]> {
 
             const res = await fetchWithTimeout(url, {
                 headers: {
-                    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+                    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/122.0.0.0',
                     'Accept': 'application/json'
                 }
             });
@@ -2049,9 +2075,23 @@ async function fetchJPMorgan(token: string): Promise<Job[]> {
     const allJobs: Job[] = [];
     let offset = 0;
     let total = 1;
-    while (offset < total) {
-        const url = `https://jpmc.fa.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=all&finder=findReqs;siteNumber=CX_1001,facetsList=LOCATIONS%3BWORK_LOCATIONS%3BWORKPLACE_TYPES%3BTITLES%3BCATEGORIES%3BORGANIZATIONS%3BPOSTING_DATES%3BFLEX_FIELDS,limit=25,locationId=300000000289276,offset=${offset},sortBy=POSTING_DATES_DESC`;
-        try {
+
+    // Default to CX_1001 and London/UK ID
+    let siteNumber = 'CX_1001';
+    let locationId = '300000000289276';
+
+    // If token is a full URL, try to extract siteNumber and locationId
+    if (token.startsWith('http')) {
+        const siteMatch = token.match(/sites\/([^/?#]+)/);
+        if (siteMatch) siteNumber = siteMatch[1];
+
+        const locMatch = token.match(/locationId=([^&]+)/);
+        if (locMatch) locationId = locMatch[1];
+    }
+
+    try {
+        while (offset < total) {
+            const url = `https://jpmc.fa.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=all&finder=findReqs;siteNumber=${siteNumber},facetsList=LOCATIONS%3BWORK_LOCATIONS%3BWORKPLACE_TYPES%3BTITLES%3BCATEGORIES%3BORGANIZATIONS%3BPOSTING_DATES%3BFLEX_FIELDS,limit=25,locationId=${locationId},offset=${offset},sortBy=POSTING_DATES_DESC`;
             const res = await fetchWithTimeout(url, { headers: { 'Accept': 'application/json', 'User-Agent': 'Mozilla/5.0' } });
             if (!res.ok) {
                 console.log(`[JPMC] API returned status ${res.status} at offset ${offset}`);
@@ -2063,14 +2103,13 @@ async function fetchJPMorgan(token: string): Promise<Job[]> {
                 break;
             }
             const pageData = data.items[0];
-            total = pageData.TotalJobsCount;
+            total = pageData.TotalJobsCount || 0;
             if (pageData.requisitionList) {
-                if (offset === 0) console.log(`[JPMC] API total: ${total}`);
                 for (const job of pageData.requisitionList) {
                     allJobs.push({
                         title: job.Title || '',
                         location: job.PrimaryLocation || 'United Kingdom',
-                        url: `https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/${job.Id}`,
+                        url: `https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/${siteNumber}/job/${job.Id}`,
                         department: '',
                         salary: undefined
                     });
@@ -2078,10 +2117,9 @@ async function fetchJPMorgan(token: string): Promise<Job[]> {
             } else { break; }
             offset += 25;
             await sleep(500);
-        } catch (e: any) {
-            console.error(`[JPMC] Fetch error at offset ${offset}:`, e.message);
-            break;
         }
+    } catch (e: any) {
+        console.error(`[JPMC] Fetch error at offset ${offset}:`, e.message);
     }
     return allJobs;
 }
@@ -2092,7 +2130,7 @@ async function fetchGoldmanSachs(token: string): Promise<Job[]> {
     let browser;
     try {
         browser = await chromium.launch({ headless: true });
-        const context = await browser.newContext({ userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36' });
+        const context = await browser.newContext({ userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/122.0.0.0' });
         const pageSession = await context.newPage();
 
         while (true) {
@@ -2107,7 +2145,7 @@ async function fetchGoldmanSachs(token: string): Promise<Job[]> {
                 const title = $(el).find('span.gs-text').first().text().trim();
                 const location = $(el).find('[data-testid="location"]').first().text().replace(/·/g, ', ').replace(/\s+/g, ' ').trim();
                 const department = $(el).parent().find('button.gs-tag__button').text().trim();
-                if (title && link) {
+                if (isValidJobTitle(title) && link) {
                     allJobs.push({
                         title,
                         location: location || 'London, United Kingdom',
@@ -2133,7 +2171,7 @@ async function fetchGoogle(token: string): Promise<Job[]> {
     let browser;
     try {
         browser = await chromium.launch({ headless: true });
-        const context = await browser.newContext({ userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36', viewport: { width: 1280, height: 1080 } });
+        const context = await browser.newContext({ userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/122.0.0.0', viewport: { width: 1280, height: 1080 } });
         const pageSession = await context.newPage();
 
         while (true) {
@@ -2152,7 +2190,7 @@ async function fetchGoogle(token: string): Promise<Job[]> {
                     if (location.substring(0, half) === location.substring(half)) location = location.substring(0, half);
                 }
                 const linkStr = $(el).html()?.match(/jobs\/results\/[a-zA-Z0-9-]+/);
-                if (title && linkStr) {
+                if (isValidJobTitle(title) && linkStr) {
                     allJobs.push({
                         title,
                         location,
@@ -2224,7 +2262,7 @@ async function fetchApple(_token: string): Promise<Job[]> {
 
 // ─── Meta / Facebook Jobs Fetcher ─────────────────────────────────────────────
 // Scrapes metacareers.com using Playwright since it is a heavy React SPA
-async function fetchMeta(_token: string): Promise<Job[]> {
+async function fetchMeta(token: string): Promise<Job[]> {
     const allJobs: Job[] = [];
     let browser;
     try {
@@ -2235,30 +2273,27 @@ async function fetchMeta(_token: string): Promise<Job[]> {
         });
         const page = await context.newPage();
 
-        // Navigate with UK location filter pre-applied
-        const searchUrl = 'https://www.metacareers.com/jobs?offices[0]=London%2C%20England';
+        // Use provided token as search URL if it's a full URL
+        const searchUrl = token.startsWith('http') ? token : 'https://www.metacareers.com/jobs?offices[0]=London%2C%20England';
         await page.goto(searchUrl, { waitUntil: 'networkidle', timeout: 60000 });
-        await page.waitForTimeout(4000);
+        await page.waitForTimeout(8000);
 
         // Scroll and load all results
         let prevHeight = 0;
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 40; i++) {
             const currHeight: number = await page.evaluate(() => document.body.scrollHeight);
             if (currHeight === prevHeight) break;
             prevHeight = currHeight;
             await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-            await page.waitForTimeout(1500);
+            await page.waitForTimeout(2000);
         }
 
         const html = await page.content();
         const $ = cheerio.load(html);
 
-        // Meta job cards contain a link with href /jobs/NNN/ and visible title + location
-        $('a[href*="/jobs/"]').each((_, el) => {
+        $('a').each((_, el) => {
             const anchor = $(el);
             const href = anchor.attr('href') || '';
-            if (!/\/jobs\/\d+/.test(href)) return;
-
             const card = anchor.closest('[class*="jobsearch"], [class*="job-"], article, li');
             const title = (
                 anchor.find('[class*="title"], h2, h3, strong').first().text().trim() ||
@@ -2266,7 +2301,7 @@ async function fetchMeta(_token: string): Promise<Job[]> {
             );
             const locationText = card.find('[class*="location"], [class*="office"]').first().text().trim();
 
-            if (!title || title.length < 3) return;
+            if (!isValidJobTitle(title)) return;
 
             allJobs.push({
                 title,
@@ -2285,6 +2320,130 @@ async function fetchMeta(_token: string): Promise<Job[]> {
 
     // Deduplicate by URL
     return Array.from(new Map(allJobs.map(j => [j.url, j])).values());
+}
+
+// ─── LinkedIn Jobs Fetcher ────────────────────────────────────────────────────
+// Scrapes public LinkedIn job search pages to bypass login walls
+async function fetchLinkedin(token: string): Promise<Job[]> {
+    const allJobs: Job[] = [];
+    
+    // Normalize URL: convert /company/SLUG/jobs/ to /jobs/SLUG-jobs-worldwide/
+    let targetUrl = token;
+    if (token.includes('linkedin.com/company/')) {
+        const slugMatch = token.match(/company\/([^/]+)/);
+        if (slugMatch) {
+            targetUrl = `https://www.linkedin.com/jobs/${slugMatch[1]}-jobs-worldwide/`;
+        }
+    }
+
+    let browser;
+    try {
+        browser = await chromium.launch({ headless: true });
+        const context = await browser.newContext({
+            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+            viewport: { width: 1280, height: 1000 }
+        });
+        const page = await context.newPage();
+        
+        await page.goto(targetUrl, { waitUntil: 'networkidle', timeout: 60000 });
+        await page.waitForTimeout(3000);
+
+        // Try to dismiss any sign-in modals that appear
+        try {
+            await page.keyboard.press('Escape');
+            const closeBtn = await page.$('button[aria-label="Dismiss"]');
+            if (closeBtn) await closeBtn.click();
+        } catch { /* ignore */ }
+
+        // Scroll to load more jobs
+        for (let i = 0; i < 3; i++) {
+            await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+            await page.waitForTimeout(1500);
+        }
+
+        const jobs = await page.evaluate(() => {
+            const results: any[] = [];
+            // Selectors for public LinkedIn job search cards
+            const cards = document.querySelectorAll('.jobs-search__results-list > li, .base-search-card');
+            cards.forEach(card => {
+                const titleEl = card.querySelector('.base-search-card__title, .job-search-card__title');
+                const locEl = card.querySelector('.job-search-card__location');
+                const linkEl = card.querySelector('a.base-card__full-link, a.base-search-card__title-link');
+                const deptEl = card.querySelector('.base-search-card__subtitle');
+
+                if (titleEl && linkEl) {
+                    results.push({
+                        title: titleEl.textContent?.trim() || '',
+                        location: locEl?.textContent?.trim() || '',
+                        url: (linkEl as HTMLAnchorElement).href.split('?')[0],
+                        department: deptEl?.textContent?.trim() || ''
+                    });
+                }
+            });
+            return results;
+        });
+
+        allJobs.push(...jobs);
+        await browser.close();
+    } catch (e) {
+        console.error('LinkedIn scraper error:', e);
+        if (browser) await browser.close();
+    }
+
+    return allJobs;
+}
+
+// ─── Publicis Groupe Fetcher ──────────────────────────────────────────────────
+// Scrapes Publicis using Playwright to handle its Angular SPA
+async function fetchPublicis(token: string): Promise<Job[]> {
+    const allJobs: Job[] = [];
+    const targetUrl = token.startsWith('http') ? token : 'https://careers.publicisgroupe.com/jobs';
+    let browser;
+    try {
+        browser = await chromium.launch({ headless: true });
+        const context = await browser.newContext({
+            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/122.0.0.0',
+        });
+        const page = await context.newPage();
+        await page.goto(targetUrl, { waitUntil: 'networkidle', timeout: 60000 });
+        await page.waitForTimeout(5000); // Wait for Angular to load jobs
+
+        const jobs = await page.evaluate(() => {
+            const results: any[] = [];
+            // Target Publicis mat-expansion-panels
+            const cards = document.querySelectorAll('mat-expansion-panel, .job-card, [class*="job-item"], tr.job-row');
+            cards.forEach(card => {
+                const titleEl = card.querySelector('.job-title-link, .job-title, [class*="title"], h3, h4, a');
+                const locEl = card.querySelector('.job-card-column-value, .job-location, [class*="location"], .office');
+                const linkEl = card.querySelector('a.job-title-link, a');
+                
+                if (titleEl && linkEl) {
+                    const title = titleEl.textContent?.trim() || '';
+                    if (title) {
+                        results.push({
+                            title,
+                            location: locEl?.textContent?.trim() || 'United Kingdom',
+                            url: (linkEl as HTMLAnchorElement).href,
+                            department: ''
+                        });
+                    }
+                }
+            });
+            return results;
+        });
+
+        for (const j of jobs) {
+            if (isValidJobTitle(j.title)) {
+                allJobs.push(j);
+            }
+        }
+
+        await browser.close();
+    } catch (e) {
+        console.error('Publicis scraper error:', e);
+        if (browser) await browser.close();
+    }
+    return allJobs;
 }
 
 async function fetchNHS(token: string): Promise<Job[]> {
@@ -2421,6 +2580,8 @@ export const FETCHERS: Record<string, (token: string) => Promise<Job[]>> = {
     nhs: fetchNHS,
     goldmansachs: fetchGoldmanSachs,
     jpmc: fetchJPMorgan,
+    publicis: fetchPublicis,
+    linkedin: fetchLinkedin,
 };
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
