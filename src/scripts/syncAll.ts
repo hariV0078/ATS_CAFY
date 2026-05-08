@@ -11,7 +11,7 @@
  * Supported ATS providers:
  *   greenhouse, ashby, lever, workable, teamtailor, bamboohr,
  *   smartrecruiters, pinpoint, breezy, recruitee, workday,
- *   personio, hibob, custom_scraper
+ *   personio, hibob, custom_scraper, custom_nhs
  *
  * Special scrapers (run separately after ATS sync):
  *   Amazon, Goldman Sachs, Google, JPMC (handled via their scripts)
@@ -65,6 +65,11 @@ interface Job {
     salary?: string;
 }
 
+type LocationDecision = {
+    isUK: boolean;
+    reason: string;
+};
+
 interface SyncResult {
     company: string;
     provider: string;
@@ -95,23 +100,46 @@ interface AtsOverrideRow {
 function sleep(ms: number) { return new Promise(r => setTimeout(r, ms)); }
 
 async function fetchWithTimeout(url: string, options: any = {}, timeout = 15000) {
-    const controller = new AbortController();
-    const id = setTimeout(() => controller.abort(), timeout);
-    try {
-        const response = await fetch(url, {
-            ...options,
-            signal: controller.signal
-        });
-        clearTimeout(id);
-        return response;
-    } catch (error) {
-        clearTimeout(id);
-        throw error;
+    const maxAttempts = 2;
+    const retryDelayMs = 2000;
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+        const controller = new AbortController();
+        const id = setTimeout(() => controller.abort(), timeout);
+
+        try {
+            const response = await fetch(url, {
+                ...options,
+                signal: controller.signal
+            });
+            clearTimeout(id);
+
+            const transientStatus = response.status === 429 || response.status >= 500;
+            if (transientStatus && attempt < maxAttempts) {
+                await sleep(retryDelayMs);
+                continue;
+            }
+
+            return response;
+        } catch (error: any) {
+            clearTimeout(id);
+            const transientNetworkError =
+                error?.name === 'AbortError' ||
+                error?.name === 'TypeError';
+
+            if (transientNetworkError && attempt < maxAttempts) {
+                await sleep(retryDelayMs);
+                continue;
+            }
+            throw error;
+        }
     }
+
+    throw new Error('Unexpected fetch retry failure state');
 }
 
 const UK_COUNTRIES = ["uk", "united kingdom", "gb", "gbr", "gbi", "gbre", "great britain"];
-const UK_NATIONS = ["scotland", "wales", "northern ireland"];
+const UK_NATIONS = ["england", "scotland", "wales", "northern ireland"];
 const UK_CITIES = [
     "london", "manchester", "birmingham", "leeds", "glasgow", "edinburgh",
     "bristol", "liverpool", "nottingham", "sheffield", "cardiff", "belfast",
@@ -149,6 +177,27 @@ function normalizeLocation(str: string): string {
         .trim();
 }
 
+// Parse multi-location strings like "London / New York / Singapore" into individual locations
+function parseMultiLocationString(location: string): string[] {
+    if (!location) return [];
+    // Split by delimiters that separate distinct locations while preserving phrases like "New York"
+    return location
+        .split(/\s*(?:\/|\||;|&|\s+and\s+|\s+or\s+)\s*/i)
+        .map(loc => loc.trim())
+        .filter(loc => loc.length > 0);
+}
+
+// Check if ANY location in a multi-location string is UK
+function isAnyLocationUK(location: string): boolean {
+    const locations = parseMultiLocationString(location);
+    for (const loc of locations) {
+        if (isUKLocation(loc)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function chunkArray<T>(arr: T[], size: number): T[][] {
     const chunks: T[][] = [];
     for (let i = 0; i < arr.length; i += size) {
@@ -161,17 +210,55 @@ function isUKLocation(loc: any): boolean {
     if (!loc) return false;
     const normalized = normalizeLocation(loc);
 
-    // Explicit blocklist for false positives (e.g., "New York" matches "York", "New Jersey" matches "Jersey")
-    const blockList = [
-        "ukraine", "new york", "new jersey", "united states", "usa", "india", "canada",
-        "australia", "germany", "france", "ireland", "dublin", "paris", "berlin",
-        "amsterdam", "massachusetts"
+    // STRICT BLOCKLIST: Canadian/US/non-UK false positives
+    // "London, ON" → reject (Ontario)
+    // "New York" → reject (standalone)
+    // "Dublin, CA" → reject (California)
+    const strictBlockList = [
+        { phrase: "london on", reason: "london_ontario" },
+        { phrase: "london ontario", reason: "london_ontario" },
+        { phrase: "london canada", reason: "london_canada" },
+        { phrase: "dublin ca", reason: "dublin_california" },
+        { phrase: "york pa", reason: "york_pennsylvania" },
+        { phrase: "york pennsylvania", reason: "york_pennsylvania" },
+        { phrase: "bristol va", reason: "bristol_virginia" },
+        { phrase: "bristol virginia", reason: "bristol_virginia" },
+        { phrase: "bath me", reason: "bath_maine" },
+        { phrase: "cambridge ma", reason: "cambridge_massachusetts" },
+        { phrase: "cambridge massachusetts", reason: "cambridge_massachusetts" },
+        { phrase: "richmond va", reason: "richmond_virginia" },
+        { phrase: "oxford ms", reason: "oxford_mississippi" },
+        { phrase: "new york", reason: "new_york_state" },
+        { phrase: "new jersey", reason: "new_jersey_state" },
+        { phrase: "new hampshire", reason: "new_hampshire_state" },
+        { phrase: "new mexico", reason: "new_mexico_state" },
+        { phrase: "united states", reason: "explicit_usa" },
+        { phrase: "usa", reason: "explicit_usa" },
+        { phrase: "u.s.", reason: "explicit_usa" },
+        { phrase: "canada", reason: "explicit_canada" },
+        { phrase: "india", reason: "explicit_india" },
+        { phrase: "australia", reason: "explicit_australia" },
+        { phrase: "singapore", reason: "explicit_singapore" },
+        { phrase: "hong kong", reason: "explicit_hong_kong" },
+        { phrase: "berlin", reason: "explicit_berlin" },
+        { phrase: "paris", reason: "explicit_paris" },
+        { phrase: "amsterdam", reason: "explicit_amsterdam" },
+        { phrase: "dublin", reason: "explicit_dublin_ireland" },
+        { phrase: "ukraine", reason: "explicit_ukraine" },
     ];
-    if (blockList.some(blocked => {
-        if (blocked === 'ireland' && normalized.includes('northern ireland')) return false;
-        return normalized.includes(blocked);
-    })) {
-        return false;
+    
+    for (const block of strictBlockList) {
+        // Special case: "ireland" alone should block, but "northern ireland" should pass
+        if (block.phrase === "ireland" && normalized.includes('northern ireland')) {
+            continue;
+        }
+        // Use word boundaries for single words to avoid "York" matching "New York"
+        const pattern = block.phrase.includes(' ')
+            ? block.phrase // phrase: use exact substring match
+            : `\\b${block.phrase}\\b`; // single word: word boundary
+        if (new RegExp(pattern, 'i').test(normalized)) {
+            return false;
+        }
     }
 
     // Also block standalone "us" or 2-letter state codes if they are distinct words
@@ -210,41 +297,61 @@ function hasAnyHint(text: string, hints: string[]): boolean {
     return hints.some((hint) => text.includes(hint));
 }
 
-function isLikelyUKJob(job: Job): boolean {
-    const locationNorm = normalizeLocation(job.location || '');
+// Audit log for job filtering decisions
+const jobFilterAudit: Array<{ title: string; location: string; reason: string }> = [];
+
+function evaluateUKLocationDecision(job: Job): LocationDecision {
+    const locationRaw = job.location || '';
+    const locationNorm = normalizeLocation(locationRaw);
     const titleNorm = normalizeLocation(job.title || '');
     const urlNorm = String(job.url || '').toLowerCase();
     const combinedNorm = `${locationNorm} ${titleNorm}`.trim();
 
-    // Hard block on clear non-UK signals unless Northern Ireland is explicit.
+    let rejectReason: string | null = null;
+
+    // PRIMARY DECISION: if any explicit location segment is UK, keep it.
+    // Example: "London / New York / Singapore" should pass.
+    if (isAnyLocationUK(locationRaw)) {
+        return { isUK: true, reason: 'passed_location_segment' };
+    }
+
+    // HARD BLOCK 1: Explicit non-UK phrases in combined location+title
     const hasNonUkPhrase = NON_UK_LOCATION_PHRASES.some((p) => combinedNorm.includes(p));
     if (hasNonUkPhrase && !combinedNorm.includes('northern ireland')) {
-        return false;
+        rejectReason = `explicit_non_uk_phrase`;
+        jobFilterAudit.push({ title: job.title, location: locationRaw, reason: rejectReason });
+        return { isUK: false, reason: rejectReason };
     }
+
+    // HARD BLOCK 2: Non-UK URL hints
     if (hasAnyHint(urlNorm, NON_UK_URL_HINTS)) {
-        return false;
+        rejectReason = `non_uk_url_hint`;
+        jobFilterAudit.push({ title: job.title, location: locationRaw, reason: rejectReason });
+        return { isUK: false, reason: rejectReason };
     }
 
-    // Primary decision from normalized location.
-    if (isUKLocation(locationNorm)) {
-        return true;
-    }
-
-    // Secondary signals from title and URL metadata.
+    // SECONDARY SIGNALS: Title or URL contains UK indicator
     if (/\b(uk|united kingdom|england|scotland|wales|northern ireland)\b/i.test(`${titleNorm} ${urlNorm}`)) {
-        return true;
+        return { isUK: true, reason: 'passed_uk_signal' };
     }
     if (hasAnyHint(urlNorm, UK_URL_HINTS)) {
-        return true;
+        return { isUK: true, reason: 'passed_uk_url_hint' };
     }
 
-    // Last fallback: known UK city mention in title or URL.
+    // FALLBACK: Known UK city mention in title or URL
     const ukCityRegex = /\b(london|manchester|birmingham|leeds|bristol|liverpool|edinburgh|glasgow|cardiff|belfast|newcastle|cambridge|oxford)\b/i;
     if (ukCityRegex.test(`${titleNorm} ${urlNorm}`)) {
-        return true;
+        return { isUK: true, reason: 'passed_uk_city_signal' };
     }
 
-    return false;
+    // NO UK SIGNALS FOUND
+    rejectReason = `no_uk_signals`;
+    jobFilterAudit.push({ title: job.title, location: locationRaw, reason: rejectReason });
+    return { isUK: false, reason: rejectReason };
+}
+
+function isLikelyUKJob(job: Job): boolean {
+    return evaluateUKLocationDecision(job).isUK;
 }
 
 function safeStr(s: any, maxLen = 500): string {
@@ -262,6 +369,138 @@ function normalizeCareersUrl(value: string | null | undefined): string | null {
     if (!trimmed) return null;
     if (/^https?:\/\//i.test(trimmed)) return trimmed;
     return `https://${trimmed}`;
+}
+
+const NHS_JOBS_SEARCH_URL = 'https://www.jobs.nhs.uk/candidate/search/results?workingPattern=full-time&contractType=Permanent&payRange=30-40%2C40-50%2C50-60%2C60-70%2C70-80%2C80-90%2C90-100%2C100&language=en';
+
+function normalizeNhsSearchUrl(token: string | null | undefined): string {
+    const raw = String(token || '').trim();
+    if (!raw) return NHS_JOBS_SEARCH_URL;
+
+    if (!/^https?:\/\//i.test(raw)) {
+        return NHS_JOBS_SEARCH_URL;
+    }
+
+    try {
+        const parsed = new URL(raw);
+        if (!parsed.hostname.includes('jobs.nhs.uk')) {
+            return NHS_JOBS_SEARCH_URL;
+        }
+
+        if (!parsed.pathname.includes('/candidate/search/results')) {
+            return NHS_JOBS_SEARCH_URL;
+        }
+
+        parsed.hash = '';
+        parsed.searchParams.delete('page');
+        if (!parsed.searchParams.has('workingPattern')) parsed.searchParams.set('workingPattern', 'full-time');
+        if (!parsed.searchParams.has('contractType')) parsed.searchParams.set('contractType', 'Permanent');
+        if (!parsed.searchParams.has('payRange')) parsed.searchParams.set('payRange', '30-40,40-50,50-60,60-70,70-80,80-90,90-100,100');
+        if (!parsed.searchParams.has('language')) parsed.searchParams.set('language', 'en');
+        return parsed.toString();
+    } catch {
+        return NHS_JOBS_SEARCH_URL;
+    }
+}
+
+function getNhsPageUrl(baseUrl: string, pageNumber: number): string {
+    const pageUrl = new URL(baseUrl);
+    pageUrl.searchParams.set('page', String(pageNumber));
+    return pageUrl.toString();
+}
+
+function parseNhsTotalPages(html: string): number | null {
+    const match = html.match(/Page\s+\d+\s+of\s+(\d+)/i);
+    if (!match?.[1]) return null;
+
+    const total = parseInt(match[1], 10);
+    return Number.isFinite(total) && total > 0 ? total : null;
+}
+
+async function fetchNhsJobsPage(pageUrl: string): Promise<{ jobs: Job[]; totalPages: number | null }> {
+    try {
+        const res = await fetchWithTimeout(pageUrl, {
+            headers: {
+                'Accept': 'text/html,application/xhtml+xml',
+                'User-Agent': 'Mozilla/5.0',
+            },
+        }, 20000);
+
+        if (!res.ok) return { jobs: [], totalPages: null };
+
+        const html = await res.text();
+        const $ = cheerio.load(html);
+        const jobs: Job[] = [];
+
+        $('.search-result').each((_, el) => {
+            const card = $(el);
+            const titleEl = card.find('a').first();
+            if (!titleEl.length) return;
+
+            const title = titleEl.text().replace(/\s+/g, ' ').trim();
+            const href = String(titleEl.attr('href') || '').trim();
+            if (!title || !href) return;
+
+            let jobUrl = href;
+            try {
+                const absolute = new URL(href, 'https://www.jobs.nhs.uk');
+                absolute.hash = '';
+                absolute.search = '';
+                jobUrl = absolute.toString();
+            } catch {
+                jobUrl = href.startsWith('/') ? `https://www.jobs.nhs.uk${href.split('?')[0]}` : href.split('?')[0];
+            }
+
+            const rawLocation = card.find('[data-test="search-result-location"]').text().trim() ||
+                card.find('.search-result-location').text().trim() ||
+                card.find('li:contains("Location")').text().replace('Location:', '').trim() ||
+                'United Kingdom';
+
+            const location = rawLocation.replace(/\n+/g, ', ').replace(/\s{2,}/g, ' ').trim();
+
+            jobs.push({
+                title,
+                location,
+                url: jobUrl,
+                department: '',
+                salary: undefined,
+            });
+        });
+
+        const totalPages = parseNhsTotalPages(html);
+        const dedupedJobs = Array.from(new Map(jobs.map((job) => [job.url, job])).values());
+
+        return { jobs: dedupedJobs, totalPages };
+    } catch {
+        return { jobs: [], totalPages: null };
+    }
+}
+
+async function fetchNHS(token: string): Promise<Job[]> {
+    const baseUrl = normalizeNhsSearchUrl(token);
+    const firstPageUrl = getNhsPageUrl(baseUrl, 1);
+    const firstPage = await fetchNhsJobsPage(firstPageUrl);
+    const allJobs = [...firstPage.jobs];
+
+    const totalPages = firstPage.totalPages || 1;
+    const concurrency = 8;
+
+    for (let page = 2; page <= totalPages; page += concurrency) {
+        const batch: Promise<{ jobs: Job[]; totalPages: number | null }>[] = [];
+
+        for (let offset = 0; offset < concurrency && page + offset <= totalPages; offset++) {
+            batch.push(fetchNhsJobsPage(getNhsPageUrl(baseUrl, page + offset)));
+        }
+
+        const results = await Promise.all(batch);
+        for (const result of results) {
+            allJobs.push(...result.jobs);
+        }
+
+        await sleep(250);
+    }
+
+    return Array.from(new Map(allJobs.filter((job) => job.title && job.url).map((job) => [job.url, job])).values());
 }
 
 type FetchAttempt = {
@@ -331,6 +570,9 @@ function inferAtsFromCareersUrl(url: string | null | undefined): { provider: str
             const site = parts[0] || '';
             const token = site ? `${parsed.protocol}//${parsed.host}/${site}` : '';
             return token ? { provider: 'workday', token } : null;
+        }
+        if (host.includes('jobs.nhs.uk') || host === 'nhs.uk' || host.endsWith('.nhs.uk')) {
+            return { provider: 'custom_nhs', token: normalizedUrl };
         }
     } catch {
         return null;
@@ -1751,6 +1993,8 @@ export const FETCHERS: Record<string, (token: string) => Promise<Job[]>> = {
     jobvite: fetchJobvite,
     avature: fetchAvature,
     teamtailor_html: fetchTeamtailorHtml,
+    custom_nhs: fetchNHS,
+    nhs_jobs: fetchNHS,
     generic_careers: fetchGenericCareersPage,
 };
 
@@ -1837,6 +2081,7 @@ export async function syncAll() {
 
     const results: SyncResult[] = [];
     let totalSaved = 0;
+    let locationLogEnabled = true;
 
     for (const company of companies) {
         const { id, trading_name, ats_provider } = company;
@@ -1892,19 +2137,49 @@ export async function syncAll() {
             result.fetched = allJobs.length;
 
             // Apply UK keyword filter to all fetched jobs for safety
-            const ukJobs = allJobs.filter(j => {
-                const isUK = isLikelyUKJob(j);
-                if (!isUK && (j.location || j.title) && allJobs.length > 100) {
-                    // Diagnostic: log why large job batches have 0 UK matches
-                    if (allJobs.filter(x => !isLikelyUKJob(x)).length === allJobs.length) {
-                        // Log one sample of unmatched location per company
-                        if (allJobs.indexOf(j) === 0) {
-                            console.log(`  [DIAGNOSIS] No UK matches. Sample jobs: ${allJobs.slice(0, 3).map(x => `${x.title} @ ${x.location}`).join(' | ')}`);
-                        }
+            const ukJobs: Job[] = [];
+            const locationLogRows: Array<{
+                company_id: number;
+                job_url: string;
+                raw_location: string;
+                source: string;
+                decision: string;
+                sync_run_id: string;
+            }> = [];
+
+            for (const j of allJobs) {
+                const decision = evaluateUKLocationDecision(j);
+                if (decision.isUK) {
+                    ukJobs.push(j);
+                }
+
+                locationLogRows.push({
+                    company_id: id,
+                    job_url: safeStr(j.url),
+                    raw_location: safeStr(j.location),
+                    source: safeStr(fetchOutcome.provider, 100),
+                    decision: safeStr(decision.reason, 100),
+                    sync_run_id: syncRunId,
+                });
+            }
+
+            if (!fallbackOnlyDryRun && locationLogEnabled && locationLogRows.length > 0) {
+                const chunks = chunkArray(locationLogRows, 500);
+                for (const chunk of chunks) {
+                    const { error: logErr } = await supabase
+                        .from('location_filter_log')
+                        .insert(chunk);
+                    if (logErr) {
+                        console.warn(`  [WARN] location_filter_log insert disabled: ${logErr.message}`);
+                        locationLogEnabled = false;
+                        break;
                     }
                 }
-                return isUK;
-            });
+            }
+
+            if (ukJobs.length === 0 && allJobs.length > 0) {
+                console.log(`  [DIAGNOSIS] No UK matches. Sample jobs: ${allJobs.slice(0, 3).map(x => `${x.title} @ ${x.location}`).join(' | ')}`);
+            }
 
             result.ukJobs = ukJobs.length;
             console.log(`${allJobs.length} total → ${ukJobs.length} UK`);
@@ -1921,7 +2196,8 @@ export async function syncAll() {
                         location: safeStr(j.location),
                         url: safeStr(j.url),
                         department: j.department ? safeStr(j.department) : null,
-                        level: inferJobLevel(safeStr(j.title))
+                        level: inferJobLevel(safeStr(j.title)),
+                        last_seen_at: new Date().toISOString()
                     }));
 
                 if (fallbackOnlyDryRun) {
@@ -1943,48 +2219,23 @@ export async function syncAll() {
                         result.saved = rows.length;
                         totalSaved += rows.length;
 
-                        // ─── Cleanup: Delete stale jobs ───
-                        // Remove any jobs for this company that are NOT in the list we just fetched.
-                        // Correct pattern: fetch existing URLs, find stale ones, chunk the stale list for deletion
-                        const currentUrls = uniqueJobs.map(j => j.url);
-                        const currentUrlsSet = new Set(currentUrls);
-                    
-                    // Fetch all existing job URLs for this company from the database
-                        const { data: existingJobs, error: fetchErr } = await supabase
+                        // ─── Cleanup: Mark stale jobs (resilient to ATS downtime) ───
+                        // Seen jobs get last_seen_at refreshed by upsert above.
+                        // Delete only jobs not seen in 48+ hours (handles transient ATS downtime).
+                        // This allows recovery if ATS API is temporarily down
+                        const graceWindow = new Date();
+                        graceWindow.setHours(graceWindow.getHours() - 48);
+                        
+                        const { error: delErr, count: delCount } = await supabase
                             .from('jobs')
-                            .select('url')
-                            .eq('company_id', id);
-                    
-                        if (fetchErr) {
-                            console.error(`  ⚠️ Cleanup error (fetch): ${fetchErr.message}`);
-                        } else if (existingJobs && existingJobs.length > 0) {
-                        // Find stale URLs (in DB but not in new fetch)
-                            const staleUrls = existingJobs
-                                .map(r => r.url)
-                                .filter(url => !currentUrlsSet.has(url));
-                        
-                        // Chunk the stale list for deletion
-                            const CHUNK_SIZE = 200;
-                            const staleChunks = chunkArray(staleUrls, CHUNK_SIZE);
-                            let totalDeleted = 0;
-                        
-                            for (const chunk of staleChunks) {
-                                const { error: delErr, count: delCount } = await supabase
-                                    .from('jobs')
-                                    .delete()
-                                    .eq('company_id', id)
-                                    .in('url', chunk);
+                            .delete()
+                            .eq('company_id', id)
+                            .lt('last_seen_at', graceWindow.toISOString());
 
-                                if (delErr) {
-                                    console.error(`  ⚠️ Cleanup error (delete): ${delErr.message}`);
-                                    break;
-                                }
-                                if (delCount) totalDeleted += delCount;
-                            }
-                        
-                            if (totalDeleted > 0) {
-                                console.log(`  🧹 Cleaned up ${totalDeleted} stale jobs (${staleChunks.length} chunks)`);
-                            }
+                        if (delErr) {
+                            console.error(`  ⚠️ Cleanup error (delete old stale): ${delErr.message}`);
+                        } else if (delCount && delCount > 0) {
+                            console.log(`  🧹 Cleaned up ${delCount} jobs not seen in 48+ hours`);
                         }
 
                         if (healthTrackingEnabled) {
@@ -2000,18 +2251,25 @@ export async function syncAll() {
                     }
                 }
             } else {
-                // Special case: If the fetcher returned 0 jobs AND it was successful (not an error),
-                // we should probably clear out old jobs for this company too.
-                console.log(`0 total → 0 UK. Clearing old jobs...`);
+                // If no UK jobs were found, do not refresh last_seen_at; only prune rows older than grace window.
+                console.log(`0 total → 0 UK. Applying 48h stale-job prune...`);
                 if (!fallbackOnlyDryRun) {
-                    const { error: delErr } = await supabase
+                    const graceWindow = new Date();
+                    graceWindow.setHours(graceWindow.getHours() - 48);
+
+                    const { error: delErr, count: delCount } = await supabase
                         .from('jobs')
                         .delete()
-                        .eq('company_id', id);
+                        .eq('company_id', id)
+                        .lt('last_seen_at', graceWindow.toISOString());
 
-                    if (delErr) console.error(`  ⚠️ Clear error: ${delErr.message}`);
+                    if (delErr) {
+                        console.error(`  ⚠️ Clear error: ${delErr.message}`);
+                    } else if (delCount && delCount > 0) {
+                        console.log(`  🧹 Removed ${delCount} jobs stale for 48+ hours`);
+                    }
                 } else {
-                    console.log('  [DRY RUN] no UK jobs; would clear existing company jobs');
+                    console.log('  [DRY RUN] no UK jobs; would clear only jobs stale for 48h+');
                 }
 
                 if (!fallbackOnlyDryRun && healthTrackingEnabled) {
@@ -2084,6 +2342,28 @@ export async function syncAll() {
             .sort((a, b) => b.saved - a.saved)
             .slice(0, 10)
             .forEach(r => console.log(`     ${r.company.padEnd(35)} ${r.saved} jobs  [${r.provider}]`));
+    }
+    console.log('════════════════════════════════════════════════════');
+
+    // Job filter audit log
+    if (jobFilterAudit.length > 0) {
+        console.log('\n📋 LOCATION FILTER AUDIT (Blocked Jobs):');
+        const auditByReason = jobFilterAudit.reduce((acc, entry) => {
+            if (!acc[entry.reason]) acc[entry.reason] = [];
+            acc[entry.reason].push(entry);
+            return acc;
+        }, {} as Record<string, Array<{ title: string; location: string; reason: string }>>);
+
+        Object.entries(auditByReason).forEach(([reason, entries]) => {
+            console.log(`\n  ${reason} (${entries.length}):`);
+            entries.slice(0, 5).forEach(e => {
+                console.log(`    - "${e.title}" @ "${e.location}"`);
+            });
+            if (entries.length > 5) {
+                console.log(`    ... and ${entries.length - 5} more`);
+            }
+        });
+        console.log('');
     }
     console.log('════════════════════════════════════════════════════\n');
 }

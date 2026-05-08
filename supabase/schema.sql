@@ -36,12 +36,32 @@ CREATE TABLE public.jobs (
     salary TEXT,
     level TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    last_seen_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
 -- Indexes for efficient queries
 CREATE INDEX idx_jobs_company_id ON public.jobs(company_id);
 CREATE INDEX idx_jobs_location ON public.jobs(location);
+CREATE INDEX idx_jobs_last_seen_at ON public.jobs(last_seen_at DESC);
+CREATE INDEX idx_jobs_company_last_seen ON public.jobs(company_id, last_seen_at);
+
+-- Location filter audit table
+CREATE TABLE IF NOT EXISTS public.location_filter_log (
+    id BIGSERIAL PRIMARY KEY,
+    company_id INTEGER NOT NULL REFERENCES public.companies(id) ON DELETE CASCADE,
+    job_url TEXT,
+    raw_location TEXT,
+    source TEXT,
+    decision TEXT NOT NULL,
+    sync_run_id TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX idx_location_filter_log_created_at ON public.location_filter_log(created_at DESC);
+CREATE INDEX idx_location_filter_log_company_created ON public.location_filter_log(company_id, created_at DESC);
+CREATE INDEX idx_location_filter_log_sync_run ON public.location_filter_log(sync_run_id);
+CREATE INDEX idx_location_filter_log_decision ON public.location_filter_log(decision);
 
 -- Force REST schema refresh so there are no cache issues right after recreating
 NOTIFY pgrst, 'reload schema';

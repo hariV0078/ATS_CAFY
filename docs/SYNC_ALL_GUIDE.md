@@ -151,6 +151,7 @@ Current providers in the map:
 - `goldmansachs`
 - `google`
 - `jpmc`
+- `custom_nhs`
 
 If a company has an unsupported `ats_provider`, it is skipped.
 
