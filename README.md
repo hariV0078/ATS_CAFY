@@ -192,3 +192,5 @@ If jobs disappear unexpectedly:
 Sync operation is TypeScript/Supabase based around `src/scripts/syncAll.ts` and related DB/schema/docs assets.
 
 Python scraping under `backend_scrape/` is not required for the sync function and is intentionally excluded from sync-focused git scope.
+
+<!-- Fresh Sync: 04/19/2026 00:43:02 -->

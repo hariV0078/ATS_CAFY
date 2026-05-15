@@ -1,0 +1,1064 @@
+{
+  "total": 310,
+  "jobPostings": [
+    {
+      "title": "Strategy Consultant Software & Platforms",
+      "externalPath": "/job/London/Strategy-Consultant-Software---Platforms_R00318380",
+      "postedOn": "Posted 2 Days Ago",
+      "bulletFields": [
+        "R00318380",
+        "London"
+      ]
+    },
+    {
+      "title": "Customer AI Developer Specialist",
+      "externalPath": "/job/London/Customer-AI-Developer-Specialist_R00314667",
+      "postedOn": "Posted 3 Days Ago",
+      "bulletFields": [
+        "R00314667",
+        "London"
+      ]
+    },
+    {
+      "title": "Digital Analytics Specialist",
+      "externalPath": "/job/London/Digital-Analytics-Specialist_R00309132",
+      "postedOn": "Posted 3 Days Ago",
+      "bulletFields": [
+        "R00309132",
+        "London"
+      ]
+    },
+    {
+      "title": "Customer Identity and Access Management (CIAM) Consultant - London",
+      "externalPath": "/job/London/Customer-Identity-and-Access-Management--CIAM--Consultant---London_R00310188",
+      "postedOn": "Posted 4 Days Ago",
+      "bulletFields": [
+        "R00310188",
+        "London"
+      ]
+    },
+    {
+      "title": "SAP Functional Consultant - Process Excellence",
+      "externalPath": "/job/London/Join-our-SAP-EMEA-Team--Enterprise-Architect-opportunities-at-Associate-Manager-Manager_R00304362",
+      "postedOn": "Posted 4 Days Ago",
+      "bulletFields": [
+        "R00304362",
+        "Location Negotiable"
+      ]
+    }
+  ],
+  "facets": [
+    {
+      "facetParameter": "jobFamilyGroup",
+      "descriptor": "Area of Work",
+      "values": [
+        {
+          "descriptor": "Business & Technology Integration",
+          "id": "bb69a804fb1201a1606f05ed1301dc75",
+          "count": 84
+        },
+        {
+          "descriptor": "AI & Data",
+          "id": "99f04fef1b5710010b161504c3910000",
+          "count": 46
+        },
+        {
+          "descriptor": "Consulting",
+          "id": "bb69a804fb1201f53c8f0eed1301e875",
+          "count": 40
+        },
+        {
+          "descriptor": "Technology & Information Architectures",
+          "id": "bb69a804fb1201f7535003ed1301d875",
+          "count": 32
+        },
+        {
+          "descriptor": "Software Engineering",
+          "id": "bb69a804fb120130e52200ed1301d275",
+          "count": 30
+        },
+        {
+          "descriptor": "Security",
+          "id": "bb69a804fb1201653003f3ec1301ba75",
+          "count": 28
+        },
+        {
+          "descriptor": "Strategy Services",
+          "id": "bb69a804fb1201c74c5a02ed1301d675",
+          "count": 15
+        },
+        {
+          "descriptor": "Information Technology Operations",
+          "id": "bb69a804fb1201712ed6f3ec1301bc75",
+          "count": 8
+        },
+        {
+          "descriptor": "Solution Architecture & Planning",
+          "id": "bb69a804fb1201f3415d01ed1301d475",
+          "count": 4
+        },
+        {
+          "descriptor": "Account Leadership",
+          "id": "bb69a804fb1201b7ef97e9ec1301aa75",
+          "count": 4
+        },
+        {
+          "descriptor": "Creative",
+          "id": "ee24513a3f8c10010b0f38f613d20000",
+          "count": 4
+        },
+        {
+          "descriptor": "Sales",
+          "id": "bb69a804fb120126dceefdec1301ce75",
+          "count": 2
+        },
+        {
+          "descriptor": "Program, Project & Service Management",
+          "id": "bb69a804fb1201d0cfcffbec1301ca75",
+          "count": 2
+        },
+        {
+          "descriptor": "Legal & Commercial Services",
+          "id": "bb69a804fb1201e28ce8f4ec1301be75",
+          "count": 2
+        },
+        {
+          "descriptor": "User Experience Design",
+          "id": "11a6f9a6256c10010b0ed36ef26d0000",
+          "count": 2
+        },
+        {
+          "descriptor": "Engineering & Networks",
+          "id": "bb69a804fb120147d2f209ed1301e275",
+          "count": 1
+        },
+        {
+          "descriptor": "Workplace Management & Service Solutions",
+          "id": "bb69a804fb12013aea4f04ed1301da75",
+          "count": 1
+        },
+        {
+          "descriptor": "Sales Enablement",
+          "id": "bb69a804fb12011fd2effeec1301d075",
+          "count": 1
+        },
+        {
+          "descriptor": "Delivery Leadership",
+          "id": "b43b21406d0f1001262ce6d954ba0000",
+          "count": 1
+        },
+        {
+          "descriptor": "Sourcing & Procurement Services",
+          "id": "354c4302127610010b159acd6f9f0000",
+          "count": 1
+        },
+        {
+          "descriptor": "Digital Design",
+          "id": "7d0f281a413910010b14ddd489360000",
+          "count": 1
+        },
+        {
+          "descriptor": "Sales as a Service",
+          "id": "073ec53fbb1f015d98b6ea39b000b125",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "facetParameter": "workerSubType",
+      "descriptor": "Skills",
+      "values": [
+        {
+          "descriptor": "Business Process Design",
+          "id": "f1363cc3535f0101a3dd7ea0ae970000",
+          "count": 105
+        },
+        {
+          "descriptor": "Change Management",
+          "id": "378d31f968b601019e492684e5b10000",
+          "count": 101
+        },
+        {
+          "descriptor": "Go-to-Market Strategies",
+          "id": "63e792339baa01019dc3a9850e1c0000",
+          "count": 61
+        },
+        {
+          "descriptor": "Asset Management",
+          "id": "f1363cc3535f0101bd670d801af80000",
+          "count": 58
+        },
+        {
+          "descriptor": "Value Architecture & Realization",
+          "id": "10344f8718f6014732ba87125b01ba5d",
+          "count": 39
+        },
+        {
+          "descriptor": "Solution Architecture",
+          "id": "1a775c2261930101a229ff1842d90001",
+          "count": 39
+        },
+        {
+          "descriptor": "Industry Insight",
+          "id": "bb307570ea970161e8c60e315a015056",
+          "count": 36
+        },
+        {
+          "descriptor": "Technological Innovation",
+          "id": "25dcace18e3d0101a6737d0fe3c50000",
+          "count": 35
+        },
+        {
+          "descriptor": "Technology Architecture Implementation",
+          "id": "51889a8cc8a301b654d364fb5a01714e",
+          "count": 33
+        },
+        {
+          "descriptor": "Technology Architecture Assessment",
+          "id": "d27fcd96a436015454f646f15a01126a",
+          "count": 29
+        },
+        {
+          "descriptor": "Technology Architecture Blueprint & Roadmap Definition",
+          "id": "b0cdeb1993120154b8ea71fb5a016660",
+          "count": 29
+        },
+        {
+          "descriptor": "Requirements Analysis",
+          "id": "3e77c2d080cb0101a0ec3da97c300000",
+          "count": 27
+        },
+        {
+          "descriptor": "Research Analysis and Interpretation",
+          "id": "2ea7fc30fd82019b93bebbeb5a019a76",
+          "count": 26
+        },
+        {
+          "descriptor": "Technology Architecture Quality Assurance",
+          "id": "e0a8d5adc2fc0124d52c58065b015357",
+          "count": 25
+        },
+        {
+          "descriptor": "Technology Architecture Estimation",
+          "id": "1a4be77f6e8d01e0fedec6fc5a01b95b",
+          "count": 23
+        },
+        {
+          "descriptor": "Machine Learning (ML)",
+          "id": "7dd91fc5f26c1001841f2a60a01b0001",
+          "count": 23
+        },
+        {
+          "descriptor": "IT Architecture Design",
+          "id": "2f64a6286d9f0100a1e412d74c560000",
+          "count": 20
+        },
+        {
+          "descriptor": "Platform Security",
+          "id": "e64fece58c990101971ff739982c0001",
+          "count": 19
+        },
+        {
+          "descriptor": "Identity Access Management (IAM)",
+          "id": "591d22564e010101a3bdcb3cadf40001",
+          "count": 19
+        },
+        {
+          "descriptor": "Security Architecture Design",
+          "id": "dd9b5ced9d0701013a99e9c70f3b0000",
+          "count": 18
+        },
+        {
+          "descriptor": "Data Engineering",
+          "id": "f1363cc3535f0101a840807f8e6c0000",
+          "count": 17
+        },
+        {
+          "descriptor": "Business Transformation",
+          "id": "31027b949a530101a4826e5a7ea20000",
+          "count": 17
+        },
+        {
+          "descriptor": "Estimation and Planning",
+          "id": "3eea224f4fe310011cb5b2df75750000",
+          "count": 16
+        },
+        {
+          "descriptor": "Business Case Development",
+          "id": "2083a24711a30101b16e67b3cc5a0000",
+          "count": 16
+        },
+        {
+          "descriptor": "Release Management",
+          "id": "f1363cc3535f0101a3dcd6bf9fc00000",
+          "count": 16
+        },
+        {
+          "descriptor": "Accenture Delivery Methods (ADM)",
+          "id": "31485366cd3f01fba8b09b295a01e173",
+          "count": 15
+        },
+        {
+          "descriptor": "Application Security",
+          "id": "e813a25b410001001788e9a0467e0000",
+          "count": 15
+        },
+        {
+          "descriptor": "Business Architecture",
+          "id": "851d32045cad01020591cba599db0000",
+          "count": 15
+        },
+        {
+          "descriptor": "Operating Model Development",
+          "id": "90ec2e7827eb100127b72af15cc10000",
+          "count": 15
+        },
+        {
+          "descriptor": "Business Model Strategy",
+          "id": "378d31f968b601019eee72d449560001",
+          "count": 15
+        },
+        {
+          "descriptor": "Artificial Intelligence (AI)",
+          "id": "2d71acc95d4e01019d1d49416c9d0000",
+          "count": 15
+        },
+        {
+          "descriptor": "AI Agents",
+          "id": "c6e1d85491d81002151aa821d3060000",
+          "count": 15
+        },
+        {
+          "descriptor": "Data Science",
+          "id": "3e77c2d080cb0101a0ec5834f9420000",
+          "count": 15
+        },
+        {
+          "descriptor": "Build Management",
+          "id": "c5e249ff013e0101c21abd5a5e1b0000",
+          "count": 14
+        },
+        {
+          "descriptor": "Functional Designs",
+          "id": "d03051dd12b80100db787d7cee3f0000",
+          "count": 14
+        },
+        {
+          "descriptor": "Applications Architecture",
+          "id": "51c0ddf615fc01009f301fe1c0d70001",
+          "count": 14
+        },
+        {
+          "descriptor": "Data Quality Tools & Methods",
+          "id": "96dcdb45855401801cf9d5f55a01cc76",
+          "count": 13
+        },
+        {
+          "descriptor": "Data Governance Operating Model",
+          "id": "3113a8f0338c1000fdc50bc041ad0000",
+          "count": 13
+        },
+        {
+          "descriptor": "Continuous Integration (CI) Tools",
+          "id": "86ee6297dd5e01008dca86ef9b240000",
+          "count": 13
+        },
+        {
+          "descriptor": "Data Standards",
+          "id": "fcc4da568b050101a0a7a1c6c3d50000",
+          "count": 13
+        },
+        {
+          "descriptor": "Management Consulting",
+          "id": "421c660d3c160101a0bdd167833d0000",
+          "count": 13
+        },
+        {
+          "descriptor": "Enterprise Data Management",
+          "id": "7dee2d30666510013831c1782aaf0002",
+          "count": 13
+        },
+        {
+          "descriptor": "Data Warehouse Tools",
+          "id": "7b947dbf438710015413b7a68e650000",
+          "count": 13
+        },
+        {
+          "descriptor": "Data Governance",
+          "id": "f1363cc3535f0101ac83f2d7a0a20000",
+          "count": 13
+        },
+        {
+          "descriptor": "Data Visualization",
+          "id": "3ca53189b74801019fb32a45150a0000",
+          "count": 13
+        },
+        {
+          "descriptor": "Physical Data Models",
+          "id": "d5ceb78e8209010109399540cba60000",
+          "count": 13
+        },
+        {
+          "descriptor": "Data Quality Management",
+          "id": "ecfe220770d801018e3ff06bec040000",
+          "count": 13
+        },
+        {
+          "descriptor": "Data Building Tool",
+          "id": "9d7604b152211001529b6d4150ac0000",
+          "count": 13
+        },
+        {
+          "descriptor": "Large Language Models (LLMs)",
+          "id": "bb7a25648c691012d420936cb8dc0000",
+          "count": 12
+        },
+        {
+          "descriptor": "Security Compliance Client Data Protection (CDP)",
+          "id": "51889a8cc8a3019408173ac15a011e4e",
+          "count": 11
+        },
+        {
+          "descriptor": "Data Security",
+          "id": "373ea2578b6b01019cf4f4ec308c0000",
+          "count": 11
+        },
+        {
+          "descriptor": "Security Monitoring",
+          "id": "bcdc53300b1701019f61e7ce85f00000",
+          "count": 11
+        },
+        {
+          "descriptor": "Systems Development Lifecycle (SDLC)",
+          "id": "2f711ff8d77910010cd08838c9950000",
+          "count": 11
+        },
+        {
+          "descriptor": "Threat and Vulnerability Management",
+          "id": "1a775c2261930101ac664dbdb96c0000",
+          "count": 11
+        },
+        {
+          "descriptor": "Cloud Security Architecture",
+          "id": "56d94507151001013d43875fffc10000",
+          "count": 11
+        }
+      ]
+    },
+    {
+      "facetParameter": "timeType",
+      "descriptor": "Time Type",
+      "values": [
+        {
+          "descriptor": "Full time",
+          "id": "a31fc2f90d56014bd4fe0028f7145a00",
+          "count": 309
+        },
+        {
+          "descriptor": "Part time",
+          "id": "a31fc2f90d5601ead3de0028f7145900",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "facetParameter": "locationMainGroup",
+      "values": [
+        {
+          "facetParameter": "locationCountry",
+          "descriptor": "Country",
+          "values": [
+            {
+              "descriptor": "India",
+              "id": "c4f78be1a8f14da0ab49ce1162348a5e",
+              "count": 56695
+            },
+            {
+              "descriptor": "Philippines",
+              "id": "e56f1daf83e04bacae794ba5c5593560",
+              "count": 755
+            },
+            {
+              "descriptor": "United States of America",
+              "id": "bc33aa3152ec42d4995f4791a106ed09",
+              "count": 575
+            },
+            {
+              "descriptor": "Malaysia",
+              "id": "972dc4ba8d454bc0b893ff84b1529077",
+              "count": 431
+            },
+            {
+              "descriptor": "Spain",
+              "id": "bd34c524a6a04ae6915f5d96fa086199",
+              "count": 371
+            },
+            {
+              "descriptor": "United Kingdom",
+              "id": "29247e57dbaf46fb855b224e03170bc7",
+              "count": 310
+            },
+            {
+              "descriptor": "Poland",
+              "id": "131d5ac7e3ee4d7b962bdc96e498e412",
+              "count": 280
+            },
+            {
+              "descriptor": "France",
+              "id": "54c5b6971ffb4bf0b116fe7651ec789a",
+              "count": 257
+            },
+            {
+              "descriptor": "Italy",
+              "id": "8cd04a563fd94da7b06857a79faaf815",
+              "count": 255
+            },
+            {
+              "descriptor": "Brazil",
+              "id": "1a29bb1357b240ab99a2fa755cc87c0e",
+              "count": 250
+            },
+            {
+              "descriptor": "Japan",
+              "id": "8b705da2becf43cfaccc091da0988ab2",
+              "count": 245
+            },
+            {
+              "descriptor": "Germany",
+              "id": "dcc5b7608d8644b3a93716604e78e995",
+              "count": 228
+            },
+            {
+              "descriptor": "Australia",
+              "id": "d903bb3fedad45039383f6de334ad4db",
+              "count": 212
+            },
+            {
+              "descriptor": "Argentina",
+              "id": "e42ad5eac46d4cc9b367ceaef42577c5",
+              "count": 188
+            },
+            {
+              "descriptor": "Egypt",
+              "id": "d865e83093ad42319653b08e61f7db49",
+              "count": 186
+            },
+            {
+              "descriptor": "Mexico",
+              "id": "e2adff9272454660ac4fdb56fc70bb51",
+              "count": 180
+            },
+            {
+              "descriptor": "Netherlands",
+              "id": "9696868b09c64d52a62ee13b052383cc",
+              "count": 169
+            },
+            {
+              "descriptor": "Singapore",
+              "id": "80938777cac5440fab50d729f9634969",
+              "count": 166
+            },
+            {
+              "descriptor": "Canada",
+              "id": "a30a87ed25634629aa6c3958aa2b91ea",
+              "count": 142
+            },
+            {
+              "descriptor": "Indonesia",
+              "id": "b31234dbcdda4da9ba8fa073c5944e36",
+              "count": 128
+            },
+            {
+              "descriptor": "Romania",
+              "id": "f2e609fe92974a55a05fc1cdc2852122",
+              "count": 125
+            },
+            {
+              "descriptor": "Thailand",
+              "id": "873d0f604e3b458c990cb4d83a5c0f14",
+              "count": 119
+            },
+            {
+              "descriptor": "Portugal",
+              "id": "2e8c5034deb045d49315417c347472ca",
+              "count": 115
+            },
+            {
+              "descriptor": "China",
+              "id": "6cb77610a8a543aea2d6bc10457e35d4",
+              "count": 112
+            },
+            {
+              "descriptor": "Belgium",
+              "id": "a04ea128f43a42e59b1e6a19e8f0b374",
+              "count": 102
+            },
+            {
+              "descriptor": "Ireland",
+              "id": "04a05835925f45b3a59406a2a6b72c8a",
+              "count": 91
+            },
+            {
+              "descriptor": "Colombia",
+              "id": "e8106cd6a3534f2dba6fdee2d41db89d",
+              "count": 88
+            },
+            {
+              "descriptor": "Costa Rica",
+              "id": "99abe7e6bb3f4c108aebebf01a369ec5",
+              "count": 84
+            },
+            {
+              "descriptor": "Greece",
+              "id": "566388c1eb974c42bd9e3da4c2f57d60",
+              "count": 64
+            },
+            {
+              "descriptor": "Czechia",
+              "id": "fc078443155c4ad294201ecf5a61a499",
+              "count": 63
+            },
+            {
+              "descriptor": "New Zealand",
+              "id": "55273a1b49934d97ae15342ef51f6b95",
+              "count": 46
+            },
+            {
+              "descriptor": "Lithuania",
+              "id": "8a0328effd25491fb8e6a08801f08e94",
+              "count": 43
+            },
+            {
+              "descriptor": "Hong Kong",
+              "id": "d4afdeb461d446e4babd204bd102dba8",
+              "count": 41
+            },
+            {
+              "descriptor": "United Arab Emirates",
+              "id": "7b4fa1f369bd4604ba3692682fcbe345",
+              "count": 39
+            },
+            {
+              "descriptor": "Latvia",
+              "id": "1c026f3b1b8640d8bdfcb95466663e4d",
+              "count": 38
+            },
+            {
+              "descriptor": "Norway",
+              "id": "d07f8ca8625e4345b98a91d0558b872a",
+              "count": 37
+            },
+            {
+              "descriptor": "Hungary",
+              "id": "9db257f5937e4421b2fac64eec6832f8",
+              "count": 37
+            },
+            {
+              "descriptor": "Sweden",
+              "id": "6a800a4736884df5826858d435650f45",
+              "count": 37
+            },
+            {
+              "descriptor": "Slovakia",
+              "id": "d2f29df0c90f4cea9e7d17f2ed8a86ad",
+              "count": 35
+            },
+            {
+              "descriptor": "Denmark",
+              "id": "49ab063f422741e2aef271de00efeac8",
+              "count": 33
+            },
+            {
+              "descriptor": "Mauritius",
+              "id": "a759018ba6ac489d9f16c086b914e1b6",
+              "count": 32
+            },
+            {
+              "descriptor": "Saudi Arabia",
+              "id": "50423b5190ad49bb89e94cd58dfaad69",
+              "count": 32
+            },
+            {
+              "descriptor": "Chile",
+              "id": "53fe09ef12b9408682a1d2439823f2e0",
+              "count": 28
+            },
+            {
+              "descriptor": "Finland",
+              "id": "0afb2fa656da42e8bfb6d47bd24a26fa",
+              "count": 27
+            },
+            {
+              "descriptor": "Austria",
+              "id": "d004c0d1a6c84511ab048669fcdf9fd7",
+              "count": 25
+            },
+            {
+              "descriptor": "South Africa",
+              "id": "4db3c26940b944919b83612cc1193eed",
+              "count": 24
+            },
+            {
+              "descriptor": "Bulgaria",
+              "id": "25f4875dc598484dbeee857eb2d81652",
+              "count": 23
+            },
+            {
+              "descriptor": "Türkiye",
+              "id": "c2e3bac5bbbb47b29dfc6e8b56a1586e",
+              "count": 18
+            },
+            {
+              "descriptor": "Vietnam",
+              "id": "db69e8c8446c11de98360015c5e6daf6",
+              "count": 17
+            },
+            {
+              "descriptor": "Luxembourg",
+              "id": "328b82f597514643a7683a78fc67c3f1",
+              "count": 14
+            },
+            {
+              "descriptor": "Switzerland",
+              "id": "187134fccb084a0ea9b4b95f23890dbe",
+              "count": 8
+            },
+            {
+              "descriptor": "Qatar",
+              "id": "f5ff182c7fab406bbb110cc1f7e99064",
+              "count": 6
+            },
+            {
+              "descriptor": "Kuwait",
+              "id": "eb2e6ec0f73c4b0e94c68396631332d6",
+              "count": 4
+            },
+            {
+              "descriptor": "Serbia",
+              "id": "b3f8697442124d6aaeb752a13c1e8491",
+              "count": 1
+            },
+            {
+              "descriptor": "Puerto Rico",
+              "id": "0a076377c3d94bc1b4ed46b4e7d82a50",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "facetParameter": "locations",
+          "descriptor": "City",
+          "values": [
+            {
+              "descriptor": "London",
+              "id": "3666ef49a96a01cc0bd5d477cf007f59",
+              "count": 238
+            },
+            {
+              "descriptor": "Manchester",
+              "id": "3666ef49a96a01026977d877cf008e59",
+              "count": 52
+            },
+            {
+              "descriptor": "Amsterdam",
+              "id": "3666ef49a96a0161afd76d77cf002358",
+              "count": 27
+            },
+            {
+              "descriptor": "Edinburgh",
+              "id": "3666ef49a96a015958aef879cf00c860",
+              "count": 25
+            },
+            {
+              "descriptor": "Manchester, 2 Circle Square",
+              "id": "5d24126bf113010194d02b41002d0000",
+              "count": 24
+            },
+            {
+              "descriptor": "Newcastle",
+              "id": "3666ef49a96a01eb863dd777cf008959",
+              "count": 24
+            },
+            {
+              "descriptor": "Brussels",
+              "id": "3666ef49a96a0195ad87a477cf00df58",
+              "count": 21
+            },
+            {
+              "descriptor": "Madrid",
+              "id": "3666ef49a96a01ce0e3a4a7acf00d161",
+              "count": 18
+            },
+            {
+              "descriptor": "Birmingham",
+              "id": "3666ef49a96a014c7d65f077cf00e359",
+              "count": 18
+            },
+            {
+              "descriptor": "Paris",
+              "id": "3666ef49a96a01c89fb48c7acf00c162",
+              "count": 17
+            },
+            {
+              "descriptor": "Berlin",
+              "id": "3666ef49a96a01acf50bbd79cf000060",
+              "count": 17
+            },
+            {
+              "descriptor": "Birmingham, Cornerblock",
+              "id": "dc17f81a54251001c2932c2c73970000",
+              "count": 16
+            },
+            {
+              "descriptor": "Munich",
+              "id": "3666ef49a96a0139828ea679cf00b55f",
+              "count": 16
+            },
+            {
+              "descriptor": "Bristol",
+              "id": "3666ef49a96a014094714f78cf002d5b",
+              "count": 11
+            },
+            {
+              "descriptor": "Glasgow",
+              "id": "0e94db5612020101c0d29580848c0000",
+              "count": 9
+            },
+            {
+              "descriptor": "Rome",
+              "id": "3666ef49a96a015b6cc68878cf00ff5b",
+              "count": 9
+            },
+            {
+              "descriptor": "Milan",
+              "id": "3666ef49a96a01c657088a78cf00045c",
+              "count": 8
+            },
+            {
+              "descriptor": "London, 30 Fenchurch Street",
+              "id": "940562459a6f01f26abd0f3dc300fd20",
+              "count": 7
+            },
+            {
+              "descriptor": "Stuttgart",
+              "id": "3666ef49a96a01ab7d42587acf000362",
+              "count": 7
+            },
+            {
+              "descriptor": "Copenhagen",
+              "id": "3666ef49a96a0195942e547acf00f461",
+              "count": 7
+            },
+            {
+              "descriptor": "Barcelona",
+              "id": "3666ef49a96a010fc3342f7acf007261",
+              "count": 7
+            },
+            {
+              "descriptor": "Vienna",
+              "id": "3666ef49a96a01bdb346ad77cf000259",
+              "count": 7
+            },
+            {
+              "descriptor": "Copenhagen",
+              "id": "3666ef49a96a0192792f637acf002b62",
+              "count": 6
+            },
+            {
+              "descriptor": "Hamburg",
+              "id": "3666ef49a96a01a8fe48ad79cf00ce5f",
+              "count": 6
+            },
+            {
+              "descriptor": "Cheltenham",
+              "id": "3666ef49a96a011a89989879cf00975f",
+              "count": 6
+            },
+            {
+              "descriptor": "Leeds",
+              "id": "3666ef49a96a0197ece65079cf00985e",
+              "count": 6
+            },
+            {
+              "descriptor": "Luxembourg",
+              "id": "3666ef49a96a01845bf98377cf006958",
+              "count": 6
+            },
+            {
+              "descriptor": "Kronberg, Campus Kronberg 1",
+              "id": "940562459a6f01f2b2a2c03bc300561d",
+              "count": 5
+            },
+            {
+              "descriptor": "Bristol, Runway East",
+              "id": "739d13ee27761001b8c62522f96c0000",
+              "count": 4
+            },
+            {
+              "descriptor": "Dusseldorf",
+              "id": "12abbc9b1fcd1000e683c7b8ad320000",
+              "count": 4
+            },
+            {
+              "descriptor": "Birmingham, Norfolk House",
+              "id": "d9f3bc00fb5d016b0ab4acf59601d229",
+              "count": 4
+            },
+            {
+              "descriptor": "Frankfurt am Main",
+              "id": "3666ef49a96a011542fdcf79cf003c60",
+              "count": 4
+            },
+            {
+              "descriptor": "Edinburgh, Atria One",
+              "id": "940562459a6f010dcb47dd3cc300a820",
+              "count": 3
+            },
+            {
+              "descriptor": "Roma, Palazzo Marignoli",
+              "id": "f6e7cff13c081004f544624abb1d0000",
+              "count": 3
+            },
+            {
+              "descriptor": "Copenhagen K",
+              "id": "3666ef49a96a01b9260d037acf00eb60",
+              "count": 3
+            },
+            {
+              "descriptor": "Oslo",
+              "id": "3666ef49a96a01cc319da978cf00635c",
+              "count": 3
+            },
+            {
+              "descriptor": "Madrid, Castellana 85",
+              "id": "50d0bb994b6c015de1a36a9c9601d880",
+              "count": 2
+            },
+            {
+              "descriptor": "Madrid, Torre Chamartin",
+              "id": "c091d3d1cc7301bdd30cb2d096014ab5",
+              "count": 2
+            },
+            {
+              "descriptor": "Duesseldorf",
+              "id": "3666ef49a96a0138b4beb979cf00f65f",
+              "count": 2
+            },
+            {
+              "descriptor": "Bern",
+              "id": "3666ef49a96a01ebe8ce2a79cf001b5e",
+              "count": 2
+            },
+            {
+              "descriptor": "Lausanne",
+              "id": "3666ef49a96a01e73c88f478cf00625d",
+              "count": 2
+            },
+            {
+              "descriptor": "Bucharest",
+              "id": "3666ef49a96a01d7c2847c78cf00d25b",
+              "count": 2
+            },
+            {
+              "descriptor": "Stockholm",
+              "id": "3666ef49a96a01f8bec0f877cf00015a",
+              "count": 2
+            },
+            {
+              "descriptor": "Helsinki",
+              "id": "3666ef49a96a01dae21ccb77cf005c59",
+              "count": 2
+            },
+            {
+              "descriptor": "Linz",
+              "id": "3666ef49a96a01309a62a877cf00ee58",
+              "count": 2
+            },
+            {
+              "descriptor": "Wien",
+              "id": "3666ef49a96a01661ddaa577cf00e458",
+              "count": 2
+            },
+            {
+              "descriptor": "Lisbon, Amoreiras Square",
+              "id": "940562459a6f016bdbc0d140c300512c",
+              "count": 2
+            },
+            {
+              "descriptor": "Malaga",
+              "id": "3666ef49a96a019ed6c5487acf00cc61",
+              "count": 1
+            },
+            {
+              "descriptor": "Krakow",
+              "id": "3666ef49a96a011beb169b78cf00455c",
+              "count": 1
+            },
+            {
+              "descriptor": "Dublin",
+              "id": "3666ef49a96a0186138a6d78cf009b5b",
+              "count": 1
+            },
+            {
+              "descriptor": "Budapest",
+              "id": "3666ef49a96a01ea3b1e4578cf00055b",
+              "count": 1
+            },
+            {
+              "descriptor": "Warsaw",
+              "id": "3666ef49a96a010973313478cf00c95a",
+              "count": 1
+            },
+            {
+              "descriptor": "Lisbon",
+              "id": "3666ef49a96a019f72333078cf00ba5a",
+              "count": 1
+            },
+            {
+              "descriptor": "Liverpool",
+              "id": "3666ef49a96a01d65ebcd977cf009359",
+              "count": 1
+            },
+            {
+              "descriptor": "Lisbon, Arquiparque 1",
+              "id": "940562459a6f015866b7d640c300602c",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "facetParameter": "distance",
+      "descriptor": "Distance",
+      "values": [
+        {
+          "descriptor": "10 kilometers",
+          "id": "a538cdb60a631000078a4443636e00f8",
+          "count": 1
+        },
+        {
+          "descriptor": "25 kilometers",
+          "id": "a538cdb60a631000078a444d6fd600f9",
+          "count": 1
+        },
+        {
+          "descriptor": "50 kilometers",
+          "id": "a538cdb60a631000078a4452365100fa",
+          "count": 1
+        },
+        {
+          "descriptor": "100 kilometers",
+          "id": "a538cdb60a631000078a445539a700fb",
+          "count": 1
+        },
+        {
+          "descriptor": "Any Distance",
+          "id": "a538cdb60a631000078a4457dd7e00fc",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "userAuthenticated": false
+}

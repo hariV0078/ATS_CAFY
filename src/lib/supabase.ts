@@ -11,13 +11,6 @@ if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
 }
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://mock.supabase.co';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'mock-key';
 
-// Prefer the service role key when running in Node (CLI scripts / server-side
-// scripts) so writes succeed when RLS is enabled. In browser (client-side)
-// code we always use the public anon key.
-const isServer = typeof window === 'undefined';
-const supabaseKey = isServer
-    ? process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-    : process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-export const supabase = createClient(supabaseUrl, supabaseKey || '');
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);

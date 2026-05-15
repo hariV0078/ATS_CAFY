@@ -1,0 +1,181 @@
+company_id,company_name,ats_provider,job_count
+1726,Unknown Company,unknown,115
+1934,Unknown Company,unknown,89
+1733,Google,custom,65
+1185,Medivet,custom,38
+633,Cambridge Consultants,greenhouse,37
+747,SharkNinja,greenhouse,37
+2008,Unknown Company,unknown,31
+565,Soho House & Co,greenhouse,20
+1686,Unknown Company,unknown,13
+1757,Unknown Company,unknown,13
+400,Unknown Company,unknown,12
+1731,Unknown Company,unknown,12
+407,Unknown Company,unknown,11
+472,Nu Quantum,custom,10
+1117,Unknown Company,unknown,10
+1312,Flo,greenhouse,10
+1407,Sequence,ashby,10
+420,Monzo,greenhouse,9
+88,carwow,ashby,8
+1710,Unknown Company,unknown,8
+1724,Octopus Energy,lever,8
+37,University of East London,unknown,7
+685,Ravio,ashby,7
+1063,Unknown Company,unknown,7
+1588,Unknown Company,unknown,7
+1866,Smoothwall,custom,7
+2274,Smarkets,ashby,7
+120,Ohme,custom,6
+134,Capital on Tap,greenhouse,6
+352,Unknown Company,unknown,6
+564,Unknown Company,unknown,6
+640,Uncapped,workable,6
+883,Unknown Company,unknown,6
+1091,Unknown Company,unknown,6
+1713,Oracle Red Bull Racing,workday,6
+1781,Unknown Company,unknown,6
+2295,MW Eat,custom,6
+2527,Neuberger Berman,workday,6
+46,Unknown Company,unknown,5
+255,Unknown Company,unknown,5
+840,Unknown Company,unknown,5
+893,Datadog,custom,5
+1245,Unknown Company,unknown,5
+1577,Hived,teamtailor,5
+1857,Oxford Ionics,workable,5
+2019,Fractile,greenhouse,5
+62,Unknown Company,unknown,4
+317,Unknown Company,unknown,4
+331,Unknown Company,unknown,4
+404,Unknown Company,unknown,4
+441,Encord,lever,4
+508,Unknown Company,unknown,4
+678,Unknown Company,unknown,4
+800,Unknown Company,unknown,4
+822,Unknown Company,unknown,4
+991,Unknown Company,unknown,4
+1073,Carta,greenhouse,4
+1104,Unknown Company,unknown,4
+1455,Unknown Company,unknown,4
+1598,Unknown Company,unknown,4
+1606,Monex,workday,4
+1674,Unknown Company,unknown,4
+2397,Unknown Company,unknown,4
+2457,Unknown Company,unknown,4
+2516,ClearRoute,teamtailor,4
+18,Unknown Company,unknown,3
+111,Unknown Company,unknown,3
+136,Unknown Company,unknown,3
+169,Unknown Company,unknown,3
+178,Unknown Company,unknown,3
+321,Unknown Company,unknown,3
+455,Unknown Company,unknown,3
+555,Unknown Company,unknown,3
+600,Unknown Company,unknown,3
+613,Block,greenhouse,3
+628,Unknown Company,unknown,3
+658,Okta,custom,3
+723,Signal AI,ashby,3
+737,Chetwood Bank,custom,3
+772,Unknown Company,unknown,3
+814,Unknown Company,unknown,3
+851,Unknown Company,unknown,3
+990,Unknown Company,unknown,3
+1009,Blockchain.com,greenhouse,3
+1072,Unknown Company,unknown,3
+1151,Sensat,ashby,3
+1311,Unknown Company,unknown,3
+1318,Unknown Company,unknown,3
+1335,Homebox,custom,3
+1337,FintechOS,custom,3
+1589,Unknown Company,unknown,3
+1708,Haleon,workday,3
+1768,Hitachi Solutions,smartrecruiters,3
+1793,Unknown Company,unknown,3
+1800,MOTORS,teamtailor,3
+1805,Unknown Company,unknown,3
+2107,Unknown Company,unknown,3
+2209,Universal Matter,custom,3
+2239,Data Intellect,smartrecruiters,3
+2485,Unknown Company,unknown,3
+113,Unknown Company,unknown,2
+119,Shieldpay,teamtailor,2
+133,Unknown Company,unknown,2
+301,Unknown Company,unknown,2
+310,Unknown Company,unknown,2
+469,Unknown Company,unknown,2
+556,Unknown Company,unknown,2
+700,Celonis,custom,2
+728,Unknown Company,unknown,2
+900,Financial Times,custom,2
+975,Unknown Company,unknown,2
+1372,Olsam,recruitee,2
+1469,Unknown Company,unknown,2
+1531,Unknown Company,unknown,2
+1562,Unknown Company,unknown,2
+1595,Unknown Company,unknown,2
+1601,Unknown Company,unknown,2
+1603,Unknown Company,unknown,2
+1612,OC&C Strategy,custom,2
+1706,Moneycorp,jobvite,2
+1721,ENSEK,teamtailor,2
+1728,Google DeepMind,greenhouse,2
+1754,Unknown Company,unknown,2
+1962,Unknown Company,unknown,2
+2088,Marshall,workday,2
+33,Unknown Company,unknown,1
+89,Unknown Company,unknown,1
+106,Ecologi,custom,1
+112,Unknown Company,unknown,1
+121,Unknown Company,unknown,1
+143,Snowplow,custom,1
+208,Unknown Company,unknown,1
+363,Unknown Company,unknown,1
+389,Oodle Car Finance,greenhouse,1
+391,Unknown Company,unknown,1
+392,OpenX,lever,1
+438,Unknown Company,unknown,1
+493,Unknown Company,unknown,1
+552,Ebury,custom,1
+566,Perlego,workable,1
+606,Octus,greenhouse,1
+627,Ping Identity,greenhouse,1
+634,Gymshark,greenhouse,1
+662,Unknown Company,unknown,1
+711,Unknown Company,unknown,1
+740,Unknown Company,unknown,1
+767,Fandom,custom,1
+777,Unknown Company,unknown,1
+801,Unknown Company,unknown,1
+862,Unknown Company,unknown,1
+873,Copper,custom,1
+953,DICE,greenhouse,1
+978,Unknown Company,unknown,1
+1008,Lindus Health,ashby,1
+1037,New Relic,greenhouse,1
+1064,Unknown Company,unknown,1
+1113,Unknown Company,unknown,1
+1235,Huboo,workable,1
+1329,Cytora,ashby,1
+1357,Unknown Company,unknown,1
+1374,Recognise Bank,lever,1
+1404,Unknown Company,unknown,1
+1516,Unknown Company,unknown,1
+1527,Unknown Company,unknown,1
+1555,Unknown Company,unknown,1
+1633,Unknown Company,unknown,1
+1766,Epicor,workday,1
+1787,Turner & Townsend,smartrecruiters,1
+1967,Unknown Company,unknown,1
+2017,Unknown Company,unknown,1
+2054,Fair Finance,custom,1
+2064,Checkatrade,ashby,1
+2200,Sensor Tower,lever,1
+2229,Hive Autonomy,greenhouse,1
+2236,Ansatz Capital,lever,1
+2269,Unknown Company,unknown,1
+2297,Scissero,teamtailor,1
+2434,Unknown Company,unknown,1
+2509,Focused.io,greenhouse,1
+2646,eEnergy,smartrecruiters,1

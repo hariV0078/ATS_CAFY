@@ -1,0 +1,4179 @@
+{
+  "total": 2000,
+  "jobPostings": [
+    {
+      "title": "Consultores SAP BTP",
+      "externalPath": "/job/Pernambuco---Recife/Analistas-e-Consultores-SAP-BTP_R00253074",
+      "postedOn": "Posted 2 Days Ago",
+      "bulletFields": [
+        "R00253074",
+        "Location Negotiable"
+      ]
+    },
+    {
+      "title": "Consultores SAP FI/FI-TAX/CO/FSCM/TDF/TRM/Mastersaf",
+      "externalPath": "/job/Pernambuco---Recife/Analistas-e-Consultores-SAP-FI---CO---TRM---Mastersaf_R00253065",
+      "postedOn": "Posted 2 Days Ago",
+      "bulletFields": [
+        "R00253065",
+        "Location Negotiable"
+      ]
+    },
+    {
+      "title": "Consultores SAP ABAP",
+      "externalPath": "/job/Pernambuco---Recife/Analistas-e-Consultores-SAP-ABAP_R00253056",
+      "postedOn": "Posted 2 Days Ago",
+      "bulletFields": [
+        "R00253056",
+        "Location Negotiable"
+      ]
+    },
+    {
+      "title": "Analista de Contas a Pagar Júnior - Espanhol Avançado",
+      "externalPath": "/job/Barueri-Green-Valley-Andromeda/Analista-de-Contas-a-Pagar-Jnior_R00325848",
+      "postedOn": "Posted 2 Days Ago",
+      "bulletFields": [
+        "R00325848",
+        "Barueri, Green Valley, Andromeda"
+      ]
+    },
+    {
+      "title": "Contracting Counsel Senior Manager",
+      "externalPath": "/job/New-York-One-Manhattan-West-Corp/Contracting-Counsel-Senior-Manager_R00322863",
+      "postedOn": "Posted 2 Days Ago",
+      "bulletFields": [
+        "R00322863",
+        "Location Negotiable"
+      ]
+    }
+  ],
+  "facets": [
+    {
+      "facetParameter": "jobFamilyGroup",
+      "descriptor": "Area of Work",
+      "values": [
+        {
+          "descriptor": "Software Engineering",
+          "id": "bb69a804fb120130e52200ed1301d275",
+          "count": 33673
+        },
+        {
+          "descriptor": "AI & Data",
+          "id": "99f04fef1b5710010b161504c3910000",
+          "count": 5431
+        },
+        {
+          "descriptor": "Business Process Delivery",
+          "id": "cadf25ad45ad10010b0ec600cf190000",
+          "count": 3939
+        },
+        {
+          "descriptor": "Business & Technology Integration",
+          "id": "bb69a804fb1201a1606f05ed1301dc75",
+          "count": 2780
+        },
+        {
+          "descriptor": "Sales as a Service",
+          "id": "073ec53fbb1f015d98b6ea39b000b125",
+          "count": 2527
+        },
+        {
+          "descriptor": "Service Delivery",
+          "id": "e4333d0d74de10010b0da7be668f0000",
+          "count": 2367
+        },
+        {
+          "descriptor": "Consulting",
+          "id": "bb69a804fb1201f53c8f0eed1301e875",
+          "count": 2070
+        },
+        {
+          "descriptor": "Information Technology Operations",
+          "id": "bb69a804fb1201712ed6f3ec1301bc75",
+          "count": 1379
+        },
+        {
+          "descriptor": "Security",
+          "id": "bb69a804fb1201653003f3ec1301ba75",
+          "count": 1209
+        },
+        {
+          "descriptor": "Human Resources",
+          "id": "bb69a804fb1201d8a15ef0ec1301b475",
+          "count": 1205
+        },
+        {
+          "descriptor": "Customer Services",
+          "id": "afba16431ad510010b0ec4a87b960000",
+          "count": 1141
+        },
+        {
+          "descriptor": "Technology & Information Architectures",
+          "id": "bb69a804fb1201f7535003ed1301d875",
+          "count": 875
+        },
+        {
+          "descriptor": "Engineering & Networks",
+          "id": "bb69a804fb120147d2f209ed1301e275",
+          "count": 812
+        },
+        {
+          "descriptor": "Finance",
+          "id": "bb69a804fb1201284a6eefec1301b275",
+          "count": 391
+        },
+        {
+          "descriptor": "Program, Project & Service Management",
+          "id": "bb69a804fb1201d0cfcffbec1301ca75",
+          "count": 358
+        },
+        {
+          "descriptor": "Performance & Quality",
+          "id": "2a233480092910010b11a28caddf0000",
+          "count": 330
+        },
+        {
+          "descriptor": "Training & Development",
+          "id": "d40a4261d2a710010b0b8deb562b0000",
+          "count": 269
+        },
+        {
+          "descriptor": "Sourcing & Procurement Services",
+          "id": "354c4302127610010b159acd6f9f0000",
+          "count": 260
+        },
+        {
+          "descriptor": "Strategy Services",
+          "id": "bb69a804fb1201c74c5a02ed1301d675",
+          "count": 258
+        },
+        {
+          "descriptor": "Sales Enablement",
+          "id": "bb69a804fb12011fd2effeec1301d075",
+          "count": 247
+        },
+        {
+          "descriptor": "Marketing & Communications",
+          "id": "bb69a804fb120170aceff7ec1301c275",
+          "count": 234
+        },
+        {
+          "descriptor": "Content",
+          "id": "7e063b45415a10010b114dea4e450000",
+          "count": 205
+        },
+        {
+          "descriptor": "Creative",
+          "id": "ee24513a3f8c10010b0f38f613d20000",
+          "count": 199
+        },
+        {
+          "descriptor": "Delivery Leadership",
+          "id": "b43b21406d0f1001262ce6d954ba0000",
+          "count": 186
+        },
+        {
+          "descriptor": "Solution Architecture & Planning",
+          "id": "bb69a804fb1201f3415d01ed1301d475",
+          "count": 173
+        },
+        {
+          "descriptor": "Risk & Compliance",
+          "id": "eac0a7fb863b10010b0b6e835e860000",
+          "count": 163
+        },
+        {
+          "descriptor": "Legal & Commercial Services",
+          "id": "bb69a804fb1201e28ce8f4ec1301be75",
+          "count": 100
+        },
+        {
+          "descriptor": "Sales",
+          "id": "bb69a804fb120126dceefdec1301ce75",
+          "count": 93
+        },
+        {
+          "descriptor": "Industry Solutions & Services",
+          "id": "bb69a804fb120154ac43f1ec1301b675",
+          "count": 84
+        },
+        {
+          "descriptor": "Product Development",
+          "id": "018e0541bc6a10010b0d16d426f10000",
+          "count": 80
+        },
+        {
+          "descriptor": "Digital Design",
+          "id": "7d0f281a413910010b14ddd489360000",
+          "count": 70
+        },
+        {
+          "descriptor": "Analytics and Insights",
+          "id": "bb69a804fb1201d09a18f6ec1301c075",
+          "count": 69
+        },
+        {
+          "descriptor": "User Experience Design",
+          "id": "11a6f9a6256c10010b0ed36ef26d0000",
+          "count": 49
+        },
+        {
+          "descriptor": "Workplace Management & Service Solutions",
+          "id": "bb69a804fb12013aea4f04ed1301da75",
+          "count": 45
+        },
+        {
+          "descriptor": "Infrastructure & Capital Projects",
+          "id": "8b1169bbcc9810018ef22ff71b150000",
+          "count": 42
+        },
+        {
+          "descriptor": "Account Leadership",
+          "id": "bb69a804fb1201b7ef97e9ec1301aa75",
+          "count": 40
+        },
+        {
+          "descriptor": "Research & Innovation",
+          "id": "bb69a804fb1201b31ad2fcec1301cc75",
+          "count": 27
+        },
+        {
+          "descriptor": "Administrative Services",
+          "id": "f6c1283df79610010b0e91702aab0000",
+          "count": 13
+        },
+        {
+          "descriptor": "Offerings Development",
+          "id": "db476340ab6a10010b167a5bce850000",
+          "count": 6
+        },
+        {
+          "descriptor": "Cloud (Inactive)",
+          "id": "bb69a804fb12010b6f900ced1301e675",
+          "count": 1
+        },
+        {
+          "descriptor": "Management Consulting (Inactive)",
+          "id": "bb69a804fb1201e5bdbc08ed1301e075",
+          "count": 1
+        },
+        {
+          "descriptor": "Organization & Practice Leadership",
+          "id": "bb69a804fb1201f966cbf9ec1301c675",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "facetParameter": "workerSubType",
+      "descriptor": "Skills",
+      "values": [
+        {
+          "descriptor": "Release Management",
+          "id": "f1363cc3535f0101a3dcd6bf9fc00000",
+          "count": 8287
+        },
+        {
+          "descriptor": "Software Quality Assurance (SQA)",
+          "id": "4724752120890101a004a538df800000",
+          "count": 6026
+        },
+        {
+          "descriptor": "Application Design",
+          "id": "1f604490320d10016e835a9a9fe50000",
+          "count": 5569
+        },
+        {
+          "descriptor": "Application Lifecycle Management (ALM)",
+          "id": "31027b949a530101b6a4397d8cc50000",
+          "count": 5444
+        },
+        {
+          "descriptor": "Technical Documentation",
+          "id": "3aa622afe4ff016d762b46b05a018364",
+          "count": 5132
+        },
+        {
+          "descriptor": "System Defect Management",
+          "id": "2ea7fc30fd8201fcb9c9e6f05a01a376",
+          "count": 5126
+        },
+        {
+          "descriptor": "Java Full Stack Development",
+          "id": "c840b7e46c1f0101b54272217ca90000",
+          "count": 3634
+        },
+        {
+          "descriptor": "Change Management",
+          "id": "378d31f968b601019e492684e5b10000",
+          "count": 3350
+        },
+        {
+          "descriptor": "Requirements Analysis",
+          "id": "3e77c2d080cb0101a0ec3da97c300000",
+          "count": 3343
+        },
+        {
+          "descriptor": "Program Project Management",
+          "id": "82d75d0008e1101130c7612a53df0000",
+          "count": 3219
+        },
+        {
+          "descriptor": "Operational Excellence",
+          "id": "fcc4da568b0501019fa18711b6830000",
+          "count": 2965
+        },
+        {
+          "descriptor": "Critical Thinking",
+          "id": "3e77c2d080cb01019dd52db05f2f0000",
+          "count": 2919
+        },
+        {
+          "descriptor": "Accenture Delivery Methods (ADM)",
+          "id": "31485366cd3f01fba8b09b295a01e173",
+          "count": 2791
+        },
+        {
+          "descriptor": "Build Management",
+          "id": "c5e249ff013e0101c21abd5a5e1b0000",
+          "count": 2698
+        },
+        {
+          "descriptor": "Operations Management",
+          "id": "851d32045cad01019d3e5016678c0000",
+          "count": 2675
+        },
+        {
+          "descriptor": "Estimation and Planning",
+          "id": "3eea224f4fe310011cb5b2df75750000",
+          "count": 2606
+        },
+        {
+          "descriptor": "Business Process Design",
+          "id": "f1363cc3535f0101a3dd7ea0ae970000",
+          "count": 2547
+        },
+        {
+          "descriptor": "Industry Insight",
+          "id": "bb307570ea970161e8c60e315a015056",
+          "count": 2484
+        },
+        {
+          "descriptor": "Python (Programming Language)",
+          "id": "1b919f60903101019d0d13a015bc0000",
+          "count": 2433
+        },
+        {
+          "descriptor": "Customer Service Technology",
+          "id": "c840b7e46c1f0101a02f934984a00000",
+          "count": 2412
+        },
+        {
+          "descriptor": "Written Communication",
+          "id": "591d22564e010101a315d0b4ceb70000",
+          "count": 2364
+        },
+        {
+          "descriptor": "Service Quality Management",
+          "id": "31027b949a5301020929883ef0110000",
+          "count": 2272
+        },
+        {
+          "descriptor": "Oral Communications",
+          "id": "9d192f8e25be0101ac04eb14543d0000",
+          "count": 2268
+        },
+        {
+          "descriptor": "Customer Insights",
+          "id": "4724752120890101a737d20daf4c0000",
+          "count": 2222
+        },
+        {
+          "descriptor": "Coaching",
+          "id": "7e3eaf468d3d01019cf67a09a2e70000",
+          "count": 2220
+        },
+        {
+          "descriptor": "Sales and Operations Planning (S&OP)",
+          "id": "f997d61205860101f21e3efa38b00000",
+          "count": 2183
+        },
+        {
+          "descriptor": "Customer Experience Management",
+          "id": "f1363cc3535f0101a3dd666387ef0000",
+          "count": 2109
+        },
+        {
+          "descriptor": "Customer Satisfaction",
+          "id": "f4f35b301c260101a0a9e369b3710000",
+          "count": 2097
+        },
+        {
+          "descriptor": "SAP ABAP Development for HANA",
+          "id": "d1e9c58d778110016b67c4af66670000",
+          "count": 2076
+        },
+        {
+          "descriptor": "Data Analysis & Interpretation",
+          "id": "be4c8e613f870197027d1ffe5a018f53",
+          "count": 1842
+        },
+        {
+          "descriptor": "Machine Learning (ML)",
+          "id": "7dd91fc5f26c1001841f2a60a01b0001",
+          "count": 1683
+        },
+        {
+          "descriptor": "Value Architecture & Realization",
+          "id": "10344f8718f6014732ba87125b01ba5d",
+          "count": 1656
+        },
+        {
+          "descriptor": "Group Problem Solving",
+          "id": "030b0baaec1d1038ffa85cbf6faf0000",
+          "count": 1630
+        },
+        {
+          "descriptor": "Cost Accounting",
+          "id": "05e48e00477f0101a4f7e876f0e00000",
+          "count": 1627
+        },
+        {
+          "descriptor": "Solution Architecture",
+          "id": "1a775c2261930101a229ff1842d90001",
+          "count": 1558
+        },
+        {
+          "descriptor": "Supply Chain - Demand Management",
+          "id": "7b2467ccd12901bec34278065b017aaf",
+          "count": 1460
+        },
+        {
+          "descriptor": "Stakeholder Management",
+          "id": "10933d76b48f01019e1e7f9140340000",
+          "count": 1458
+        },
+        {
+          "descriptor": "Research Analysis and Interpretation",
+          "id": "2ea7fc30fd82019b93bebbeb5a019a76",
+          "count": 1403
+        },
+        {
+          "descriptor": "Regulatory Compliance",
+          "id": "fcc4da568b050101a0a82302dc200000",
+          "count": 1364
+        },
+        {
+          "descriptor": "Customer Interaction Management",
+          "id": "4724752120890101fccd6275b02d0000",
+          "count": 1284
+        },
+        {
+          "descriptor": "Spring Boot",
+          "id": "378d31f968b601019f05e5251ee50000",
+          "count": 1251
+        },
+        {
+          "descriptor": "Large Language Models (LLMs)",
+          "id": "bb7a25648c691012d420936cb8dc0000",
+          "count": 1148
+        },
+        {
+          "descriptor": "Credit Management & Assessment",
+          "id": "a6f2d66127500169f1369e045b016d5d",
+          "count": 1147
+        },
+        {
+          "descriptor": "Talent Management",
+          "id": "9d192f8e25be0101a1958af33c030000",
+          "count": 1145
+        },
+        {
+          "descriptor": "Data Science",
+          "id": "3e77c2d080cb0101a0ec5834f9420000",
+          "count": 1083
+        },
+        {
+          "descriptor": "Salesforce Lightning Web Components",
+          "id": "ab058d63d5861001522f8151ebea0000",
+          "count": 1054
+        },
+        {
+          "descriptor": "Data Engineering",
+          "id": "f1363cc3535f0101a840807f8e6c0000",
+          "count": 971
+        },
+        {
+          "descriptor": "Process Improvements",
+          "id": "b995141fc70b0101a373e86351390000",
+          "count": 951
+        },
+        {
+          "descriptor": "Go-to-Market Strategies",
+          "id": "63e792339baa01019dc3a9850e1c0000",
+          "count": 935
+        },
+        {
+          "descriptor": "Collections Processing",
+          "id": "4652518479270101ff624af17b260000",
+          "count": 931
+        },
+        {
+          "descriptor": "Databricks Unified Data Analytics Platform",
+          "id": "10933d76b48f0101ed723d91c1490000",
+          "count": 926
+        },
+        {
+          "descriptor": "Reporting Analytics",
+          "id": "d27fcd96a436012d25a007ed5a010e6a",
+          "count": 900
+        },
+        {
+          "descriptor": "SLA Management",
+          "id": "591d22564e010101fac342b4330b0000",
+          "count": 895
+        },
+        {
+          "descriptor": "Account Reconciliations",
+          "id": "92b9fb86123f01019ea83bae4c620000",
+          "count": 879
+        },
+        {
+          "descriptor": "Cash Application Processing",
+          "id": "c1c0c12e0dd60146d1d009125b01e057",
+          "count": 865
+        }
+      ]
+    },
+    {
+      "facetParameter": "timeType",
+      "descriptor": "Time Type",
+      "values": [
+        {
+          "descriptor": "Full time",
+          "id": "a31fc2f90d56014bd4fe0028f7145a00",
+          "count": 63354
+        },
+        {
+          "descriptor": "Part time",
+          "id": "a31fc2f90d5601ead3de0028f7145900",
+          "count": 48
+        }
+      ]
+    },
+    {
+      "facetParameter": "locationMainGroup",
+      "values": [
+        {
+          "facetParameter": "locationCountry",
+          "descriptor": "Country",
+          "values": [
+            {
+              "descriptor": "Argentina",
+              "id": "e42ad5eac46d4cc9b367ceaef42577c5",
+              "count": 183
+            },
+            {
+              "descriptor": "Australia",
+              "id": "d903bb3fedad45039383f6de334ad4db",
+              "count": 207
+            },
+            {
+              "descriptor": "Austria",
+              "id": "d004c0d1a6c84511ab048669fcdf9fd7",
+              "count": 24
+            },
+            {
+              "descriptor": "Belgium",
+              "id": "a04ea128f43a42e59b1e6a19e8f0b374",
+              "count": 101
+            },
+            {
+              "descriptor": "Brazil",
+              "id": "1a29bb1357b240ab99a2fa755cc87c0e",
+              "count": 244
+            },
+            {
+              "descriptor": "Bulgaria",
+              "id": "25f4875dc598484dbeee857eb2d81652",
+              "count": 23
+            },
+            {
+              "descriptor": "Canada",
+              "id": "a30a87ed25634629aa6c3958aa2b91ea",
+              "count": 120
+            },
+            {
+              "descriptor": "Chile",
+              "id": "53fe09ef12b9408682a1d2439823f2e0",
+              "count": 29
+            },
+            {
+              "descriptor": "China/Hong Kong SAR",
+              "id": "d4afdeb461d446e4babd204bd102dba8",
+              "count": 41
+            },
+            {
+              "descriptor": "China/Mainland",
+              "id": "6cb77610a8a543aea2d6bc10457e35d4",
+              "count": 107
+            },
+            {
+              "descriptor": "Colombia",
+              "id": "e8106cd6a3534f2dba6fdee2d41db89d",
+              "count": 81
+            },
+            {
+              "descriptor": "Costa Rica",
+              "id": "99abe7e6bb3f4c108aebebf01a369ec5",
+              "count": 80
+            },
+            {
+              "descriptor": "Czech Republic",
+              "id": "fc078443155c4ad294201ecf5a61a499",
+              "count": 63
+            },
+            {
+              "descriptor": "Denmark",
+              "id": "49ab063f422741e2aef271de00efeac8",
+              "count": 32
+            },
+            {
+              "descriptor": "Egypt",
+              "id": "d865e83093ad42319653b08e61f7db49",
+              "count": 186
+            },
+            {
+              "descriptor": "Finland",
+              "id": "0afb2fa656da42e8bfb6d47bd24a26fa",
+              "count": 27
+            },
+            {
+              "descriptor": "France",
+              "id": "54c5b6971ffb4bf0b116fe7651ec789a",
+              "count": 248
+            },
+            {
+              "descriptor": "Germany",
+              "id": "dcc5b7608d8644b3a93716604e78e995",
+              "count": 221
+            },
+            {
+              "descriptor": "Greece",
+              "id": "566388c1eb974c42bd9e3da4c2f57d60",
+              "count": 64
+            },
+            {
+              "descriptor": "Hungary",
+              "id": "9db257f5937e4421b2fac64eec6832f8",
+              "count": 35
+            },
+            {
+              "descriptor": "India",
+              "id": "c4f78be1a8f14da0ab49ce1162348a5e",
+              "count": 55719
+            },
+            {
+              "descriptor": "Indonesia",
+              "id": "b31234dbcdda4da9ba8fa073c5944e36",
+              "count": 128
+            },
+            {
+              "descriptor": "Ireland",
+              "id": "04a05835925f45b3a59406a2a6b72c8a",
+              "count": 84
+            },
+            {
+              "descriptor": "Italy",
+              "id": "8cd04a563fd94da7b06857a79faaf815",
+              "count": 253
+            },
+            {
+              "descriptor": "Japan",
+              "id": "8b705da2becf43cfaccc091da0988ab2",
+              "count": 244
+            },
+            {
+              "descriptor": "Kuwait",
+              "id": "eb2e6ec0f73c4b0e94c68396631332d6",
+              "count": 4
+            },
+            {
+              "descriptor": "Latvia",
+              "id": "1c026f3b1b8640d8bdfcb95466663e4d",
+              "count": 38
+            },
+            {
+              "descriptor": "Lithuania",
+              "id": "8a0328effd25491fb8e6a08801f08e94",
+              "count": 43
+            },
+            {
+              "descriptor": "Luxembourg",
+              "id": "328b82f597514643a7683a78fc67c3f1",
+              "count": 14
+            },
+            {
+              "descriptor": "Malaysia",
+              "id": "972dc4ba8d454bc0b893ff84b1529077",
+              "count": 418
+            },
+            {
+              "descriptor": "Mauritius",
+              "id": "a759018ba6ac489d9f16c086b914e1b6",
+              "count": 32
+            },
+            {
+              "descriptor": "Mexico",
+              "id": "e2adff9272454660ac4fdb56fc70bb51",
+              "count": 174
+            },
+            {
+              "descriptor": "Netherlands",
+              "id": "9696868b09c64d52a62ee13b052383cc",
+              "count": 168
+            },
+            {
+              "descriptor": "New Zealand",
+              "id": "55273a1b49934d97ae15342ef51f6b95",
+              "count": 46
+            },
+            {
+              "descriptor": "Norway",
+              "id": "d07f8ca8625e4345b98a91d0558b872a",
+              "count": 37
+            },
+            {
+              "descriptor": "Philippines",
+              "id": "e56f1daf83e04bacae794ba5c5593560",
+              "count": 743
+            },
+            {
+              "descriptor": "Poland",
+              "id": "131d5ac7e3ee4d7b962bdc96e498e412",
+              "count": 271
+            },
+            {
+              "descriptor": "Portugal",
+              "id": "2e8c5034deb045d49315417c347472ca",
+              "count": 111
+            },
+            {
+              "descriptor": "Puerto Rico",
+              "id": "0a076377c3d94bc1b4ed46b4e7d82a50",
+              "count": 1
+            },
+            {
+              "descriptor": "Qatar",
+              "id": "f5ff182c7fab406bbb110cc1f7e99064",
+              "count": 6
+            },
+            {
+              "descriptor": "Romania",
+              "id": "f2e609fe92974a55a05fc1cdc2852122",
+              "count": 120
+            },
+            {
+              "descriptor": "Saudi Arabia",
+              "id": "50423b5190ad49bb89e94cd58dfaad69",
+              "count": 30
+            },
+            {
+              "descriptor": "Serbia",
+              "id": "b3f8697442124d6aaeb752a13c1e8491",
+              "count": 1
+            },
+            {
+              "descriptor": "Singapore",
+              "id": "80938777cac5440fab50d729f9634969",
+              "count": 163
+            },
+            {
+              "descriptor": "Slovakia",
+              "id": "d2f29df0c90f4cea9e7d17f2ed8a86ad",
+              "count": 35
+            },
+            {
+              "descriptor": "South Africa",
+              "id": "4db3c26940b944919b83612cc1193eed",
+              "count": 23
+            },
+            {
+              "descriptor": "Spain",
+              "id": "bd34c524a6a04ae6915f5d96fa086199",
+              "count": 360
+            },
+            {
+              "descriptor": "Sweden",
+              "id": "6a800a4736884df5826858d435650f45",
+              "count": 37
+            },
+            {
+              "descriptor": "Switzerland",
+              "id": "187134fccb084a0ea9b4b95f23890dbe",
+              "count": 8
+            },
+            {
+              "descriptor": "Thailand",
+              "id": "873d0f604e3b458c990cb4d83a5c0f14",
+              "count": 118
+            },
+            {
+              "descriptor": "Türkiye",
+              "id": "c2e3bac5bbbb47b29dfc6e8b56a1586e",
+              "count": 17
+            },
+            {
+              "descriptor": "United Arab Emirates",
+              "id": "7b4fa1f369bd4604ba3692682fcbe345",
+              "count": 39
+            },
+            {
+              "descriptor": "United Kingdom",
+              "id": "29247e57dbaf46fb855b224e03170bc7",
+              "count": 295
+            },
+            {
+              "descriptor": "United States of America",
+              "id": "bc33aa3152ec42d4995f4791a106ed09",
+              "count": 538
+            },
+            {
+              "descriptor": "Vietnam",
+              "id": "db69e8c8446c11de98360015c5e6daf6",
+              "count": 17
+            }
+          ]
+        },
+        {
+          "facetParameter": "locations",
+          "descriptor": "City",
+          "values": [
+            {
+              "descriptor": "Aachen",
+              "id": "b1cf57e2eff70101cf50ba16ac8a0000",
+              "count": 14
+            },
+            {
+              "descriptor": "Aarhus, Building T2 TRAE",
+              "id": "c13fdd201bfd1001c292e51b79de0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Abu Dhabi, Sowwah Square - Al Sila Tower",
+              "id": "940562459a6f01591ac0033bc300171b",
+              "count": 15
+            },
+            {
+              "descriptor": "A Coruna, Canton Grande",
+              "id": "940562459a6f0162bdce413cc300dc1e",
+              "count": 16
+            },
+            {
+              "descriptor": "Adelaide",
+              "id": "3666ef49a96a01d604f90279cf00995d",
+              "count": 5
+            },
+            {
+              "descriptor": "Adelaide, 121 King William Street",
+              "id": "9d36adfb47551001977a0580a24b0000",
+              "count": 2
+            },
+            {
+              "descriptor": "Ahmedabad",
+              "id": "3666ef49a96a0169d9764378cf00005b",
+              "count": 869
+            },
+            {
+              "descriptor": "Ahmedabad, AMDC1A",
+              "id": "26289940b8821000f9a71913438e0000",
+              "count": 12
+            },
+            {
+              "descriptor": "Aizuwakamatsu",
+              "id": "3666ef49a96a0133756a4678cf000a5b",
+              "count": 4
+            },
+            {
+              "descriptor": "Akron, 12 East Exchange Street, IX",
+              "id": "515ccf147ee71006c5a9290308b10000",
+              "count": 3
+            },
+            {
+              "descriptor": "Albany, 69 State St, Corp",
+              "id": "940562459a6f013a15dc6d41c300312e",
+              "count": 266
+            },
+            {
+              "descriptor": "Alberta - Calgary",
+              "id": "3666ef49a96a01e38645f378cf005d5d",
+              "count": 21
+            },
+            {
+              "descriptor": "Alicante",
+              "id": "3666ef49a96a01a6da94607acf002162",
+              "count": 13
+            },
+            {
+              "descriptor": "Alicante, Palacio de la Fuente",
+              "id": "749a9b40fa4b1002113553629bb30000",
+              "count": 12
+            },
+            {
+              "descriptor": "Amarillo, 1050 N Western St., MS",
+              "id": "2c6953ad964e10019777020557190000",
+              "count": 2
+            },
+            {
+              "descriptor": "Amazonas - Manaus",
+              "id": "3666ef49a96a018fc02fc777cf004d59",
+              "count": 5
+            },
+            {
+              "descriptor": "Amsterdam",
+              "id": "3666ef49a96a0161afd76d77cf002358",
+              "count": 159
+            },
+            {
+              "descriptor": "Amsterdam, Gustav Mahlerplein 90",
+              "id": "940562459a6f0109a4a36940c300072b",
+              "count": 5
+            },
+            {
+              "descriptor": "Andover, 400 Minuteman Rd, ACN Tech",
+              "id": "fd5a0172bc651000d6681c324c100000",
+              "count": 2
+            },
+            {
+              "descriptor": "Antwerp",
+              "id": "3666ef49a96a01798ad4aa77cf00f858",
+              "count": 1
+            },
+            {
+              "descriptor": "AR - Bentonville",
+              "id": "3666ef49a96a01de89ece579cf008760",
+              "count": 1
+            },
+            {
+              "descriptor": "Arlington, 1201 Wilson, Corp",
+              "id": "d35f031a68ec1001e5c995abf4f70000",
+              "count": 308
+            },
+            {
+              "descriptor": "Arlington, 800 N Glebe, AFS",
+              "id": "940562459a6f010c9ea7af3ac300221a",
+              "count": 51
+            },
+            {
+              "descriptor": "Assago",
+              "id": "3666ef49a96a01e7bc045e78cf00645b",
+              "count": 22
+            },
+            {
+              "descriptor": "Assago, Via del Mulino 11a",
+              "id": "ba61f4e4a0360101966706d7ff330000",
+              "count": 45
+            },
+            {
+              "descriptor": "Athens",
+              "id": "3666ef49a96a01a002d7bf77cf003459",
+              "count": 52
+            },
+            {
+              "descriptor": "Athens, 112 A Vasilissis Sofia, Arhs",
+              "id": "febafb7c36211000d65c7d0ea5720000",
+              "count": 3
+            },
+            {
+              "descriptor": "Athens, Arcadias",
+              "id": "940562459a6f015aaeaba63ec300c625",
+              "count": 6
+            },
+            {
+              "descriptor": "Atlanta, 2971 Olympic Industr Dr, Song",
+              "id": "7598ac8cc81c01f6b4553c329601f3a1",
+              "count": 2
+            },
+            {
+              "descriptor": "Atlanta, 3525 Piedmont Rd NE., ACN Ops",
+              "id": "72e10241c57c10012565deeb670a0000",
+              "count": 15
+            },
+            {
+              "descriptor": "Atlanta, 3565 Piedmont Rd NE., ACN Ops",
+              "id": "7b2467ccd129013f361a866c9601eebc",
+              "count": 35
+            },
+            {
+              "descriptor": "Atlanta, 75 Fifth, Corp",
+              "id": "940562459a6f018bdb633741c3007d2d",
+              "count": 310
+            },
+            {
+              "descriptor": "Auckland",
+              "id": "3666ef49a96a014bcd9db078cf007c5c",
+              "count": 37
+            },
+            {
+              "descriptor": "Auckland, 125 Queen Street, GS Office",
+              "id": "940562459a6f0133220a8740c3006b2b",
+              "count": 1
+            },
+            {
+              "descriptor": "Auckland, 131 Queen",
+              "id": "f1603ece72f31000fa5717d11fd40000",
+              "count": 6
+            },
+            {
+              "descriptor": "Augsburg",
+              "id": "dceac6ff32440101cd84434bdda90000",
+              "count": 1
+            },
+            {
+              "descriptor": "Austin, 12365 Riata Trace Pkwy, ACN OPS",
+              "id": "940562459a6f017c1de84041c3009b2d",
+              "count": 6
+            },
+            {
+              "descriptor": "Austin, 323 Congress Avenue, Corp",
+              "id": "940562459a6f019ea9f5b83dc300fb22",
+              "count": 298
+            },
+            {
+              "descriptor": "AZ - Chandler",
+              "id": "945f92a9faf71020631248687f290000",
+              "count": 1
+            },
+            {
+              "descriptor": "AZ - Scottsdale",
+              "id": "3666ef49a96a01faff15e079cf007360",
+              "count": 5
+            },
+            {
+              "descriptor": "Badajoz, Siglo XXI",
+              "id": "940562459a6f01b8d4b2143cc300501e",
+              "count": 1
+            },
+            {
+              "descriptor": "Bahia - Salvador",
+              "id": "3666ef49a96a015914af3179cf00345e",
+              "count": 32
+            },
+            {
+              "descriptor": "Ballarat, 11 University Drive",
+              "id": "111b5f013a5210012671abe9d54c0000",
+              "count": 18
+            },
+            {
+              "descriptor": "Bangkok",
+              "id": "3666ef49a96a017cd301eb78cf003f5d",
+              "count": 91
+            },
+            {
+              "descriptor": "Bangkok, 1706/34 Rama VI Road",
+              "id": "94a3455944d0100f5dbac9f885cf0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Bangkok, FYI Center",
+              "id": "15ea696faa99101f5eaf5728ed510000",
+              "count": 2
+            },
+            {
+              "descriptor": "Bangkok, Sathorn Prime Tower",
+              "id": "63fe6d8db4e00100ed960995b4940000",
+              "count": 7
+            },
+            {
+              "descriptor": "Bangkok, The ParQ",
+              "id": "916f88545ee41001967b808b8b0b0000",
+              "count": 12
+            },
+            {
+              "descriptor": "Bangkok, Tipco Tower",
+              "id": "940562459a6f016257bc2641c300462d",
+              "count": 5
+            },
+            {
+              "descriptor": "Barcelona",
+              "id": "3666ef49a96a010fc3342f7acf007261",
+              "count": 79
+            },
+            {
+              "descriptor": "Barcelona, Diagonal 640, AXIS",
+              "id": "2fe488b5b8381000535d3ab1bf4e0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Barcelona, Gran Via dels Corts Catalanes",
+              "id": "940562459a6f016a9068233cc3007d1e",
+              "count": 2
+            },
+            {
+              "descriptor": "Barcelona, La Rotonda",
+              "id": "940562459a6f01d2e594213cc300781e",
+              "count": 68
+            },
+            {
+              "descriptor": "Bari",
+              "id": "3666ef49a96a018291fe6679cf00e85e",
+              "count": 19
+            },
+            {
+              "descriptor": "Bari, Piazza Aldo Moro 37",
+              "id": "2bfadc0b17a8010196ec77a49e660000",
+              "count": 6
+            },
+            {
+              "descriptor": "Barranquilla, Carrera 53",
+              "id": "dc4641b298791036b5dc8b450a530000",
+              "count": 8
+            },
+            {
+              "descriptor": "Barueri, Green Valley, Andromeda",
+              "id": "940562459a6f01ec80b24e38c300ca12",
+              "count": 30
+            },
+            {
+              "descriptor": "Basel, Grosspeter Tower",
+              "id": "580d6f3322941001e52f1670abb50000",
+              "count": 1
+            },
+            {
+              "descriptor": "Batam, Nongsa Digital Park",
+              "id": "c226685a6e70100bc2f7cb509e730000",
+              "count": 5
+            },
+            {
+              "descriptor": "Beavercreek, 4407 Walnut St., AFS",
+              "id": "24c952593f4b010190bcd61157f90000",
+              "count": 2
+            },
+            {
+              "descriptor": "Beaverton, 15220 NW Greenbrier, Corp",
+              "id": "58b4de248639100173f85b042d300000",
+              "count": 201
+            },
+            {
+              "descriptor": "Beaverton, 4145 SW Watson, Corp",
+              "id": "b7f391b7861e100197436cefa1210000",
+              "count": 102
+            },
+            {
+              "descriptor": "Beijing",
+              "id": "3666ef49a96a0189c0208478cf00f05b",
+              "count": 14
+            },
+            {
+              "descriptor": "Beijing, Hong Ji Tower",
+              "id": "940562459a6f01b49db6463bc300f81b",
+              "count": 2
+            },
+            {
+              "descriptor": "Beijing, World Financial Center",
+              "id": "940562459a6f01c476ca423bc300ee1b",
+              "count": 2
+            },
+            {
+              "descriptor": "Belem, Cesupa",
+              "id": "3a2b0cb04e5f1001264efa5ba31d0000",
+              "count": 20
+            },
+            {
+              "descriptor": "Belen",
+              "id": "6789b75c1b5b1000e676ddf61a080000",
+              "count": 5
+            },
+            {
+              "descriptor": "Belen, La Ribera",
+              "id": "6bb42f47f6911000bec2e796b8e10000",
+              "count": 7
+            },
+            {
+              "descriptor": "Belgrade",
+              "id": "ecfe220770d8010142615fd3031f0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Belo Horizonte, Boulevard Corporate",
+              "id": "940562459a6f017d6c58413ec300a424",
+              "count": 22
+            },
+            {
+              "descriptor": "Bengaluru",
+              "id": "3666ef49a96a019a589ae377cf00b659",
+              "count": 22681
+            },
+            {
+              "descriptor": "Bengaluru, BDC10A",
+              "id": "940562459a6f0178261bbd3ec3000c26",
+              "count": 1
+            },
+            {
+              "descriptor": "Bengaluru, BDC11A",
+              "id": "940562459a6f014efb74df3ec3007526",
+              "count": 1
+            },
+            {
+              "descriptor": "Bengaluru, BDC14A",
+              "id": "ac6d4ea6fd6b0149bc1401da9401929c",
+              "count": 2
+            },
+            {
+              "descriptor": "Bengaluru, BDC7A",
+              "id": "940562459a6f01b1d9e6d43ec3005226",
+              "count": 18
+            },
+            {
+              "descriptor": "Bengaluru, BDC7C",
+              "id": "940562459a6f0141182dd83ec3005c26",
+              "count": 34
+            },
+            {
+              "descriptor": "Bengaluru, BDC9A",
+              "id": "940562459a6f01a9f3abbe3ec3001126",
+              "count": 1076
+            },
+            {
+              "descriptor": "Bentonville, 801 SW 12th St., Song",
+              "id": "01ec630684d10191b678d5ee95014ea5",
+              "count": 4
+            },
+            {
+              "descriptor": "Bentonville, 805 S Walton Blvd., Corp",
+              "id": "940562459a6f01faec84db3dc3006923",
+              "count": 266
+            },
+            {
+              "descriptor": "Berlin",
+              "id": "3666ef49a96a01acf50bbd79cf000060",
+              "count": 156
+            },
+            {
+              "descriptor": "Berlin, Hallesches Ufer 40",
+              "id": "6f8a5b504f92100124a62298dce80000",
+              "count": 9
+            },
+            {
+              "descriptor": "Bern",
+              "id": "3666ef49a96a01ebe8ce2a79cf001b5e",
+              "count": 2
+            },
+            {
+              "descriptor": "Betim, Avenida Contorno",
+              "id": "940562459a6f0142b1c16f38c3001f13",
+              "count": 17
+            },
+            {
+              "descriptor": "Bhubaneswar",
+              "id": "8030b874c5221000c2ef4a54bfc20000",
+              "count": 1395
+            },
+            {
+              "descriptor": "Bhubaneswar, BBDC1A",
+              "id": "d926533497be1001e5b669e4ab3e0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Bilbao",
+              "id": "3666ef49a96a01db525c327acf007c61",
+              "count": 27
+            },
+            {
+              "descriptor": "Bilbao, Derio 803",
+              "id": "940562459a6f01aa77e81f3cc300731e",
+              "count": 1
+            },
+            {
+              "descriptor": "Bilbao, Torre Iberdrola",
+              "id": "940562459a6f0161630a1b3cc300641e",
+              "count": 14
+            },
+            {
+              "descriptor": "Birmingham",
+              "id": "3666ef49a96a014c7d65f077cf00e359",
+              "count": 17
+            },
+            {
+              "descriptor": "Birmingham, 1876 Data, MS",
+              "id": "940562459a6f010615dc3241c3006e2d",
+              "count": 2
+            },
+            {
+              "descriptor": "Birmingham, Cornerblock",
+              "id": "dc17f81a54251001c2932c2c73970000",
+              "count": 15
+            },
+            {
+              "descriptor": "Birmingham, Norfolk House",
+              "id": "d9f3bc00fb5d016b0ab4acf59601d229",
+              "count": 4
+            },
+            {
+              "descriptor": "Blagnac",
+              "id": "3666ef49a96a0116e390847acf00a362",
+              "count": 32
+            },
+            {
+              "descriptor": "Blagnac, Le Galilee",
+              "id": "adc5954d35a8100173afbe7768f80000",
+              "count": 6
+            },
+            {
+              "descriptor": "Bloomington, 301 Prospect, FS",
+              "id": "940562459a6f01a5ad7ad141c300622f",
+              "count": 2
+            },
+            {
+              "descriptor": "Bloomington, 7760 France Ave S, ACN Tech",
+              "id": "07892f815ec31001c1bc6e9525550000",
+              "count": 2
+            },
+            {
+              "descriptor": "Bogota",
+              "id": "3666ef49a96a011575bca67acf000763",
+              "count": 1
+            },
+            {
+              "descriptor": "Bogota, Carrera 7",
+              "id": "a4ccd89147951000fa6d988c92e40000",
+              "count": 59
+            },
+            {
+              "descriptor": "Bologna",
+              "id": "3666ef49a96a01e311ef5379cf00a25e",
+              "count": 10
+            },
+            {
+              "descriptor": "Bologna, Via Domenico Svampa 9",
+              "id": "7ec5225480311000d76eb1f5bd6d0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Bonn",
+              "id": "3666ef49a96a01ddde96c879cf002360",
+              "count": 18
+            },
+            {
+              "descriptor": "Boston, 888 Boylston, Corp",
+              "id": "940562459a6f012a373c4841c300b42d",
+              "count": 313
+            },
+            {
+              "descriptor": "Braga",
+              "id": "3666ef49a96a019dc2819078cf001d5c",
+              "count": 18
+            },
+            {
+              "descriptor": "Braga, Polo de Negocios de Braga",
+              "id": "940562459a6f011ddcc8ce40c300472c",
+              "count": 6
+            },
+            {
+              "descriptor": "Brasilia, Parque Cidade Corporate",
+              "id": "940562459a6f01a750c2453ec300b324",
+              "count": 21
+            },
+            {
+              "descriptor": "Brasov",
+              "id": "3666ef49a96a013fc5f52e78cf00b55a",
+              "count": 17
+            },
+            {
+              "descriptor": "Brasov, Coresi Business Park, Bldg H1",
+              "id": "940562459a6f01133aabe940c3009c2c",
+              "count": 1
+            },
+            {
+              "descriptor": "Bratislava",
+              "id": "3666ef49a96a0139d833ec78cf00445d",
+              "count": 35
+            },
+            {
+              "descriptor": "Bremen",
+              "id": "6561e2db6fcf0101cd5d6788fc8c0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Bremen, Airport Center Bremen",
+              "id": "8c0c309436560101903d306811900000",
+              "count": 1
+            },
+            {
+              "descriptor": "Brest",
+              "id": "08a7f67703961001daa4a3a9d6890000",
+              "count": 3
+            },
+            {
+              "descriptor": "Brest, Les Ateliers des Capucins",
+              "id": "d4f0cf4449cd100148dc94509bff0000",
+              "count": 7
+            },
+            {
+              "descriptor": "Brisbane",
+              "id": "3666ef49a96a01d08d9ef978cf00765d",
+              "count": 46
+            },
+            {
+              "descriptor": "Brisbane, 10 Eagle Street",
+              "id": "940562459a6f018e2f4d0a3bc3002b1b",
+              "count": 26
+            },
+            {
+              "descriptor": "Bristol",
+              "id": "3666ef49a96a014094714f78cf002d5b",
+              "count": 11
+            },
+            {
+              "descriptor": "Bristol, Runway East",
+              "id": "739d13ee27761001b8c62522f96c0000",
+              "count": 4
+            },
+            {
+              "descriptor": "British Columbia - Vancouver",
+              "id": "3666ef49a96a016d03e33979cf00525e",
+              "count": 17
+            },
+            {
+              "descriptor": "Brooklyn, 231 Front St, Song",
+              "id": "0af82b6a2db810017389e8d7f1fb0000",
+              "count": 5
+            },
+            {
+              "descriptor": "Brussels",
+              "id": "3666ef49a96a0195ad87a477cf00df58",
+              "count": 98
+            },
+            {
+              "descriptor": "Brussels, Chancellerie Tower",
+              "id": "8e977c346d9c100173c2907bbc460000",
+              "count": 2
+            },
+            {
+              "descriptor": "Brussels, Picard 11",
+              "id": "940562459a6f0177dffe2e3ec3006324",
+              "count": 1
+            },
+            {
+              "descriptor": "Bucharest",
+              "id": "3666ef49a96a01d7c2847c78cf00d25b",
+              "count": 82
+            },
+            {
+              "descriptor": "Bucharest, Westgate Park - Bldg H1",
+              "id": "940562459a6f017a4a97df40c3007e2c",
+              "count": 5
+            },
+            {
+              "descriptor": "Budapest",
+              "id": "3666ef49a96a01ea3b1e4578cf00055b",
+              "count": 17
+            },
+            {
+              "descriptor": "Budapest, Millennium Gardens",
+              "id": "8fb73a5aee2b100211a09bcec7fb0000",
+              "count": 18
+            },
+            {
+              "descriptor": "Buenos Aires",
+              "id": "3666ef49a96a0123284cb577cf000c59",
+              "count": 172
+            },
+            {
+              "descriptor": "Buenos Aires, Parque Patricios",
+              "id": "940562459a6f0164922daf37c300e510",
+              "count": 12
+            },
+            {
+              "descriptor": "Caceres, Tajo Bldg.",
+              "id": "21bd2a74564901ff7163c6bf9501c698",
+              "count": 1
+            },
+            {
+              "descriptor": "Cagliari",
+              "id": "3666ef49a96a010f2be26078cf006e5b",
+              "count": 5
+            },
+            {
+              "descriptor": "Cagliari, Piazzetta l'Unione Sarda 24",
+              "id": "940562459a6f014a3965903fc3007d28",
+              "count": 1
+            },
+            {
+              "descriptor": "Cairo, CO55-Uvenues",
+              "id": "83eb8c12ae901001c2184c53a29e0000",
+              "count": 186
+            },
+            {
+              "descriptor": "Calgary, Brookfield Place, Corp",
+              "id": "940562459a6f015e7319a63dc300c422",
+              "count": 19
+            },
+            {
+              "descriptor": "CA - Los Angeles",
+              "id": "3666ef49a96a0173ff7f8e77cf008f58",
+              "count": 2
+            },
+            {
+              "descriptor": "CA - Mountain View",
+              "id": "9362f9f156ce1001ca0b9e0f72b50000",
+              "count": 2
+            },
+            {
+              "descriptor": "Campina Grande, Unifacisa Building 7",
+              "id": "940562459a6f0103121bcf3ac300811a",
+              "count": 29
+            },
+            {
+              "descriptor": "Canberra",
+              "id": "3666ef49a96a0100206ef878cf00715d",
+              "count": 61
+            },
+            {
+              "descriptor": "Canberra, 65 Canberra Avenue, Griffith",
+              "id": "940562459a6f01e689c4133bc3004e1b",
+              "count": 1
+            },
+            {
+              "descriptor": "Canberra, 65 Canberra Avenue Bldg",
+              "id": "940562459a6f01a32b2c153bc300531b",
+              "count": 16
+            },
+            {
+              "descriptor": "Canberra, Brindabella Business Park",
+              "id": "940562459a6f01afb9e40f3bc3003f1b",
+              "count": 15
+            },
+            {
+              "descriptor": "Capetown",
+              "id": "3666ef49a96a01ec9d90dc77cf009d59",
+              "count": 2
+            },
+            {
+              "descriptor": "Carmel, 11939 N Meridian St., Corp",
+              "id": "604149e24af80101963d38b435440000",
+              "count": 281
+            },
+            {
+              "descriptor": "Casalecchio di Reno, Via Isonzo 55",
+              "id": "940562459a6f0129f9718d3fc3007328",
+              "count": 2
+            },
+            {
+              "descriptor": "CA - San Francisco",
+              "id": "3666ef49a96a013436609c77cf00c158",
+              "count": 2
+            },
+            {
+              "descriptor": "Ceará - Fortaleza",
+              "id": "60aeedbf84b810019b2ac7c036f50000",
+              "count": 41
+            },
+            {
+              "descriptor": "Cebu, Cyberzone Building, Tower 1",
+              "id": "940562459a6f017212cd9840c3008e2b",
+              "count": 2
+            },
+            {
+              "descriptor": "Cebu City",
+              "id": "3666ef49a96a011b17c19e78cf00545c",
+              "count": 202
+            },
+            {
+              "descriptor": "Cebu City, e-Bloc Tower 2",
+              "id": "940562459a6f017102a59540c300842b",
+              "count": 3
+            },
+            {
+              "descriptor": "Cebu City, Globe Telecom IT Plaza",
+              "id": "940562459a6f019e0ea7fc39c3000118",
+              "count": 1
+            },
+            {
+              "descriptor": "Chantilly, 5155 Parkstone Dr., AFS",
+              "id": "940562459a6f019e1f759f3dc300b022",
+              "count": 2
+            },
+            {
+              "descriptor": "Charlotte, 10815 David Taylor Dr, OPS",
+              "id": "6116b82586cd1000d6698b5b05850000",
+              "count": 2
+            },
+            {
+              "descriptor": "Charlotte, 1120 S Tryon St., Corp",
+              "id": "f2e110d8a5a9100195bf91816e6b0000",
+              "count": 307
+            },
+            {
+              "descriptor": "Charlotte, 2425 Cascade Pointe Blvd, ACS",
+              "id": "bc7d8f3bb6b1011f7863cd679601fe64",
+              "count": 7
+            },
+            {
+              "descriptor": "Cheltenham",
+              "id": "3666ef49a96a011a89989879cf00975f",
+              "count": 6
+            },
+            {
+              "descriptor": "Chengdu",
+              "id": "3666ef49a96a012ddca4ee79cf00a560",
+              "count": 1
+            },
+            {
+              "descriptor": "Chengdu, Tianfu Software Park - Bldg E5",
+              "id": "940562459a6f0177fa4a513bc300161c",
+              "count": 1
+            },
+            {
+              "descriptor": "Chennai",
+              "id": "3666ef49a96a01e7d062ea77cf00cf59",
+              "count": 5377
+            },
+            {
+              "descriptor": "Chennai, CDC5A",
+              "id": "940562459a6f0169136ffe3ec300de26",
+              "count": 1
+            },
+            {
+              "descriptor": "Chennai, CDC5B",
+              "id": "940562459a6f014c6596073fc300e326",
+              "count": 3
+            },
+            {
+              "descriptor": "Chesterbrook, 955 Chesterbrook Blvd, MS",
+              "id": "dad6d47f9c8e10034ad6c7d10ab90000",
+              "count": 2
+            },
+            {
+              "descriptor": "Chicago, Accenture Tower, Corp",
+              "id": "940562459a6f014e4ca5d441c3006c2f",
+              "count": 319
+            },
+            {
+              "descriptor": "Cincinnati, 4th Street, Corp",
+              "id": "940562459a6f01010d5bdb41c300802f",
+              "count": 294
+            },
+            {
+              "descriptor": "Clayton, 7777 Bonhomme Avenue, S&C",
+              "id": "ab6d5a796f1f1002127f49fdf1280000",
+              "count": 2
+            },
+            {
+              "descriptor": "Clermont-Ferrand",
+              "id": "3666ef49a96a01d423ac597acf000862",
+              "count": 6
+            },
+            {
+              "descriptor": "Cleveland, 1400 W 10th Street, Corp",
+              "id": "940562459a6f01ec01c4d941c3007b2f",
+              "count": 297
+            },
+            {
+              "descriptor": "Cluj-Napoca",
+              "id": "3666ef49a96a01f0c3828c78cf000e5c",
+              "count": 37
+            },
+            {
+              "descriptor": "Cluj-Napoca, Hexagon Office",
+              "id": "997189e66b0b010190505c1d5dd20000",
+              "count": 3
+            },
+            {
+              "descriptor": "CO - Colorado Springs",
+              "id": "c89635ad105510349be21280b5010000",
+              "count": 2
+            },
+            {
+              "descriptor": "CO - Denver",
+              "id": "3666ef49a96a018180e60a79cf00b75d",
+              "count": 4
+            },
+            {
+              "descriptor": "Coimbatore",
+              "id": "4665e881825b0101d6fc0156c83b0000",
+              "count": 2264
+            },
+            {
+              "descriptor": "Coimbra",
+              "id": "a5e7ac9a9453100139fa678d9ff90000",
+              "count": 20
+            },
+            {
+              "descriptor": "Coimbra, Torre Arnado",
+              "id": "ee24513a3f8c100144b2844833ec0000",
+              "count": 3
+            },
+            {
+              "descriptor": "Columbus, 400 W. Nationwide Blvd, Corp",
+              "id": "940562459a6f01623469de41c3008a2f",
+              "count": 317
+            },
+            {
+              "descriptor": "Copenhagen",
+              "id": "3666ef49a96a0195942e547acf00f461",
+              "count": 16
+            },
+            {
+              "descriptor": "Copenhagen",
+              "id": "3666ef49a96a0192792f637acf002b62",
+              "count": 7
+            },
+            {
+              "descriptor": "Copenhagen, Kronprinsensgade 7",
+              "id": "a60c3826a16f1001261e2825c2130000",
+              "count": 2
+            },
+            {
+              "descriptor": "Copenhagen K",
+              "id": "3666ef49a96a01b9260d037acf00eb60",
+              "count": 6
+            },
+            {
+              "descriptor": "Copenhagen K, Vestergade 10B",
+              "id": "940562459a6f014948f9df3dc3007823",
+              "count": 2
+            },
+            {
+              "descriptor": "Cordoba",
+              "id": "2554c027e53e10017bb785706cdc0000",
+              "count": 32
+            },
+            {
+              "descriptor": "Cordoba, Torre Capitalinas",
+              "id": "2c04487ab3151001e58463d754410000",
+              "count": 6
+            },
+            {
+              "descriptor": "Cork",
+              "id": "3666ef49a96a0105878e4b78cf001e5b",
+              "count": 2
+            },
+            {
+              "descriptor": "Cosenza",
+              "id": "5c254a8f1a1c0101c6f14b2edb8c0000",
+              "count": 3
+            },
+            {
+              "descriptor": "Curitiba, Marechal Deodoro",
+              "id": "940562459a6f012a7c32443ec300ae24",
+              "count": 20
+            },
+            {
+              "descriptor": "Cyberjaya, Century Square",
+              "id": "c50d005780ba0185c07a6929970183f4",
+              "count": 20
+            },
+            {
+              "descriptor": "Dalian",
+              "id": "3666ef49a96a012faa377579cf001a5f",
+              "count": 53
+            },
+            {
+              "descriptor": "Dallas, 1700 Pacific Avenue, CMT",
+              "id": "940562459a6f01ec329de541c300a32f",
+              "count": 4
+            },
+            {
+              "descriptor": "Dallas, 5205 N OConnor Las Colinas, Corp",
+              "id": "45f502f47f0001075f45fe2095016ba3",
+              "count": 333
+            },
+            {
+              "descriptor": "Denver, 1670 Broadway, OPS",
+              "id": "3afe7ea9882b1001764b7b6f32160000",
+              "count": 2
+            },
+            {
+              "descriptor": "Denver, 999 18th St, Corp",
+              "id": "8837d14c84e10101963fe82313460000",
+              "count": 296
+            },
+            {
+              "descriptor": "Des Moines, 909 Locust, Corp",
+              "id": "940562459a6f011f389e1242c3001b30",
+              "count": 271
+            },
+            {
+              "descriptor": "Detroit, 1001 Woodward Avenue, Corp",
+              "id": "940562459a6f01cba706f941c300df2f",
+              "count": 122
+            },
+            {
+              "descriptor": "Detroit, 1240 Woodward, Corp",
+              "id": "58b4de248639100173f15a9073c90000",
+              "count": 236
+            },
+            {
+              "descriptor": "Detroit, 1515 Woodward Avenue, MS",
+              "id": "ebf65dd06ed10101966cb449309b0000",
+              "count": 4
+            },
+            {
+              "descriptor": "Distrito Federal - Brasilia",
+              "id": "3666ef49a96a010a5272c877cf005259",
+              "count": 28
+            },
+            {
+              "descriptor": "Doha",
+              "id": "3666ef49a96a01d0fb9c8877cf007858",
+              "count": 5
+            },
+            {
+              "descriptor": "Donauworth",
+              "id": "e6f8a43ca2c10101cdeaf81331530000",
+              "count": 1
+            },
+            {
+              "descriptor": "Dresden",
+              "id": "3666ef49a96a01426e2bb879cf00f15f",
+              "count": 54
+            },
+            {
+              "descriptor": "Dresden, Fabrikstrasse 13",
+              "id": "7f53b90e74181001e61b0848d4ed0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Dubai",
+              "id": "3666ef49a96a01ee193ebd77cf002a59",
+              "count": 1
+            },
+            {
+              "descriptor": "Dubai, Arenco Tower",
+              "id": "940562459a6f01c6cc9e193ec3001d24",
+              "count": 23
+            },
+            {
+              "descriptor": "Dublin",
+              "id": "3666ef49a96a0186138a6d78cf009b5b",
+              "count": 82
+            },
+            {
+              "descriptor": "Dublin, 1 Grand Canal Square",
+              "id": "940562459a6f0105a5f6703fc3003228",
+              "count": 2
+            },
+            {
+              "descriptor": "Duesseldorf",
+              "id": "3666ef49a96a0138b4beb979cf00f65f",
+              "count": 103
+            },
+            {
+              "descriptor": "Dusseldorf",
+              "id": "12abbc9b1fcd1000e683c7b8ad320000",
+              "count": 10
+            },
+            {
+              "descriptor": "Dusseldorf, Kaistrasse, Corporate",
+              "id": "940562459a6f01ea7b86b43bc3002e1d",
+              "count": 9
+            },
+            {
+              "descriptor": "Ebene",
+              "id": "3666ef49a96a015886897777cf004158",
+              "count": 32
+            },
+            {
+              "descriptor": "Edinburgh",
+              "id": "3666ef49a96a015958aef879cf00c860",
+              "count": 25
+            },
+            {
+              "descriptor": "Edinburgh, Atria One",
+              "id": "940562459a6f010dcb47dd3cc300a820",
+              "count": 3
+            },
+            {
+              "descriptor": "Eindhoven",
+              "id": "3666ef49a96a019ab13a6079cf00cf5e",
+              "count": 4
+            },
+            {
+              "descriptor": "Espírito Santo - Vitoria",
+              "id": "3666ef49a96a019346e86578cf00825b",
+              "count": 25
+            },
+            {
+              "descriptor": "Essen",
+              "id": "3666ef49a96a01d86827a379cf00ab5f",
+              "count": 7
+            },
+            {
+              "descriptor": "Essen, Schalthaus II",
+              "id": "940562459a6f01ae663cbf3bc300511d",
+              "count": 49
+            },
+            {
+              "descriptor": "Ewing, 225 Phillips Blvd., MS",
+              "id": "940562459a6f015c64105b41c300f02d",
+              "count": 2
+            },
+            {
+              "descriptor": "Fairmont, 401 10th Street, AFS",
+              "id": "f867fc469c101001c30796be373c0000",
+              "count": 2
+            },
+            {
+              "descriptor": "Fargo, 3900 Great Plains Dr. S., MS",
+              "id": "89d28043494510012687392c43230000",
+              "count": 2
+            },
+            {
+              "descriptor": "Florianopolis, BeWiki",
+              "id": "c3337e191f511000fa36c33566fe0000",
+              "count": 17
+            },
+            {
+              "descriptor": "FL - Tampa",
+              "id": "3666ef49a96a0101eb090a7acf000461",
+              "count": 8
+            },
+            {
+              "descriptor": "Fortaleza, Scopa Platinum Corporate",
+              "id": "365043e8f32d1000d6bdcc9169ff0000",
+              "count": 31
+            },
+            {
+              "descriptor": "Frankfurt am Main",
+              "id": "3666ef49a96a011542fdcf79cf003c60",
+              "count": 16
+            },
+            {
+              "descriptor": "Fukuoka",
+              "id": "3666ef49a96a0183e6a85278cf00375b",
+              "count": 33
+            },
+            {
+              "descriptor": "GA - Atlanta",
+              "id": "3666ef49a96a01c1588cd378cf00f45c",
+              "count": 23
+            },
+            {
+              "descriptor": "Gandhinagar, AMDC2A",
+              "id": "39f519c156341001220522275e7b0000",
+              "count": 44
+            },
+            {
+              "descriptor": "Gasteiz / Vitoria",
+              "id": "82e59d801abf1000e653791743e40000",
+              "count": 1
+            },
+            {
+              "descriptor": "Gasteiz - Vitoria",
+              "id": "3666ef49a96a0199ff5c5f7acf001c62",
+              "count": 1
+            },
+            {
+              "descriptor": "Gdansk",
+              "id": "1de299a37cef0101d83cc5cffd810000",
+              "count": 66
+            },
+            {
+              "descriptor": "Gdansk, Olivia Four",
+              "id": "8923a60961261000be763baf46d00000",
+              "count": 10
+            },
+            {
+              "descriptor": "Gdansk, Wave",
+              "id": "cadf25ad45ad100144b1254b53790000",
+              "count": 3
+            },
+            {
+              "descriptor": "Geneva",
+              "id": "3666ef49a96a017d30404a79cf00845e",
+              "count": 2
+            },
+            {
+              "descriptor": "Geneva, Le Lumion",
+              "id": "940562459a6f01d0d6a0ce38c3005014",
+              "count": 1
+            },
+            {
+              "descriptor": "Gijon, Asturias Bldg.",
+              "id": "940562459a6f0139a3ae393cc300c31e",
+              "count": 11
+            },
+            {
+              "descriptor": "Girona",
+              "id": "2d33319ffec7100189c26da8d2650000",
+              "count": 1
+            },
+            {
+              "descriptor": "Glasgow",
+              "id": "0e94db5612020101c0d29580848c0000",
+              "count": 9
+            },
+            {
+              "descriptor": "Gothenburg",
+              "id": "3666ef49a96a012c8749f777cf00fc59",
+              "count": 4
+            },
+            {
+              "descriptor": "Greenville, 141 Traction St, IX",
+              "id": "aa40b4882c7d1003e60ce3ee277b0000",
+              "count": 2
+            },
+            {
+              "descriptor": "Guangzhou",
+              "id": "3666ef49a96a01c387bb2a7acf006361",
+              "count": 6
+            },
+            {
+              "descriptor": "Guangzhou, M Plaza",
+              "id": "59c622b72b661000d656de930b230000",
+              "count": 2
+            },
+            {
+              "descriptor": "Guaynabo, Metro Office Park, Corp",
+              "id": "2f6ccb14b13e01019053a704350a0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Gurugram",
+              "id": "3666ef49a96a01a9c1ccdf77cf00a759",
+              "count": 4644
+            },
+            {
+              "descriptor": "Gurugram",
+              "id": "3666ef49a96a015735486a79cf00f25e",
+              "count": 4
+            },
+            {
+              "descriptor": "Gurugram, DDC1",
+              "id": "940562459a6f011001ae1e3fc3002927",
+              "count": 2
+            },
+            {
+              "descriptor": "Gurugram, DDC1A",
+              "id": "940562459a6f01c857421a3fc3001a27",
+              "count": 16
+            },
+            {
+              "descriptor": "Gurugram, DDC1A, NonSTPI",
+              "id": "940562459a6f01260de3303fc3006527",
+              "count": 17
+            },
+            {
+              "descriptor": "Hamburg",
+              "id": "3666ef49a96a01a8fe48ad79cf00ce5f",
+              "count": 144
+            },
+            {
+              "descriptor": "Hamburg, Alter Wandrahm/Dienerreihe",
+              "id": "afbdf5c7c14510019737e748750e0000",
+              "count": 8
+            },
+            {
+              "descriptor": "Hamburg, Grossmoorbogen",
+              "id": "79f8d4352897010190522c12494e0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Hangzhou",
+              "id": "3666ef49a96a0191a1aa7379cf00155f",
+              "count": 4
+            },
+            {
+              "descriptor": "Hannover",
+              "id": "3666ef49a96a010c1265047acf00f060",
+              "count": 1
+            },
+            {
+              "descriptor": "Hartford, 280 Trumbull, Corp",
+              "id": "0e9544c397731001978ff010e3360000",
+              "count": 290
+            },
+            {
+              "descriptor": "Helsinki",
+              "id": "3666ef49a96a01dae21ccb77cf005c59",
+              "count": 26
+            },
+            {
+              "descriptor": "Helsinki",
+              "id": "12abbc9b1fcd1000e681a8321ed40000",
+              "count": 2
+            },
+            {
+              "descriptor": "Helsinki, A46",
+              "id": "940562459a6f01365af6873cc3009f1f",
+              "count": 1
+            },
+            {
+              "descriptor": "Heredia",
+              "id": "3666ef49a96a0181faeecc79cf003260",
+              "count": 48
+            },
+            {
+              "descriptor": "Heredia, Plaza Bratsi",
+              "id": "940562459a6f01dd4345983bc300cf1c",
+              "count": 1
+            },
+            {
+              "descriptor": "Herndon, 2350 Corp Park Dr, ACN Security",
+              "id": "940562459a6f01bb6672c23dc3001923",
+              "count": 36
+            },
+            {
+              "descriptor": "Ho ChiMinh",
+              "id": "3666ef49a96a018afd6dd679cf005060",
+              "count": 6
+            },
+            {
+              "descriptor": "Ho ChiMinh, Viettel Building",
+              "id": "e7c771f37cbd010196faf674e2f80000",
+              "count": 11
+            },
+            {
+              "descriptor": "Hof",
+              "id": "3666ef49a96a01e1e0259b79cf00a15f",
+              "count": 12
+            },
+            {
+              "descriptor": "Hong Kong",
+              "id": "3666ef49a96a01a19862cc77cf006159",
+              "count": 41
+            },
+            {
+              "descriptor": "Honolulu, 1177 Bishop, MS",
+              "id": "940562459a6f01fa95791d42c3003e30",
+              "count": 2
+            },
+            {
+              "descriptor": "Houston, 1301 Fannin, Corp",
+              "id": "940562459a6f013e53110242c300fd2f",
+              "count": 295
+            },
+            {
+              "descriptor": "Houston, 750 Town & Country Blv, Avanade",
+              "id": "940562459a6f01c2f6c80b42c3000730",
+              "count": 2
+            },
+            {
+              "descriptor": "Huntsville, 850 Ben Graves Dr NW, AFS",
+              "id": "48e56440641f1001e61faa3717880000",
+              "count": 2
+            },
+            {
+              "descriptor": "Hyderabad",
+              "id": "3666ef49a96a01c10ff6dd77cf00a259",
+              "count": 9897
+            },
+            {
+              "descriptor": "Hyderabad, HDC2A",
+              "id": "940562459a6f01016759323fc3006a27",
+              "count": 12
+            },
+            {
+              "descriptor": "Hyderabad, HDC3B",
+              "id": "940562459a6f019b12fc3b3fc3008827",
+              "count": 1
+            },
+            {
+              "descriptor": "Iasi",
+              "id": "3666ef49a96a016f8e448b78cf00095c",
+              "count": 13
+            },
+            {
+              "descriptor": "Iasi, UBC3 Tower",
+              "id": "940562459a6f012d1ed8e740c300972c",
+              "count": 2
+            },
+            {
+              "descriptor": "IL - Chicago",
+              "id": "3666ef49a96a0163377e0f79cf00c65d",
+              "count": 24
+            },
+            {
+              "descriptor": "Ilocos",
+              "id": "3666ef49a96a0167c3ab5679cf00ac5e",
+              "count": 10
+            },
+            {
+              "descriptor": "Indore",
+              "id": "b1ab966e91460101d7ef8baf9f6b0000",
+              "count": 1841
+            },
+            {
+              "descriptor": "Ingolstadt",
+              "id": "3666ef49a96a018b15d89979cf009c5f",
+              "count": 1
+            },
+            {
+              "descriptor": "Innsbruck",
+              "id": "0187881c3cd81000ee0b45d0b4eb0000",
+              "count": 5
+            },
+            {
+              "descriptor": "Innsbruck, Tschamlerstrasse 2",
+              "id": "6ba840e2d52c1000f9b25f3faaa60000",
+              "count": 1
+            },
+            {
+              "descriptor": "Irvine, 300 Spectrum Center Dr, ACN Tech",
+              "id": "940562459a6f01690908bc3dc3000523",
+              "count": 48
+            },
+            {
+              "descriptor": "Istanbul",
+              "id": "3666ef49a96a017d3685be77cf002f59",
+              "count": 17
+            },
+            {
+              "descriptor": "Jaipur",
+              "id": "3a78992897d30101c64e1dc3e9bc0000",
+              "count": 1292
+            },
+            {
+              "descriptor": "Jakarta",
+              "id": "3666ef49a96a01920a8a5677cf000a58",
+              "count": 37
+            },
+            {
+              "descriptor": "Jeddah",
+              "id": "cd22a5ffe1d81000e68671efeb270000",
+              "count": 1
+            },
+            {
+              "descriptor": "Jeddah, Al Murjanah Tower",
+              "id": "c378540e273f1001976a0d0708b40000",
+              "count": 13
+            },
+            {
+              "descriptor": "Jena",
+              "id": "3666ef49a96a01f6fef2ab79cf00c95f",
+              "count": 36
+            },
+            {
+              "descriptor": "Kaiserslautern",
+              "id": "3666ef49a96a01d85543a979cf00bf5f",
+              "count": 7
+            },
+            {
+              "descriptor": "Karlsruhe",
+              "id": "af7f032298be1000e685a2f388cb0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Katowice",
+              "id": "3666ef49a96a0123c930ab78cf00685c",
+              "count": 49
+            },
+            {
+              "descriptor": "Katowice, Silesia Business Park Bldg C",
+              "id": "940562459a6f01525babbe40c300102c",
+              "count": 4
+            },
+            {
+              "descriptor": "Kirkland, 416 6th Street South, Corp",
+              "id": "940562459a6f01e33682bd3dc3000a23",
+              "count": 236
+            },
+            {
+              "descriptor": "Kochi",
+              "id": "63e09671b47310010f9a8d398c660000",
+              "count": 111
+            },
+            {
+              "descriptor": "Kochi, CCDC1A",
+              "id": "b357309f15ad100124e8d95e0b3f0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Kolkata",
+              "id": "3666ef49a96a019761194e78cf00285b",
+              "count": 1331
+            },
+            {
+              "descriptor": "Kolkata, KDC1A",
+              "id": "940562459a6f019c156c4c3fc300bf27",
+              "count": 3
+            },
+            {
+              "descriptor": "Kosice",
+              "id": "3666ef49a96a019c3f5c877acf00ad62",
+              "count": 22
+            },
+            {
+              "descriptor": "Kosice",
+              "id": "56e7f4a571cf1000e682b1b7144a0000",
+              "count": 5
+            },
+            {
+              "descriptor": "Kosice, Aupark Tower",
+              "id": "c6bcf71a68b7100148a8a33584f00000",
+              "count": 1
+            },
+            {
+              "descriptor": "Krakow",
+              "id": "3666ef49a96a011beb169b78cf00455c",
+              "count": 126
+            },
+            {
+              "descriptor": "Krakow, High 5ive Development",
+              "id": "e7342dca5f1c100146ebce9310fd0000",
+              "count": 23
+            },
+            {
+              "descriptor": "Kronberg",
+              "id": "171b995afed60101c38fe607cd9b0000",
+              "count": 18
+            },
+            {
+              "descriptor": "Kronberg, Campus Kronberg 1",
+              "id": "940562459a6f01f2b2a2c03bc300561d",
+              "count": 125
+            },
+            {
+              "descriptor": "Kuala Lumpur",
+              "id": "3666ef49a96a015552c67577cf003c58",
+              "count": 140
+            },
+            {
+              "descriptor": "Kuala Lumpur, Exchange 106",
+              "id": "7988e9a8dd0301355996304d6f00ee00",
+              "count": 122
+            },
+            {
+              "descriptor": "Kuala Lumpur, UOA Corp Tower",
+              "id": "940562459a6f01a4ff555c40c300df2a",
+              "count": 34
+            },
+            {
+              "descriptor": "Kuala Lumpur, Vertical Corp. Tower B",
+              "id": "940562459a6f01dfc5ad5a40c300da2a",
+              "count": 76
+            },
+            {
+              "descriptor": "Kuching",
+              "id": "3666ef49a96a0172c7b91578cf006a5a",
+              "count": 1
+            },
+            {
+              "descriptor": "Kulmbach",
+              "id": "37960121b22f01c62e6a9a4d62011695",
+              "count": 1
+            },
+            {
+              "descriptor": "Kumamoto",
+              "id": "3666ef49a96a01c78a493b78cf00e25a",
+              "count": 6
+            },
+            {
+              "descriptor": "Kuwait City",
+              "id": "dada3741cd441001cae6d8fad8370000",
+              "count": 4
+            },
+            {
+              "descriptor": "Kyoto",
+              "id": "3666ef49a96a01516c30f377cf00ed59",
+              "count": 1
+            },
+            {
+              "descriptor": "Lansing, 111 S Capitol, MS",
+              "id": "940562459a6f01afe8eaf641c300da2f",
+              "count": 2
+            },
+            {
+              "descriptor": "Lausanne",
+              "id": "3666ef49a96a01e73c88f478cf00625d",
+              "count": 2
+            },
+            {
+              "descriptor": "Leeds",
+              "id": "3666ef49a96a0197ece65079cf00985e",
+              "count": 4
+            },
+            {
+              "descriptor": "Leon",
+              "id": "3666ef49a96a0113826d3d7acf00a461",
+              "count": 4
+            },
+            {
+              "descriptor": "Leon, Europa Bldg.",
+              "id": "940562459a6f017a3ef8433cc300e11e",
+              "count": 9
+            },
+            {
+              "descriptor": "Lille",
+              "id": "3666ef49a96a014b4e8e6f7acf005862",
+              "count": 3
+            },
+            {
+              "descriptor": "Linz",
+              "id": "3666ef49a96a01309a62a877cf00ee58",
+              "count": 2
+            },
+            {
+              "descriptor": "Lisbon",
+              "id": "3666ef49a96a019f72333078cf00ba5a",
+              "count": 58
+            },
+            {
+              "descriptor": "Lisbon, Amoreiras Square",
+              "id": "940562459a6f016bdbc0d140c300512c",
+              "count": 7
+            },
+            {
+              "descriptor": "Lisbon, Arquiparque 1",
+              "id": "940562459a6f015866b7d640c300602c",
+              "count": 1
+            },
+            {
+              "descriptor": "Lisbon, Exeo Lumnia",
+              "id": "a4ccd89147951000abd8c9c842440000",
+              "count": 3
+            },
+            {
+              "descriptor": "Lisbon, Santos 37",
+              "id": "d40a4261d2a7100144ac3ddfeaea0000",
+              "count": 32
+            },
+            {
+              "descriptor": "Liverpool",
+              "id": "3666ef49a96a01d65ebcd977cf009359",
+              "count": 1
+            },
+            {
+              "descriptor": "Lodz",
+              "id": "3666ef49a96a0187577c9478cf002c5c",
+              "count": 104
+            },
+            {
+              "descriptor": "Lodz, University Business Park",
+              "id": "940562459a6f019bd607c040c300152c",
+              "count": 16
+            },
+            {
+              "descriptor": "Logrono",
+              "id": "14265dada6bc1000d8f3dd48fd7b0000",
+              "count": 9
+            },
+            {
+              "descriptor": "London",
+              "id": "3666ef49a96a01cc0bd5d477cf007f59",
+              "count": 225
+            },
+            {
+              "descriptor": "London, 30 Fenchurch Street",
+              "id": "940562459a6f01f26abd0f3dc300fd20",
+              "count": 7
+            },
+            {
+              "descriptor": "Los Angeles, 1003 E. 4th Place, Corp",
+              "id": "940562459a6f01247590d63dc3005a23",
+              "count": 123
+            },
+            {
+              "descriptor": "Los Angeles, 5418 McConnell Av -LA1,Song",
+              "id": "01ec630684d10193f7f81def950153a5",
+              "count": 2
+            },
+            {
+              "descriptor": "Los Angeles, 6181 W Centinela Ave, Corp",
+              "id": "06d03bcd3c59100173f40aa489ea0000",
+              "count": 222
+            },
+            {
+              "descriptor": "Louisville, 1965 Hawks Landing, AO",
+              "id": "940562459a6f0125a8cd1642c3002a30",
+              "count": 2
+            },
+            {
+              "descriptor": "Louisville, 2600 Eastpoint Pkwy, CMT",
+              "id": "e41738f7cb571000535d5f4aa8c00000",
+              "count": 2
+            },
+            {
+              "descriptor": "Lusail",
+              "id": "b3983f57ebde10017a980bca38070000",
+              "count": 1
+            },
+            {
+              "descriptor": "Luxembourg",
+              "id": "3666ef49a96a01845bf98377cf006958",
+              "count": 11
+            },
+            {
+              "descriptor": "Luxembourg, Galileo Center",
+              "id": "940562459a6f01fda1321d40c300212a",
+              "count": 3
+            },
+            {
+              "descriptor": "Lyon",
+              "id": "3666ef49a96a01a1f6f46c7acf004e62",
+              "count": 2
+            },
+            {
+              "descriptor": "Lyon, Silex2",
+              "id": "85be824f7bc8010147de90241b620000",
+              "count": 1
+            },
+            {
+              "descriptor": "MA - Boston",
+              "id": "3666ef49a96a018e0ac4dc78cf00125d",
+              "count": 5
+            },
+            {
+              "descriptor": "Madison Heights, 1225 Spartan St., IX",
+              "id": "ebbf23efc6840101cfa1d17393730000",
+              "count": 2
+            },
+            {
+              "descriptor": "Madrid",
+              "id": "3666ef49a96a01ce0e3a4a7acf00d161",
+              "count": 144
+            },
+            {
+              "descriptor": "Madrid, Av del Llano Castellano",
+              "id": "1ee5202137df1034de574b53de4a0000",
+              "count": 4
+            },
+            {
+              "descriptor": "Madrid, Castellana 85",
+              "id": "50d0bb994b6c015de1a36a9c9601d880",
+              "count": 58
+            },
+            {
+              "descriptor": "Madrid, Edificio Guadalcanal",
+              "id": "fb643abfd8831000d79bf26a8aa80000",
+              "count": 1
+            },
+            {
+              "descriptor": "Madrid, Fuerteventura 12",
+              "id": "940562459a6f013841e94c3cc300ff1e",
+              "count": 3
+            },
+            {
+              "descriptor": "Madrid, Parque Empresarial Pta del Este",
+              "id": "940562459a6f01fc9f94533cc300131f",
+              "count": 1
+            },
+            {
+              "descriptor": "Madrid, Torre Chamartin",
+              "id": "c091d3d1cc7301bdd30cb2d096014ab5",
+              "count": 75
+            },
+            {
+              "descriptor": "Maebashi",
+              "id": "5373f6776c4510019a5077e5e4010000",
+              "count": 4
+            },
+            {
+              "descriptor": "Maebashi, Gunma Prefectural Office",
+              "id": "8cfb09cd94621001d514825844840000",
+              "count": 1
+            },
+            {
+              "descriptor": "Malaga",
+              "id": "3666ef49a96a019ed6c5487acf00cc61",
+              "count": 18
+            },
+            {
+              "descriptor": "Malaga, I+D6 - South Building",
+              "id": "940562459a6f01d20abf5f3cc3003b1f",
+              "count": 18
+            },
+            {
+              "descriptor": "Malaga, Severo Ochoa 55",
+              "id": "96e54c4b4d9b010196686fa2db0d0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Mallorca",
+              "id": "3666ef49a96a0199e67a477acf00c761",
+              "count": 1
+            },
+            {
+              "descriptor": "Malmö",
+              "id": "3666ef49a96a0112ea12fa77cf00065a",
+              "count": 4
+            },
+            {
+              "descriptor": "Malmo, Pildammsvagen 6b",
+              "id": "940562459a6f01f4cd201c41c300232d",
+              "count": 1
+            },
+            {
+              "descriptor": "Manchester",
+              "id": "3666ef49a96a01026977d877cf008e59",
+              "count": 50
+            },
+            {
+              "descriptor": "Manchester, 2 Circle Square",
+              "id": "5d24126bf113010194d02b41002d0000",
+              "count": 23
+            },
+            {
+              "descriptor": "Mandaluyong",
+              "id": "3666ef49a96a01b89b579c78cf004a5c",
+              "count": 109
+            },
+            {
+              "descriptor": "Mandaluyong, Robinsons Cybergate Tower 1",
+              "id": "940562459a6f015cf1c39e40c300a22b",
+              "count": 1
+            },
+            {
+              "descriptor": "Mandaluyong, Robinsons Cybergate Tower 2",
+              "id": "940562459a6f01b42925a040c300a72b",
+              "count": 2
+            },
+            {
+              "descriptor": "Mandaluyong City",
+              "id": "470274d17aa41035911a3a2d232e0000",
+              "count": 3
+            },
+            {
+              "descriptor": "Manila",
+              "id": "3666ef49a96a01d730a5957acf00df62",
+              "count": 329
+            },
+            {
+              "descriptor": "Mannheim",
+              "id": "3666ef49a96a014949e0c179cf000f60",
+              "count": 28
+            },
+            {
+              "descriptor": "Maranhão - Porto Alegre",
+              "id": "3666ef49a96a01f700f2e477cf00bb59",
+              "count": 21
+            },
+            {
+              "descriptor": "Mar del Plata",
+              "id": "82e59d801abf1000e6473bfca0690000",
+              "count": 22
+            },
+            {
+              "descriptor": "Mar del Plata, Av. Independencia",
+              "id": "940562459a6f01ea8a30b237c300ef10",
+              "count": 5
+            },
+            {
+              "descriptor": "Marseille",
+              "id": "77880592cd9710349ac7b2b20bdd0000",
+              "count": 3
+            },
+            {
+              "descriptor": "Mato Grosso do Sul - Campo Grande",
+              "id": "3666ef49a96a01fe023f3778cf00d35a",
+              "count": 2
+            },
+            {
+              "descriptor": "Matosinhos, Broadway",
+              "id": "856e7afce94c1001734214fd0c660000",
+              "count": 10
+            },
+            {
+              "descriptor": "MD - Baltimore",
+              "id": "3666ef49a96a015b53ff717acf006262",
+              "count": 2
+            },
+            {
+              "descriptor": "Medellin",
+              "id": "3666ef49a96a01736da2277acf005961",
+              "count": 2
+            },
+            {
+              "descriptor": "Medellin, Rivana 2",
+              "id": "63e5fb8328af1001c2d9cf06ed8d0000",
+              "count": 39
+            },
+            {
+              "descriptor": "Melbourne",
+              "id": "3666ef49a96a01edf0296479cf00de5e",
+              "count": 74
+            },
+            {
+              "descriptor": "Melbourne, 161 Collins Street",
+              "id": "940562459a6f018c0c601c3bc3006c1b",
+              "count": 2
+            },
+            {
+              "descriptor": "Melbourne, 161 Collins Street, Level 5",
+              "id": "940562459a6f0195c093193bc300621b",
+              "count": 46
+            },
+            {
+              "descriptor": "Mendoza",
+              "id": "06d40627e7c310016d0d1f134e7f0000",
+              "count": 17
+            },
+            {
+              "descriptor": "Mendoza, Chacras Park",
+              "id": "af122359c94b10007f45e40f53210000",
+              "count": 14
+            },
+            {
+              "descriptor": "Merida",
+              "id": "c150eab0e07801b4fbe354f9d701a274",
+              "count": 5
+            },
+            {
+              "descriptor": "Merida, City 32",
+              "id": "4bcbf96db015102bf7a8d0f600d50000",
+              "count": 5
+            },
+            {
+              "descriptor": "Mexico City",
+              "id": "3666ef49a96a010e80777977cf004658",
+              "count": 110
+            },
+            {
+              "descriptor": "Miami, 777 Brickell Ave, Corp",
+              "id": "940562459a6f01d48f93363dc3007521",
+              "count": 282
+            },
+            {
+              "descriptor": "Midrand",
+              "id": "f12947bb757c01475b28b4d2df000af9",
+              "count": 22
+            },
+            {
+              "descriptor": "Midrand, J'burg Waterfall - 3",
+              "id": "940562459a6f01a4fd8f9d37c300ae10",
+              "count": 1
+            },
+            {
+              "descriptor": "Milan",
+              "id": "3666ef49a96a01c657088a78cf00045c",
+              "count": 9
+            },
+            {
+              "descriptor": "Milano",
+              "id": "3666ef49a96a010b514b5b78cf005a5b",
+              "count": 116
+            },
+            {
+              "descriptor": "Milano, Via (Privata) Nino Bonnet 10",
+              "id": "d85ddb5dc44301f215038437d0017989",
+              "count": 9
+            },
+            {
+              "descriptor": "Milano, Via Gaetano de Castillia 23",
+              "id": "8b62d1b37fe91001c20abc2587100000",
+              "count": 7
+            },
+            {
+              "descriptor": "Milwaukee, 790 N Milwaukee St, Corp",
+              "id": "31b121f201fc1001e5f5221cfba40000",
+              "count": 287
+            },
+            {
+              "descriptor": "Minas Gerais - Belo Horizonte",
+              "id": "3666ef49a96a01d4f6dfe877cf00ca59",
+              "count": 43
+            },
+            {
+              "descriptor": "Minas Gerais - Betim",
+              "id": "3666ef49a96a015e65f47077cf002d58",
+              "count": 22
+            },
+            {
+              "descriptor": "Minas Gerais - Nova Lima",
+              "id": "3666ef49a96a01237896e777cf00c559",
+              "count": 24
+            },
+            {
+              "descriptor": "Minas Gerais - Uberlandia",
+              "id": "d502cf7d2f770101d6646576e21e0000",
+              "count": 21
+            },
+            {
+              "descriptor": "Minneapolis, 333 S 7th, Corp",
+              "id": "940562459a6f01a49bc02742c3005c30",
+              "count": 307
+            },
+            {
+              "descriptor": "Minneapolis, 923 Nicollet Mall, Song",
+              "id": "6eabee14d9181001c2b8ba6e2d9b0000",
+              "count": 2
+            },
+            {
+              "descriptor": "Mississauga, 1 City Centre, DCN",
+              "id": "1d90e730d24710013c04d731d4260000",
+              "count": 3
+            },
+            {
+              "descriptor": "MN - Minneapolis",
+              "id": "3666ef49a96a010427a29d77cf00c658",
+              "count": 1
+            },
+            {
+              "descriptor": "Modena",
+              "id": "3666ef49a96a011769025a78cf00555b",
+              "count": 4
+            },
+            {
+              "descriptor": "Monterrey",
+              "id": "3666ef49a96a017e39497b77cf004b58",
+              "count": 66
+            },
+            {
+              "descriptor": "Montoir de Bretagne",
+              "id": "945f92a9faf71020713e1071999b0000",
+              "count": 2
+            },
+            {
+              "descriptor": "Montoir de Bretagne, Immeuble Icare",
+              "id": "bcf8ed68aa56100141ea6d31a8390000",
+              "count": 3
+            },
+            {
+              "descriptor": "Montreal, 5 Place Ville Marie, Corp",
+              "id": "27f471f30ece10180d5b41ed04df0000",
+              "count": 32
+            },
+            {
+              "descriptor": "Morristown, 1 Speedwell Ave, Corp",
+              "id": "34ff9e0ad2b1100125e3e9095ef30000",
+              "count": 298
+            },
+            {
+              "descriptor": "Mountain View, 650 Castro, Corp",
+              "id": "ded08c773d501001978ab65ad0120000",
+              "count": 286
+            },
+            {
+              "descriptor": "Mumbai",
+              "id": "3666ef49a96a0107bae6eb77cf00d459",
+              "count": 6179
+            },
+            {
+              "descriptor": "Mumbai, MC1 Building, NonSTPI",
+              "id": "940562459a6f016a3504fa3ec300cf26",
+              "count": 20
+            },
+            {
+              "descriptor": "Mumbai, MDC2B",
+              "id": "940562459a6f01469735eb3ec3009d26",
+              "count": 3
+            },
+            {
+              "descriptor": "Mumbai, MDC2C",
+              "id": "940562459a6f015e3d8df83ec300ca26",
+              "count": 2
+            },
+            {
+              "descriptor": "Munich",
+              "id": "3666ef49a96a0139828ea679cf00b55f",
+              "count": 158
+            },
+            {
+              "descriptor": "Munich, Balan Campus Building 17",
+              "id": "79519f79a87b0125b6f93fa197019015",
+              "count": 8
+            },
+            {
+              "descriptor": "Muntinlupa",
+              "id": "3666ef49a96a011669aeac78cf006d5c",
+              "count": 29
+            },
+            {
+              "descriptor": "Murcia",
+              "id": "3666ef49a96a0135861c467acf00c261",
+              "count": 1
+            },
+            {
+              "descriptor": "Nagoya",
+              "id": "df0a7ebc885110008cf1ae6f7e7d0000",
+              "count": 16
+            },
+            {
+              "descriptor": "Nagoya",
+              "id": "d82167864dcd1000e68720cae1fb0000",
+              "count": 2
+            },
+            {
+              "descriptor": "Nagpur",
+              "id": "58bce675bb4b1000971be10f36910000",
+              "count": 505
+            },
+            {
+              "descriptor": "Nantes",
+              "id": "3666ef49a96a01c1f420917acf00d062",
+              "count": 3
+            },
+            {
+              "descriptor": "Napoli",
+              "id": "3666ef49a96a0185ebcb5878cf00505b",
+              "count": 34
+            },
+            {
+              "descriptor": "Napoli, Via Porzio 4 Torre Francesco",
+              "id": "951280b480cf1000e16cac25b2a00000",
+              "count": 4
+            },
+            {
+              "descriptor": "Napoli, Via Porzio 4 Torre Saverio",
+              "id": "a4f3c375b4221000e173df260d6b0000",
+              "count": 8
+            },
+            {
+              "descriptor": "Nashville, 4101 Charlotte Ave., Corp",
+              "id": "940562459a6f016c8651d93ac3009f1a",
+              "count": 303
+            },
+            {
+              "descriptor": "Navi Mumbai",
+              "id": "3666ef49a96a01ea87afed77cf00d959",
+              "count": 1213
+            },
+            {
+              "descriptor": "Navi Mumbai, MDC5C",
+              "id": "940562459a6f01916d49f43ec300bb26",
+              "count": 61
+            },
+            {
+              "descriptor": "Navi Mumbai, MDC7A",
+              "id": "940562459a6f01f3df13ee3ec300a726",
+              "count": 1
+            },
+            {
+              "descriptor": "NC - Charlotte",
+              "id": "3666ef49a96a01f6e346db78cf000d5d",
+              "count": 11
+            },
+            {
+              "descriptor": "NC - Raleigh",
+              "id": "3666ef49a96a01a855a0ff77cf001a5a",
+              "count": 2
+            },
+            {
+              "descriptor": "Newcastle",
+              "id": "3666ef49a96a01eb863dd777cf008959",
+              "count": 24
+            },
+            {
+              "descriptor": "New Delhi",
+              "id": "3666ef49a96a01a425d44c78cf00235b",
+              "count": 300
+            },
+            {
+              "descriptor": "New Delhi, DC1A Consulting",
+              "id": "940562459a6f010e4f65523fc300d327",
+              "count": 2
+            },
+            {
+              "descriptor": "New York, 120 Wall Street, Song",
+              "id": "bbb590c6006401505ab3ec4b9501f0bd",
+              "count": 15
+            },
+            {
+              "descriptor": "New York, 154 Morgan Avenue, Song",
+              "id": "68d2fa541636013cbbaf679e96011461",
+              "count": 3
+            },
+            {
+              "descriptor": "New York, 55 Water Street, Song",
+              "id": "1675e035e46a01f339978bb89601866c",
+              "count": 5
+            },
+            {
+              "descriptor": "New York, One Manhattan West, Corp",
+              "id": "1e483c0bc56a01806f5bd6289601e242",
+              "count": 313
+            },
+            {
+              "descriptor": "NJ - Florham Park",
+              "id": "3666ef49a96a015438ced978cf00085d",
+              "count": 1
+            },
+            {
+              "descriptor": "NJ - Morristown",
+              "id": "025e2a5507170101c97d91647e3d0000",
+              "count": 12
+            },
+            {
+              "descriptor": "NJ - Pennington",
+              "id": "3666ef49a96a014d0366b378cf00865c",
+              "count": 2
+            },
+            {
+              "descriptor": "Noida",
+              "id": "3666ef49a96a01ccae05ef77cf00de59",
+              "count": 879
+            },
+            {
+              "descriptor": "Nova Lima, Shopping Alta Vila",
+              "id": "940562459a6f01958935473ec300b824",
+              "count": 56
+            },
+            {
+              "descriptor": "Nuernberg",
+              "id": "3666ef49a96a0122750cb379cf00e25f",
+              "count": 6
+            },
+            {
+              "descriptor": "NY - Albany",
+              "id": "3666ef49a96a01b9651c9777cf00ad58",
+              "count": 1
+            },
+            {
+              "descriptor": "NY - Brooklyn",
+              "id": "800122b1a44e1001fea084dd28470000",
+              "count": 1
+            },
+            {
+              "descriptor": "NY - New York",
+              "id": "3666ef49a96a019529169b77cf00bc58",
+              "count": 5
+            },
+            {
+              "descriptor": "NY - New York City",
+              "id": "ea4c2a8216ac1034d0d827e96a550000",
+              "count": 5
+            },
+            {
+              "descriptor": "Ocoee, The 529 Building, IX",
+              "id": "4bd4465ea9571006bd4eeef05f290000",
+              "count": 2
+            },
+            {
+              "descriptor": "OH - Columbus",
+              "id": "3666ef49a96a0100c56e2479cf00025e",
+              "count": 1
+            },
+            {
+              "descriptor": "Oklahoma City, 525 NW 11th St, Corp",
+              "id": "aa23039383f71001472acff9bb8c0000",
+              "count": 269
+            },
+            {
+              "descriptor": "Omaha, 13033 Pierce St., MS",
+              "id": "27fd882b5a4c0101966d8723d47a0000",
+              "count": 2
+            },
+            {
+              "descriptor": "Ontario - Mississauga",
+              "id": "3666ef49a96a012f1e504f79cf00935e",
+              "count": 3
+            },
+            {
+              "descriptor": "Ontario - Ottawa",
+              "id": "3666ef49a96a015946d42d79cf00255e",
+              "count": 24
+            },
+            {
+              "descriptor": "Ontario - St. Catharines",
+              "id": "3666ef49a96a012dfa2d2c79cf00205e",
+              "count": 2
+            },
+            {
+              "descriptor": "Ontario - Toronto",
+              "id": "3666ef49a96a012672473d79cf005c5e",
+              "count": 26
+            },
+            {
+              "descriptor": "OR  - Beaverton",
+              "id": "ed1d7649ad3d10349be93507e1bd0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Orlando, 9400 Southpark, Prod",
+              "id": "940562459a6f01e108a6dd3ac300ae1a",
+              "count": 6
+            },
+            {
+              "descriptor": "Osaka",
+              "id": "3666ef49a96a014cc3326777cf000f58",
+              "count": 113
+            },
+            {
+              "descriptor": "Osaka, Nakanoshima Building",
+              "id": "940562459a6f015e17d1cc3fc3004a29",
+              "count": 7
+            },
+            {
+              "descriptor": "Oslo",
+              "id": "3666ef49a96a01cc319da978cf00635c",
+              "count": 32
+            },
+            {
+              "descriptor": "Oslo, Radhusgata 27",
+              "id": "75a59afd98fa1001486d9c731c8d0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Ottawa, 150 Elgin St., Corp",
+              "id": "35cbc464bc0110019760c64a21b70000",
+              "count": 31
+            },
+            {
+              "descriptor": "Overland Park, 7300 W 110th Street, Corp",
+              "id": "940562459a6f018bbf251142c3001630",
+              "count": 282
+            },
+            {
+              "descriptor": "Oviedo, Poligono Espiritu Santo",
+              "id": "940562459a6f01bb2992703cc300591f",
+              "count": 1
+            },
+            {
+              "descriptor": "Padova",
+              "id": "3666ef49a96a01ffe2945778cf004b5b",
+              "count": 2
+            },
+            {
+              "descriptor": "Padova, Via Transalgardo Gauslino 1",
+              "id": "940562459a6f01f6d5b3a53fc300c328",
+              "count": 18
+            },
+            {
+              "descriptor": "Palermo",
+              "id": "3666ef49a96a01f8923e5678cf00465b",
+              "count": 1
+            },
+            {
+              "descriptor": "Pamplona",
+              "id": "3666ef49a96a010fee192c7acf006861",
+              "count": 8
+            },
+            {
+              "descriptor": "PA - Philadelphia",
+              "id": "3666ef49a96a01623ea8c878cf00d15c",
+              "count": 5
+            },
+            {
+              "descriptor": "Pará - Belem",
+              "id": "3400a2740c21100160c456ff66f10000",
+              "count": 28
+            },
+            {
+              "descriptor": "Paraíba - Campina Grande",
+              "id": "3666ef49a96a01e4a2236e79cf00015f",
+              "count": 42
+            },
+            {
+              "descriptor": "Paraná - Curitiba",
+              "id": "3666ef49a96a01d3f9dc6a77cf001958",
+              "count": 27
+            },
+            {
+              "descriptor": "Pará - Parauapebas",
+              "id": "0a10ff67db4301e9171925c162010598",
+              "count": 17
+            },
+            {
+              "descriptor": "Parauapebas, Rua C 392 Quadra 036",
+              "id": "696a95b98f081001e44c3cde75d10000",
+              "count": 20
+            },
+            {
+              "descriptor": "Paris",
+              "id": "3666ef49a96a01c89fb48c7acf00c162",
+              "count": 159
+            },
+            {
+              "descriptor": "Paris, Axe France",
+              "id": "940562459a6f01f3ce3da13cc300ef1f",
+              "count": 4
+            },
+            {
+              "descriptor": "Pasig",
+              "id": "3666ef49a96a0172e7157478cf00b45b",
+              "count": 5
+            },
+            {
+              "descriptor": "Peachtree, 5555 Triangle Pkwy, CMT",
+              "id": "6d41d50d81d81001943cf39d6fe60000",
+              "count": 2
+            },
+            {
+              "descriptor": "Peoria, 401 Water Street, Prod",
+              "id": "ba61f4e4a0360101966855cc17210000",
+              "count": 2
+            },
+            {
+              "descriptor": "Pernambuco - Recife",
+              "id": "3666ef49a96a0136c91adb77cf009859",
+              "count": 70
+            },
+            {
+              "descriptor": "Perth",
+              "id": "3666ef49a96a0148e9739b7acf00f362",
+              "count": 10
+            },
+            {
+              "descriptor": "Perth, 50 Abernethy Road",
+              "id": "5330db002f93010196693d05390e0000",
+              "count": 3
+            },
+            {
+              "descriptor": "Perth, Exchange Tower",
+              "id": "940562459a6f01e5f11cad3dc300d822",
+              "count": 11
+            },
+            {
+              "descriptor": "Pescara",
+              "id": "5b54b68233471001b5cd1bb0fbd10000",
+              "count": 1
+            },
+            {
+              "descriptor": "Petaling Jaya",
+              "id": "3666ef49a96a01c680771778cf006f5a",
+              "count": 1
+            },
+            {
+              "descriptor": "Petaling Jaya, Plaza 33",
+              "id": "940562459a6f01df9350d33dc3005023",
+              "count": 7
+            },
+            {
+              "descriptor": "Philadelphia, 2001 Market St, Corp",
+              "id": "f521cb95ec3d100197892aacd61d0000",
+              "count": 311
+            },
+            {
+              "descriptor": "Pianiga, Via Friuli Venezia Giulia 8",
+              "id": "236d0fc5961310012561b43fe9880000",
+              "count": 4
+            },
+            {
+              "descriptor": "Pittsburgh, 1001 Liberty Ave, Corp",
+              "id": "9cce421b391c10016a30bae1f6910000",
+              "count": 290
+            },
+            {
+              "descriptor": "Pleasanton, 6200 Stoneridge, CMT",
+              "id": "940562459a6f01088c43b141c300f92e",
+              "count": 2
+            },
+            {
+              "descriptor": "Plovdiv",
+              "id": "3666ef49a96a013c98199378cf00275c",
+              "count": 15
+            },
+            {
+              "descriptor": "Portland, 16 Middle St, Strategy",
+              "id": "b721243ef9b51001738aa388bae70000",
+              "count": 2
+            },
+            {
+              "descriptor": "Porto",
+              "id": "3666ef49a96a018a0c1a8a77cf007d58",
+              "count": 7
+            },
+            {
+              "descriptor": "Porto Alegre, Rua Uruguai 335",
+              "id": "4db4a0a9d4081000e81fdd77edd70000",
+              "count": 28
+            },
+            {
+              "descriptor": "Portsmouth",
+              "id": "3666ef49a96a017ad10f787acf007662",
+              "count": 1
+            },
+            {
+              "descriptor": "Potenza",
+              "id": "51eeda7828c21001ba7347e3f9980000",
+              "count": 1
+            },
+            {
+              "descriptor": "Prague",
+              "id": "3666ef49a96a01bfe59bbe79cf000560",
+              "count": 61
+            },
+            {
+              "descriptor": "Prague, Balabenka Point Bldg C",
+              "id": "940562459a6f013c860fa63bc300fc1c",
+              "count": 2
+            },
+            {
+              "descriptor": "PSEG Edison Training Center",
+              "id": "4f79d1cfd9de101facfcab85c55f0000",
+              "count": 2
+            },
+            {
+              "descriptor": "Puchong, PFCC Tower 5",
+              "id": "ebce4f21df17100173f7384a3e960000",
+              "count": 6
+            },
+            {
+              "descriptor": "Pune",
+              "id": "3666ef49a96a01d7329b6478cf007d5b",
+              "count": 7488
+            },
+            {
+              "descriptor": "Pune, PDC2C",
+              "id": "940562459a6f0146c84c633fc3000a28",
+              "count": 7
+            },
+            {
+              "descriptor": "Pune, PDC3B",
+              "id": "940562459a6f016e22a4663fc3001428",
+              "count": 9
+            },
+            {
+              "descriptor": "Pune, PDC6A",
+              "id": "940562459a6f01bcce3f6b3fc3002328",
+              "count": 1
+            },
+            {
+              "descriptor": "Quebec - Montreal",
+              "id": "3666ef49a96a01513769ed78cf00495d",
+              "count": 26
+            },
+            {
+              "descriptor": "Quezon",
+              "id": "3666ef49a96a01346310ae78cf00725c",
+              "count": 69
+            },
+            {
+              "descriptor": "Quezon City, Gateway Tower 2",
+              "id": "940562459a6f016f60f4ae40c300d92b",
+              "count": 3
+            },
+            {
+              "descriptor": "Raleigh, 555 Fayetteville, Corp",
+              "id": "d649c5706ad0010196b800928d900000",
+              "count": 288
+            },
+            {
+              "descriptor": "Ravensburg",
+              "id": "32714dc96d9810018ca1073f23550000",
+              "count": 1
+            },
+            {
+              "descriptor": "Recife, Armazem 12",
+              "id": "940562459a6f015d0d18553ec300e524",
+              "count": 22
+            },
+            {
+              "descriptor": "Recife, Armazem 9",
+              "id": "940562459a6f01a3e8f6513ec300db24",
+              "count": 25
+            },
+            {
+              "descriptor": "Redmond, 8383 158th Avenue NE, Corp",
+              "id": "940562459a6f014ce3289841c300a92e",
+              "count": 231
+            },
+            {
+              "descriptor": "Regina, 2010 12th Ave, Corp",
+              "id": "c2b6e46c040e1001c54196f9078f0000",
+              "count": 6
+            },
+            {
+              "descriptor": "Rende",
+              "id": "bd96555b56d21000a7047b1539ee0000",
+              "count": 3
+            },
+            {
+              "descriptor": "Rende, Via Pedro Alvares Cabral 18",
+              "id": "b2b49f2f10280101c5c68db6fa440000",
+              "count": 5
+            },
+            {
+              "descriptor": "Richmond, 313 E Broad Street, HPS",
+              "id": "3f375d411f411000d635c5b061dc0000",
+              "count": 2
+            },
+            {
+              "descriptor": "Riga",
+              "id": "3666ef49a96a01382c2e1b78cf007e5a",
+              "count": 38
+            },
+            {
+              "descriptor": "Rio de Janeiro, Rio Metropolitan Center",
+              "id": "940562459a6f01241f895b3ec300f924",
+              "count": 49
+            },
+            {
+              "descriptor": "Rio de Janeiro - Macae",
+              "id": "21f9f79a68e81000dea6afcb51cd0000",
+              "count": 2
+            },
+            {
+              "descriptor": "Rio de Janeiro - Rio de Janeiro",
+              "id": "3666ef49a96a0184f214d677cf008459",
+              "count": 38
+            },
+            {
+              "descriptor": "Rio Grande do Sul - Porto Alegre",
+              "id": "00550a507af00101604ef71481530000",
+              "count": 19
+            },
+            {
+              "descriptor": "Riyadh",
+              "id": "3666ef49a96a014bf49a2178cf00975a",
+              "count": 16
+            },
+            {
+              "descriptor": "Riyadh, Business Gate Complex, Bldg 9",
+              "id": "940562459a6f01eaca45f340c300ba2c",
+              "count": 2
+            },
+            {
+              "descriptor": "Roma",
+              "id": "3666ef49a96a010a08934078cf00f65a",
+              "count": 121
+            },
+            {
+              "descriptor": "Roma, Palazzo Marignoli",
+              "id": "f6e7cff13c081004f544624abb1d0000",
+              "count": 5
+            },
+            {
+              "descriptor": "Roma, Via del Serafico n. 200",
+              "id": "f19f7c48649f1001255d238c38500000",
+              "count": 1
+            },
+            {
+              "descriptor": "Roma, Via Po 14",
+              "id": "e986e54ead741001c208dfe787380000",
+              "count": 3
+            },
+            {
+              "descriptor": "Roma, Via Sciangai 53",
+              "id": "3ef0e5136587018d2a2f03fbd0012c89",
+              "count": 16
+            },
+            {
+              "descriptor": "Rome",
+              "id": "3666ef49a96a015b6cc68878cf00ff5b",
+              "count": 11
+            },
+            {
+              "descriptor": "Rosario",
+              "id": "3666ef49a96a0109268d5279cf009d5e",
+              "count": 37
+            },
+            {
+              "descriptor": "Rosario, Torre Nordlink",
+              "id": "74b5811bce7a103d27f96b2d9e040000",
+              "count": 3
+            },
+            {
+              "descriptor": "Rotterdam",
+              "id": "43dc5353fe30102062af5ad7177c0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Rovigo",
+              "id": "ea31fb9b52c11001b6443d156cef0000",
+              "count": 3
+            },
+            {
+              "descriptor": "Rovigo, via Luigi Einaudi n. 24",
+              "id": "1dfecd0409201001741cde268f560000",
+              "count": 1
+            },
+            {
+              "descriptor": "Sacramento, 1610 R Street, Corp",
+              "id": "940562459a6f01fa92c29a3ac300e619",
+              "count": 270
+            },
+            {
+              "descriptor": "Saint-Herblain, Liberty A",
+              "id": "940562459a6f01926e349e3cc300e51f",
+              "count": 13
+            },
+            {
+              "descriptor": "Salta",
+              "id": "3dccf5e7a73710016bca5f886e070000",
+              "count": 26
+            },
+            {
+              "descriptor": "Salta, Punto Corp",
+              "id": "9e5e8fd7f5da1001748a16f75d040000",
+              "count": 10
+            },
+            {
+              "descriptor": "Salt Lake City, 6322 South, MS",
+              "id": "940562459a6f01082b569341c3009a2e",
+              "count": 2
+            },
+            {
+              "descriptor": "Salvador, Ed. Mundo Plaza Empresarial",
+              "id": "1a7b1365d10b1000a12c21a939cf0000",
+              "count": 17
+            },
+            {
+              "descriptor": "San Antonio, 10931 Laureate Drive, OPS",
+              "id": "b9061cb089ff1016bfadd04492a20000",
+              "count": 3
+            },
+            {
+              "descriptor": "San Antonio, 7050 Fairgrounds, AFS",
+              "id": "940562459a6f01ea9eea9d3ac300f019",
+              "count": 2
+            },
+            {
+              "descriptor": "San Diego, 12680 High Bluff Dr, Corp",
+              "id": "f0b2ddc0b38a1030aac8c8bade1d0000",
+              "count": 269
+            },
+            {
+              "descriptor": "San Diego, 1615 Murray Canyon, AFS",
+              "id": "940562459a6f015b3fd01b42c3003930",
+              "count": 2
+            },
+            {
+              "descriptor": "San Francisco, 415 Mission Street, Corp",
+              "id": "940562459a6f018cfd60b541c300082f",
+              "count": 300
+            },
+            {
+              "descriptor": "San Jose, Plaza Real Cariari",
+              "id": "940562459a6f018b5bc6993bc300d41c",
+              "count": 24
+            },
+            {
+              "descriptor": "San Nicolas",
+              "id": "3666ef49a96a015f06359678cf00315c",
+              "count": 14
+            },
+            {
+              "descriptor": "San Sebastian",
+              "id": "3666ef49a96a0199e03d507acf00e561",
+              "count": 3
+            },
+            {
+              "descriptor": "Santa Catarina - Florianopolis",
+              "id": "1b6fad40960f0101df6376e3e8940000",
+              "count": 30
+            },
+            {
+              "descriptor": "Santa Catarina - Joinville",
+              "id": "e08280ec8c3c10349a8f1d1902e30000",
+              "count": 1
+            },
+            {
+              "descriptor": "Santander",
+              "id": "3666ef49a96a01da6571437acf00b861",
+              "count": 10
+            },
+            {
+              "descriptor": "Santiago",
+              "id": "3666ef49a96a01fb1c726f79cf00065f",
+              "count": 26
+            },
+            {
+              "descriptor": "Santiago, Andes",
+              "id": "940562459a6f010050163e3bc300df1b",
+              "count": 1
+            },
+            {
+              "descriptor": "Santo Andre, Rua Aracai 65",
+              "id": "8b996957b790100195a454db48360000",
+              "count": 11
+            },
+            {
+              "descriptor": "Sao Bernardo do Campo, Brasilio Machado",
+              "id": "a18f5b2ade211000a0bd78f05e150000",
+              "count": 4
+            },
+            {
+              "descriptor": "Sao Jose dos Campos",
+              "id": "3360e66313111000e689774372e70000",
+              "count": 2
+            },
+            {
+              "descriptor": "Sao Jose dos Campos, Helbor Corporate",
+              "id": "0a789301617b100ed7c82a9ec1a30000",
+              "count": 3
+            },
+            {
+              "descriptor": "Sao Paulo, Torre Paineira",
+              "id": "940562459a6f016f03a1c141c300302f",
+              "count": 93
+            },
+            {
+              "descriptor": "São Paulo - Alphaville",
+              "id": "3666ef49a96a019018fa2679cf000c5e",
+              "count": 22
+            },
+            {
+              "descriptor": "São Paulo - Americana",
+              "id": "470274d17aa41035062eed2bad2b0000",
+              "count": 20
+            },
+            {
+              "descriptor": "São Paulo - Barueri",
+              "id": "3666ef49a96a01954f69e277cf00b159",
+              "count": 27
+            },
+            {
+              "descriptor": "São Paulo - Santo Andre",
+              "id": "3666ef49a96a01264744e677cf00c059",
+              "count": 23
+            },
+            {
+              "descriptor": "São Paulo - Santos",
+              "id": "3666ef49a96a018390be1979cf00ee5d",
+              "count": 19
+            },
+            {
+              "descriptor": "São Paulo - Sao Bernardo do Campo",
+              "id": "3666ef49a96a01ca33dcc977cf005759",
+              "count": 22
+            },
+            {
+              "descriptor": "São Paulo - São José Campos",
+              "id": "3666ef49a96a01ff658b1b79cf00f35d",
+              "count": 16
+            },
+            {
+              "descriptor": "São Paulo - Sao Jose dos Campos",
+              "id": "7ca5fd681bec1034d0ef0d66d8270000",
+              "count": 18
+            },
+            {
+              "descriptor": "São Paulo - Sao Paulo",
+              "id": "3666ef49a96a0109427d3878cf00d85a",
+              "count": 38
+            },
+            {
+              "descriptor": "São Paulo - São Paulo",
+              "id": "3666ef49a96a01e4002b7078cf00a55b",
+              "count": 16
+            },
+            {
+              "descriptor": "Sapporo",
+              "id": "3666ef49a96a0181f8f25078cf00325b",
+              "count": 8
+            },
+            {
+              "descriptor": "Sapporo, Shiroishi Garden Place",
+              "id": "940562459a6f01764708cc3dc3003723",
+              "count": 2
+            },
+            {
+              "descriptor": "Scottsdale, 15279 N Scottsdale Rd, Corp",
+              "id": "534d0844188410039037c2225d4d0000",
+              "count": 268
+            },
+            {
+              "descriptor": "Scottsdale, 4250 Drinkwater Bl, CMT",
+              "id": "940562459a6f0195511cca3ac300721a",
+              "count": 2
+            },
+            {
+              "descriptor": "Seattle, 1191 2nd Avenue, Avanade",
+              "id": "940562459a6f014f67c89b41c300b32e",
+              "count": 2
+            },
+            {
+              "descriptor": "Seattle, 1191 2nd Avenue, Corp",
+              "id": "940562459a6f01643a3ca041c300c22e",
+              "count": 288
+            },
+            {
+              "descriptor": "Seattle, 1910 Fairview, Avanade",
+              "id": "940562459a6f01e8d0439641c300a42e",
+              "count": 2
+            },
+            {
+              "descriptor": "Selangor, Sunway Geo Tower",
+              "id": "bcc26d7b4ed91001e2a10ed688160000",
+              "count": 16
+            },
+            {
+              "descriptor": "Semarang",
+              "id": "00899b12fc130101c74e4e453ff70000",
+              "count": 86
+            },
+            {
+              "descriptor": "Semarang, Menara Suara Merdeka",
+              "id": "7725a1fc970a0101904ce45c00b90000",
+              "count": 1
+            },
+            {
+              "descriptor": "Sendai",
+              "id": "c29f196d6da010019abeb2d232590000",
+              "count": 6
+            },
+            {
+              "descriptor": "Sevilla",
+              "id": "3666ef49a96a0158a96a3a7acf009a61",
+              "count": 25
+            },
+            {
+              "descriptor": "Sevilla, Bluenet",
+              "id": "940562459a6f01ebe9bc773cc3006d1f",
+              "count": 19
+            },
+            {
+              "descriptor": "Shanghai",
+              "id": "3666ef49a96a015e15c5337acf008161",
+              "count": 43
+            },
+            {
+              "descriptor": "Shanghai, Central Plaza, 30 F",
+              "id": "940562459a6f0121ab09783bc3006b1c",
+              "count": 1
+            },
+            {
+              "descriptor": "Shanghai, Tsidi Building",
+              "id": "940562459a6f01937227823bc300891c",
+              "count": 2
+            },
+            {
+              "descriptor": "Shenzhen",
+              "id": "3666ef49a96a01e6f730297acf005e61",
+              "count": 5
+            },
+            {
+              "descriptor": "Shenzhen, Eco Park",
+              "id": "ab76fd3c3c1701ba62fabebfda002a32",
+              "count": 3
+            },
+            {
+              "descriptor": "Siegburg, Konrad-Adenauer-Allee 18",
+              "id": "c9916aa7efb6101fa63a427f201c0000",
+              "count": 27
+            },
+            {
+              "descriptor": "Singapore",
+              "id": "3666ef49a96a01ebcb282078cf00925a",
+              "count": 163
+            },
+            {
+              "descriptor": "Sofia",
+              "id": "3666ef49a96a01f282b99178cf00225c",
+              "count": 23
+            },
+            {
+              "descriptor": "St. Louis, 4220 Duncan Avenue, Corp",
+              "id": "940562459a6f0190434da63ac300041a",
+              "count": 285
+            },
+            {
+              "descriptor": "St. Louis, 520 Maryville Center Dr., AFS",
+              "id": "bf71033d23d401b86d8c5bee96017ddb",
+              "count": 2
+            },
+            {
+              "descriptor": "St. Pete, 140 Fountain Pkwy, Tampa Corp",
+              "id": "940562459a6f01cfac8da93ac3000e1a",
+              "count": 300
+            },
+            {
+              "descriptor": "Stavanger",
+              "id": "3666ef49a96a0114df8aa778cf005e5c",
+              "count": 1
+            },
+            {
+              "descriptor": "Stockholm",
+              "id": "3666ef49a96a01f8bec0f877cf00015a",
+              "count": 30
+            },
+            {
+              "descriptor": "Stockholm, Alstromergatan 12",
+              "id": "940562459a6f01799a9c1d41c300282d",
+              "count": 1
+            },
+            {
+              "descriptor": "Stockholm, Radmansgatan 42",
+              "id": "76ebda364d961001487afa585dc30000",
+              "count": 2
+            },
+            {
+              "descriptor": "Stuttgart",
+              "id": "3666ef49a96a01ab7d42587acf000362",
+              "count": 104
+            },
+            {
+              "descriptor": "Stuttgart, BoschAreal, Corporate",
+              "id": "940562459a6f014b607efe3bc3000f1e",
+              "count": 9
+            },
+            {
+              "descriptor": "Subang Jaya, The Pinnacle",
+              "id": "940562459a6f0126f14f5740c300d02a",
+              "count": 7
+            },
+            {
+              "descriptor": "Sweden",
+              "id": "580d6f3322941000e6900f5562760000",
+              "count": 1
+            },
+            {
+              "descriptor": "Sydney",
+              "id": "3666ef49a96a01692ed2b377cf000759",
+              "count": 71
+            },
+            {
+              "descriptor": "Sydney, International House, 3 Sussex St",
+              "id": "940562459a6f01d27fbd293bc300991b",
+              "count": 60
+            },
+            {
+              "descriptor": "Sylvania, 5470 Main Street, CMT",
+              "id": "ce754763082801c9771e4bbe96011b48",
+              "count": 2
+            },
+            {
+              "descriptor": "Szczecin",
+              "id": "519caf97b7cf0101c7a09856f65c0000",
+              "count": 9
+            },
+            {
+              "descriptor": "Szczecin, Posejdon",
+              "id": "5b1a3799b651010190488d9f103a0000",
+              "count": 2
+            },
+            {
+              "descriptor": "Taguig",
+              "id": "3666ef49a96a01840e58af78cf00775c",
+              "count": 228
+            },
+            {
+              "descriptor": "Taguig, Uptown Bonifacio Tower 3",
+              "id": "940562459a6f01e1a208b340c300e82b",
+              "count": 3
+            },
+            {
+              "descriptor": "Tallahassee, 3800 Esplanade Way, HPS",
+              "id": "940562459a6f012412f1a73ac300091a",
+              "count": 2
+            },
+            {
+              "descriptor": "Tampere",
+              "id": "3666ef49a96a01149c1b8a7acf00b762",
+              "count": 1
+            },
+            {
+              "descriptor": "Targu-Mures",
+              "id": "3666ef49a96a0179a6933578cf00ce5a",
+              "count": 16
+            },
+            {
+              "descriptor": "Targu Mures, MBC Office",
+              "id": "c92febfee6cb10020ef60ed2e3fa0000",
+              "count": 17
+            },
+            {
+              "descriptor": "Thessaloniki",
+              "id": "3666ef49a96a01e62b81e179cf007860",
+              "count": 19
+            },
+            {
+              "descriptor": "Thessaloniki, Morris Building",
+              "id": "697cdd5a2c92010196f79a610a470000",
+              "count": 3
+            },
+            {
+              "descriptor": "Thiruvananthapuram",
+              "id": "43dc5353fe3010213e54d8caa00b0000",
+              "count": 107
+            },
+            {
+              "descriptor": "Thiruvananthapuram, TRDC1i",
+              "id": "33efcc28510e1000e7c8c98bf4500000",
+              "count": 1
+            },
+            {
+              "descriptor": "Timisoara",
+              "id": "3666ef49a96a01eba7b02d78cf00b05a",
+              "count": 37
+            },
+            {
+              "descriptor": "Timisoara, CBC Business Park Building B",
+              "id": "940562459a6f0196ab51eb40c300a12c",
+              "count": 1
+            },
+            {
+              "descriptor": "Tiruchirappalli",
+              "id": "63e09671b47310010f722ef5a6990000",
+              "count": 73
+            },
+            {
+              "descriptor": "Tokyo",
+              "id": "3666ef49a96a010038ff1e78cf008d5a",
+              "count": 203
+            },
+            {
+              "descriptor": "Torino",
+              "id": "3666ef49a96a01fc60075578cf00415b",
+              "count": 54
+            },
+            {
+              "descriptor": "Torino, Via Nizza 262 int. 57/59",
+              "id": "940562459a6f011aa0a9b33fc300f528",
+              "count": 9
+            },
+            {
+              "descriptor": "Toronto, 40 King St W., Corp",
+              "id": "940562459a6f011ff558b338c300f113",
+              "count": 60
+            },
+            {
+              "descriptor": "Toulouse",
+              "id": "3666ef49a96a017d2b848679cf00565f",
+              "count": 1
+            },
+            {
+              "descriptor": "Trieste",
+              "id": "3666ef49a96a019fb4ed3d78cf00ec5a",
+              "count": 6
+            },
+            {
+              "descriptor": "Trondheim",
+              "id": "3666ef49a96a0128bfc4a578cf00595c",
+              "count": 3
+            },
+            {
+              "descriptor": "TX - Austin",
+              "id": "3666ef49a96a01a8f7d6d178cf00ef5c",
+              "count": 2
+            },
+            {
+              "descriptor": "TX - Dallas",
+              "id": "3666ef49a96a0151cd6f0c79cf00bc5d",
+              "count": 19
+            },
+            {
+              "descriptor": "TX - Houston",
+              "id": "3666ef49a96a01e7c5ac0d78cf004c5a",
+              "count": 11
+            },
+            {
+              "descriptor": "TX - Irving",
+              "id": "e8f93ddf8fdc019ff9993e4eec003c54",
+              "count": 1
+            },
+            {
+              "descriptor": "TX - Plano",
+              "id": "3666ef49a96a0186f7901178cf005b5a",
+              "count": 3
+            },
+            {
+              "descriptor": "TX - San Antonio",
+              "id": "3666ef49a96a01bff6e7db79cf006460",
+              "count": 1
+            },
+            {
+              "descriptor": "Uberlandia, Av. Jose A. Gassan 4901",
+              "id": "f41a9b75c51a010196565c16cad00000",
+              "count": 15
+            },
+            {
+              "descriptor": "VA - Arlington",
+              "id": "3666ef49a96a012532859277cf009e58",
+              "count": 8
+            },
+            {
+              "descriptor": "Valencia",
+              "id": "3666ef49a96a01b21bc8377acf009061",
+              "count": 3
+            },
+            {
+              "descriptor": "Valencia, San Agustin",
+              "id": "2f5190ff92fe01f3499871d0960161a3",
+              "count": 4
+            },
+            {
+              "descriptor": "Valparaiso",
+              "id": "3666ef49a96a01b018d29c7acf00f862",
+              "count": 2
+            },
+            {
+              "descriptor": "Vancouver, 510 W. Georgia, Corp",
+              "id": "940562459a6f018f44d2bb38c3000f14",
+              "count": 23
+            },
+            {
+              "descriptor": "Verona",
+              "id": "3666ef49a96a0180d2db5378cf003c5b",
+              "count": 3
+            },
+            {
+              "descriptor": "Verona, Via don Giovanni Minzoni 50",
+              "id": "940562459a6f018c8c98b93fc3000929",
+              "count": 1
+            },
+            {
+              "descriptor": "Vienna",
+              "id": "3666ef49a96a01bdb346ad77cf000259",
+              "count": 21
+            },
+            {
+              "descriptor": "Villingen-Schwenningen",
+              "id": "1c22d0670b5310020919c7c804260000",
+              "count": 2
+            },
+            {
+              "descriptor": "Vilnius",
+              "id": "23ebe8bf873d01428c57c3f4d701049a",
+              "count": 43
+            },
+            {
+              "descriptor": "Vitoria, Work Office Center",
+              "id": "a18f5b2ade211000e4c8316bb2c20000",
+              "count": 18
+            },
+            {
+              "descriptor": "Vitoria-Gasteis, IDE",
+              "id": "940562459a6f01148c26163cc300551e",
+              "count": 1
+            },
+            {
+              "descriptor": "Vitrolles",
+              "id": "9b875e37d36b0101c684713c61c70000",
+              "count": 15
+            },
+            {
+              "descriptor": "Vitrolles, Cap Horizon",
+              "id": "eba09db64f7101019048a05a80500000",
+              "count": 3
+            },
+            {
+              "descriptor": "Walnut Creek, 1255 Treat Blvd, Corp",
+              "id": "940562459a6f01f140aaa141c300c72e",
+              "count": 251
+            },
+            {
+              "descriptor": "Warsaw",
+              "id": "3666ef49a96a010973313478cf00c95a",
+              "count": 214
+            },
+            {
+              "descriptor": "Warsaw, Proximo II",
+              "id": "940562459a6f0178ab02c940c300332c",
+              "count": 5
+            },
+            {
+              "descriptor": "Warsaw, Sienna 39",
+              "id": "940562459a6f0141553ac640c300292c",
+              "count": 21
+            },
+            {
+              "descriptor": "WA - Seattle",
+              "id": "3666ef49a96a017a4d704079cf00665e",
+              "count": 1
+            },
+            {
+              "descriptor": "Washington, D.C.",
+              "id": "c7388486fec21000e68fa67de56e0000",
+              "count": 1
+            },
+            {
+              "descriptor": "Wellington",
+              "id": "3666ef49a96a0163fbdcba78cf009f5c",
+              "count": 19
+            },
+            {
+              "descriptor": "Wellington, Harbour Tower, 2 Hunter St",
+              "id": "ab4ed99fbe62017a64b7883d94014baf",
+              "count": 5
+            },
+            {
+              "descriptor": "Wetzlar",
+              "id": "809a0e919e981001f668fe72d3730000",
+              "count": 2
+            },
+            {
+              "descriptor": "Whitehall, E. Broad St., AFS",
+              "id": "940562459a6f01317fb7dc41c300852f",
+              "count": 2
+            },
+            {
+              "descriptor": "Wien",
+              "id": "3666ef49a96a01661ddaa577cf00e458",
+              "count": 2
+            },
+            {
+              "descriptor": "Windsor, 601 Gyrfalcon Court, IX",
+              "id": "bfb8c5f976291021434231fafab50000",
+              "count": 2
+            },
+            {
+              "descriptor": "Windsor Mill, 3112 Baltimore Lord Dr, IX",
+              "id": "c384b12b7ff510018d0ad193d39e0000",
+              "count": 2
+            },
+            {
+              "descriptor": "Winnipeg, NewPort Centre, ACN Tech",
+              "id": "30d28bce770e1001e5e4a7efc3930000",
+              "count": 1
+            },
+            {
+              "descriptor": "Wolfsburg",
+              "id": "3666ef49a96a01a3178e557acf00f961",
+              "count": 5
+            },
+            {
+              "descriptor": "Woodlawn, 6340 Security Blvd, AFS",
+              "id": "940562459a6f01f061312642c3005730",
+              "count": 2
+            },
+            {
+              "descriptor": "Wroclaw",
+              "id": "3666ef49a96a011403df9978cf00405c",
+              "count": 59
+            },
+            {
+              "descriptor": "Wroclaw, Dominikanski Center",
+              "id": "99f04fef1b57100144b6b296eb240000",
+              "count": 65
+            },
+            {
+              "descriptor": "Wuerzburg",
+              "id": "3666ef49a96a01e2496b8b7acf00bc62",
+              "count": 16
+            },
+            {
+              "descriptor": "Yokohama",
+              "id": "3666ef49a96a019760426778cf00875b",
+              "count": 40
+            },
+            {
+              "descriptor": "Zaragoza",
+              "id": "3666ef49a96a01e1d570367acf008b61",
+              "count": 16
+            },
+            {
+              "descriptor": "Zaragoza, World Trade Center, West Tower",
+              "id": "940562459a6f01ca4da9843cc300951f",
+              "count": 16
+            },
+            {
+              "descriptor": "Zurich",
+              "id": "3666ef49a96a01e90102f279cf00af60",
+              "count": 1
+            },
+            {
+              "descriptor": "Zurich, Sihlstrasse 34",
+              "id": "a5ef4c842402100124a6dbec09a00000",
+              "count": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "facetParameter": "distance",
+      "descriptor": "Distance",
+      "values": [
+        {
+          "descriptor": "10 kilometers",
+          "id": "a538cdb60a631000078a4443636e00f8",
+          "count": 1
+        },
+        {
+          "descriptor": "25 kilometers",
+          "id": "a538cdb60a631000078a444d6fd600f9",
+          "count": 1
+        },
+        {
+          "descriptor": "50 kilometers",
+          "id": "a538cdb60a631000078a4452365100fa",
+          "count": 1
+        },
+        {
+          "descriptor": "100 kilometers",
+          "id": "a538cdb60a631000078a445539a700fb",
+          "count": 1
+        },
+        {
+          "descriptor": "Any Distance",
+          "id": "a538cdb60a631000078a4457dd7e00fc",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "userAuthenticated": false
+}

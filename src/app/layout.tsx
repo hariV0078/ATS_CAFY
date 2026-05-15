@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -19,13 +20,21 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  let user = null;
+  try {
+    const supabase = await createClient();
+    const { data } = await supabase.auth.getUser();
+    user = data.user;
+  } catch (error) {
+    console.error('Error in RootLayout auth check:', error);
+  }
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${dmSans.variable} font-sans antialiased`} suppressHydrationWarning>
-        <Navbar user={user} />
+        <Suspense fallback={<div className="h-16" />}>
+          <Navbar user={user} />
+        </Suspense>
         {children}
       </body>
     </html>

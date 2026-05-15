@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { syncAll } from '@/scripts/syncAll';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 export const maxDuration = 300;
 
 function isAuthorized(req: NextRequest): boolean {

@@ -1,10 +1,11 @@
 {
-  "name": "GetLandedJOBS",
+  "name": "getlandedjobs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:clean": "rimraf .next && next build",
     "start": "next start",
     "lint": "eslint",
     "ingest": "tsx src/scripts/ingestJobs.ts",
@@ -16,7 +17,9 @@
     "detect:ats": "tsx src/scripts/detectAtsFromCareersPage.ts",
     "detect:ats:test": "tsx src/scripts/detectAtsFromCareersPage.ts --limit 20",
     "detect:ats:single": "tsx src/scripts/detectAtsFromCareersPage.ts --company-id",
-    "import:ats:csv": "tsx src/scripts/importAtsFromCsv.ts"
+    "import:ats:csv": "tsx src/scripts/importAtsFromCsv.ts",
+    "seed:companies": "tsx src/scripts/seedCompaniesFromCsv.ts",
+    "import:full": "tsx src/scripts/importFullCompanies.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
@@ -25,15 +28,17 @@
     "@stripe/stripe-js": "^8.9.0",
     "@supabase/ssr": "^0.9.0",
     "@supabase/supabase-js": "^2.98.0",
+    "@tailwindcss/postcss": "^4",
     "@types/pg": "^8.18.0",
     "axios": "^1.13.6",
     "cheerio": "^1.2.0",
     "crawlee": "^3.16.0",
     "date-fns": "^4.1.0",
+    "dotenv": "^17.3.1",
     "fast-xml-parser": "^5.4.2",
     "framer-motion": "^12.35.0",
     "lucide-react": "^0.576.0",
-    "next": "15.1.6",
+    "next": "^15.5.15",
     "papaparse": "^5.5.3",
     "pg": "^8.20.0",
     "playwright": "^1.58.2",
@@ -43,19 +48,19 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "stripe": "^20.4.1",
-    "uuid": "^13.0.0"
+    "tailwindcss": "^4",
+    "uuid": "^13.0.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/papaparse": "^5.5.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
-    "dotenv": "^17.3.1",
     "eslint": "^9",
-    "eslint-config-next": "15.1.6",
+    "eslint-config-next": "^15.5.15",
     "stripe-cli": "^0.1.0",
-    "tailwindcss": "^4",
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5"
