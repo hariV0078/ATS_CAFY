@@ -1,7 +1,6 @@
 'use server';
 
 import { createClient } from '../../utils/supabase/server';
-import { createAdminClient } from '../../utils/supabase/admin';
 
 export async function reportJobAction(jobId: number, notes?: string) {
     const supabaseServer = await createClient();
@@ -14,13 +13,23 @@ export async function reportJobAction(jobId: number, notes?: string) {
     }
 
     try {
-        const { error } = await supabaseServer
+        let { error } = await supabaseServer
             .from('reported_jobs')
             .insert({
                 user_id: user.id,
                 job_id: jobId,
                 notes: notes || null
             });
+
+        if (error?.message?.toLowerCase().includes('user_id')) {
+            const fallback = await supabaseServer
+                .from('reported_jobs')
+                .insert({
+                    job_id: jobId,
+                    notes: notes || null
+                });
+            error = fallback.error;
+        }
 
         if (error) {
             console.error('Error reporting job:', error);
